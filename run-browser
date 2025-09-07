@@ -4,6 +4,6 @@ SCRIPT_DIR=$(cd "$(dirname "$0")" ; pwd -P)
 REYARN=$1
 
 if [ "$REYARN" == "1" ]; then
-    $SCRIPT_DIR/kmp/gradlew kotlinUpgradeYarnLock
+    cd $SCRIPT_DIR/kmp && ./gradlew kotlinUpgradeYarnLock
 fi
-$SCRIPT_DIR/kmp/gradlew jsBrowserDevelopmentExecutableDistribution
+cd $SCRIPT_DIR/kmp && ./gradlew jsBrowserDevelopmentExecutableDistribution
