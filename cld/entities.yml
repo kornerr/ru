@@ -1,0 +1,26 @@
+version: 1
+
+kotlin: package ru.kornerr
+kotlin: import kotlin.js.JsExport
+
+AppContext:
+    prefix-kotlin: @JsExport
+    type: context
+    fields:
+        didLaunch: Bool
+        request: NetRequest
+        response: NetResponse
+
+NetRequest:
+    prefix-kotlin: @JsExport
+    type: struct
+    fields:
+        method: String
+        url: String
+
+NetResponse:
+    prefix-kotlin: @JsExport
+    type: struct
+    fields:
+        contents: String
+        url: String
