@@ -67,17 +67,14 @@ fun appParseCurrencies(raw: String): Array<Currency> {
 
 fun appParseCurrencyValue(
     lines: List<String>,
-    currency: String
+    code: String
 ): String {
-          /*
-    for (val ln in lines) {
-        if (currency in ln) {
-            let parts = ln.split(/Value>(.*)<\/Value/)
-            let value = parts[1].replaceAll(",", ".")
-            return Number(value)
+    for (ln in lines) {
+        if (code in ln) {
+            val parts = ln.split("VunitRate>")
+            val subparts = parts[1].split("</")
+            return subparts[0]
         }
     }
-            */
-
     return "N/A"
 }
