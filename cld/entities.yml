@@ -7,10 +7,18 @@ AppContext:
     prefix-kotlin: @JsExport
     type: context
     fields:
+        currencies: [Currency]
         didLaunch: Bool
         request: NetRequest
         response: NetResponse
         responseError: NetResponse
+
+Currency:
+    prefix-kotlin: @JsExport
+    type: struct
+    fields:
+        code: String
+        value: String
 
 NetRequest:
     prefix-kotlin: @JsExport

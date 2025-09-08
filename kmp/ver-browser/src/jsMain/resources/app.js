@@ -7,10 +7,8 @@ function appCtrl() {
 //<!-- Константы -->
 
 /*
-let APP_CURRENCY_RAW_DELIMITER = "</Valute>";
 let APP_RATE_EUR_ID = "rate-eur";
 let APP_RATE_USD_ID = "rate-usd";
-let APP_URL_EXCHANGE_RATES = "https://kornerr.ru/cbr.xml";
 */
 
 //<!-- Компонент -->
@@ -48,6 +46,7 @@ function AppComponent() {
     this.setupShoulds = function() {
         [
             KT.appShouldLoad,
+            KT.appShouldResetCurrencies,
         ].forEach((f) => {
             this.ctrl.registerFunction(f);
         });
