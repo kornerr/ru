@@ -18,6 +18,7 @@ Currency:
     type: struct
     fields:
         code: String
+        emoji: String
         value: String
 
 NetRequest:

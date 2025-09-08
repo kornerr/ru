@@ -27,6 +27,7 @@ function AppComponent() {
 
     this.setupEffects = function() {
         let oneliners = [ 
+            "currencies", (c) => { appDisplayCurrencies(c.currencies); },
             "request", (c) => { appLoad(c.request); },
         ];
         let halfCount = oneliners.length / 2;
