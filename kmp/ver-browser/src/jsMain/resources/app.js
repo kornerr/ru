@@ -58,21 +58,7 @@ function AppComponent() {
 
 //<!-- Эффекты -->
 
-// Сетевой запрос
-function appLoad(req) {
-    loadURL(
-        req,
-        (res) => {
-            var response = new KT.NetResponse(res.responseText, res.responseURL);
-            appCtrl().set("response", response);
-        },
-        (res) => {
-            var err = new KT.NetResponse(res.contents, res.url);
-            appCtrl().set("responseError", err);
-        }
-    );
-}
-/*
+// Отобразить валюты
 function appDisplayCurrencies(values) {
     let usd = deId(APP_RATE_USD_ID);
     if (usd != null) {
@@ -87,6 +73,21 @@ function appDisplayCurrencies(values) {
     }
 }
 */
+
+// Сетевой запрос
+function appLoad(req) {
+    loadURL(
+        req,
+        (res) => {
+            var response = new KT.NetResponse(res.responseText, res.responseURL);
+            appCtrl().set("response", response);
+        },
+        (res) => {
+            var err = new KT.NetResponse(res.contents, res.url);
+            appCtrl().set("responseError", err);
+        }
+    );
+}
 
 //<!-- Установка -->
 
