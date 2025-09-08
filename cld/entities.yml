@@ -10,11 +10,13 @@ AppContext:
         didLaunch: Bool
         request: NetRequest
         response: NetResponse
+        responseError: NetResponse
 
 NetRequest:
     prefix-kotlin: @JsExport
     type: struct
     fields:
+        body: String
         method: String
         url: String
 

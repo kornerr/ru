@@ -6,10 +6,12 @@ function appCtrl() {
 
 //<!-- Константы -->
 
+/*
 let APP_CURRENCY_RAW_DELIMITER = "</Valute>";
 let APP_RATE_EUR_ID = "rate-eur";
 let APP_RATE_USD_ID = "rate-usd";
 let APP_URL_EXCHANGE_RATES = "https://kornerr.ru/cbr.xml";
+*/
 
 //<!-- Компонент -->
 
@@ -26,22 +28,8 @@ function AppComponent() {
     };
 
     this.setupEffects = function() {
-        /*
-        this.ctrl.registerFieldCallback("request", (c) => {
-            loadURL(c.request, (res) => {
-                let r = {
-                    contents: res.responseText,
-                    status: res.status,
-                    url: res.responseURL,
-                }
-                this.ctrl.set("response", r);
-            });
-        });
-
         let oneliners = [ 
-            "currencies", (c) => { appDisplayCurrencies(c.currencies); },
-            "didAcceptConsultation", (c) => { appHideConsultationDialog(); },
-            "didAcceptConsultation", (c) => { reportSuccess(APP_CONSULTATION_SUCCESS); },
+            "request", (c) => { appLoad(c.request); },
         ];
         let halfCount = oneliners.length / 2;
         for (let i = 0; i < halfCount; ++i) {
@@ -49,7 +37,6 @@ function AppComponent() {
             let cb = oneliners[i * 2 + 1];
             this.ctrl.registerFieldCallback(field, cb);
         }
-        */
     };
 
     this.setupEvents = function() {
@@ -60,6 +47,7 @@ function AppComponent() {
 
     this.setupShoulds = function() {
         [
+            KT.appShouldLoad,
         ].forEach((f) => {
             this.ctrl.registerFunction(f);
         });
@@ -68,25 +56,23 @@ function AppComponent() {
     this._construct();
 }
 
-//<!-- Прочие -->
-
-//TODO ПЕРЕНЕСТИ В КТ
-function appParseCurrency(raw, currency) {
-    let lines = raw.split(APP_CURRENCY_RAW_DELIMITER);
-    for (let i in lines) {
-        let ln = lines[i];
-        if (ln.includes(currency)) {
-            let parts = ln.split(/Value>(.*)<\/Value/);
-            let value = parts[1].replaceAll(",", ".");
-            return Number(value);
-        }
-    }
-
-    return -1;
-}
-
 //<!-- Эффекты -->
 
+// Сетевой запрос
+function appLoad(req) {
+    loadURL(
+        req,
+        (res) => {
+            var response = new KT.NetResponse(res.responseText, res.responseURL);
+            appCtrl().set("response", response);
+        },
+        (res) => {
+            var err = new KT.NetResponse(res.contents, res.url);
+            appCtrl().set("responseError", err);
+        }
+    );
+}
+/*
 function appDisplayCurrencies(values) {
     let usd = deId(APP_RATE_USD_ID);
     if (usd != null) {
@@ -100,6 +86,7 @@ function appDisplayCurrencies(values) {
         eur.innerHTML = `€${veur.toFixed(2)}`;
     }
 }
+*/
 
 //<!-- Установка -->
 

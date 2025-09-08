@@ -7,6 +7,7 @@ data class AppContext(
     var didLaunch: Boolean = false,
     var request: NetRequest = NetRequest(),
     var response: NetResponse = NetResponse(),
+    var responseError: NetResponse = NetResponse(),
     override var recentField: String = "",
 ): CLDContext {
     override fun <T> field(name: String): T {
@@ -16,6 +17,8 @@ data class AppContext(
             return request as T
         } else if (name == "response") {
             return response as T
+        } else if (name == "responseError") {
+            return responseError as T
         }
         return "unknown-field-name" as T
     }
@@ -34,6 +37,8 @@ data class AppContext(
             request = value as NetRequest
         } else if (name == "response") {
             response = value as NetResponse
+        } else if (name == "responseError") {
+            responseError = value as NetResponse
         }
     }
 }
@@ -41,6 +46,7 @@ data class AppContext(
 
 @JsExport
 data class NetRequest(
+    var body: String = "",
     var method: String = "",
     var url: String = "",
 ) {}
