@@ -59,20 +59,20 @@ function AppComponent() {
 //<!-- Эффекты -->
 
 // Отобразить валюты
-function appDisplayCurrencies(values) {
-    /*
-    let usd = deId(APP_RATE_USD_ID);
-    if (usd != null) {
-        let vusd = values[0];
-        usd.innerHTML = `$${vusd.toFixed(2)}`;
+function appDisplayCurrencies(items) {
+    for (let i in items) {
+        let item = items[i];
+        let keyId = appCurrencyKeyId(item.code);
+        let valId = appCurrencyValueId(item.code);
+        let key = deId(keyId);
+        if (key != null) {
+            key.innerHTML = `${item.flag} ${item.code}`;
+        }
+        let val = deId(valId);
+        if (val != null) {
+            val.innerHTML = item.value;
+        }
     }
-
-    let eur = deId(APP_RATE_EUR_ID);
-    if (eur != null) {
-        let veur = values[1];
-        eur.innerHTML = `€${veur.toFixed(2)}`;
-    }
-    */
 }
 
 // Сетевой запрос
@@ -88,6 +88,16 @@ function appLoad(req) {
             appCtrl().set("responseError", err);
         }
     );
+}
+
+//<!-- Прочие функции -->
+
+function appCurrencyKeyId(code) {
+    return `${code}-key`;
+}
+
+function appCurrencyValueId(code) {
+    return `${code}-value`;
 }
 
 //<!-- Установка -->
