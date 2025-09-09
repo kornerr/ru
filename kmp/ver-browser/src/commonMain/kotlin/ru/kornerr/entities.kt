@@ -4,6 +4,7 @@ import kotlin.js.JsExport
 
 @JsExport
 data class AppContext(
+    var cbrDate: String = "",
     var currencies: Array<Currency> = arrayOf(),
     var didLaunch: Boolean = false,
     var request: NetRequest = NetRequest(),
@@ -12,7 +13,9 @@ data class AppContext(
     override var recentField: String = "",
 ): CLDContext {
     override fun <T> field(name: String): T {
-        if (name == "currencies") {
+        if (name == "cbrDate") {
+            return cbrDate as T
+        } else if (name == "currencies") {
             return currencies as T
         } else if (name == "didLaunch") {
             return didLaunch as T
@@ -34,7 +37,9 @@ data class AppContext(
         name: String,
         value: Any?
     ) {
-        if (name == "currencies") {
+        if (name == "cbrDate") {
+            cbrDate = value as String
+        } else if (name == "currencies") {
             currencies = value as Array<Currency>
         } else if (name == "didLaunch") {
             didLaunch = value as Boolean

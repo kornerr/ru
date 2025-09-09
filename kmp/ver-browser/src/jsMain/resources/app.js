@@ -6,10 +6,7 @@ function appCtrl() {
 
 //<!-- Константы -->
 
-/*
-let APP_RATE_EUR_ID = "rate-eur";
-let APP_RATE_USD_ID = "rate-usd";
-*/
+APP_CBR_DATE_ID = "cbr-dt";
 
 //<!-- Компонент -->
 
@@ -27,6 +24,7 @@ function AppComponent() {
 
     this.setupEffects = function() {
         let oneliners = [ 
+            "cbrDate", (c) => { appDisplayCBRDate(c.cbrDate); },
             "currencies", (c) => { appDisplayCurrencies(c.currencies); },
             "request", (c) => { appLoad(c.request); },
         ];
@@ -47,6 +45,7 @@ function AppComponent() {
     this.setupShoulds = function() {
         [
             KT.appShouldLoad,
+            KT.appShouldResetCBRDate,
             KT.appShouldResetCurrencies,
         ].forEach((f) => {
             this.ctrl.registerFunction(f);
@@ -57,6 +56,14 @@ function AppComponent() {
 }
 
 //<!-- Эффекты -->
+
+// Отобразить дату курсов валют
+function appDisplayCBRDate(value) {
+    let dt = deId(APP_CBR_DATE_ID);
+    if (dt != null) {
+        dt.innerHTML = value;
+    }
+}
 
 // Отобразить валюты
 function appDisplayCurrencies(items) {

@@ -3,6 +3,8 @@ import kotlin.js.JsExport
 
 //<!-- Константы -->
 
+val APP_CBR_DATE_DELIMITER_LEFT = "Date=\""
+val APP_CBR_DATE_DELIMITER_RIGHT = "\" name="
 val APP_CURRENCY_CODES = arrayOf(
   "AED",
   "BRL",
@@ -47,6 +49,23 @@ fun appShouldLoad(c: AppContext): AppContext {
     return c
 }
 
+/* Разобрать дату курса валют
+ *
+ * Условия:
+ * 1. Получили успешный ответ по валютам
+ */
+@JsExport
+fun appShouldResetCBRDate(c: AppContext): AppContext {
+    if (c.recentField == "response") {
+        c.cbrDate = appParseCBRDate(c.response.contents)
+        c.recentField = "cbrDate"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
 /* Разобрать валюты
  *
  * Условия:
@@ -65,6 +84,12 @@ fun appShouldResetCurrencies(c: AppContext): AppContext {
 }
 
 //<!-- Прочие функции -->
+
+fun appParseCBRDate(raw: String): String {
+    val parts = raw.split(APP_CBR_DATE_DELIMITER_LEFT)
+    val subparts = parts[1].split(APP_CBR_DATE_DELIMITER_RIGHT)
+    return subparts[0]
+}
 
 fun appParseCurrencies(raw: String): Array<Currency> {
     var items = arrayOf<Currency>()
