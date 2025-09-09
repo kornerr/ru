@@ -3,18 +3,7 @@ import kotlin.js.JsExport
 
 //<!-- Константы -->
 
-val APP_CURRENCY_EMOJIES = arrayOf(
-  "🇦🇪",
-  "🇧🇷",
-  "🇨🇳",
-  "🇪🇬",
-  "🇪🇹",
-  "🇮🇩",
-  "🇮🇳",
-  "🇮🇷",
-  "🇿🇦",
-)
-val APP_CURRENCY_ITEMS = arrayOf(
+val APP_CURRENCY_CODES = arrayOf(
   "AED",
   "BRL",
   "CNY",
@@ -24,6 +13,17 @@ val APP_CURRENCY_ITEMS = arrayOf(
   "INR",
   "IRR",
   "ZAR",
+)
+val APP_CURRENCY_FLAGS = arrayOf(
+  "🇦🇪",
+  "🇧🇷",
+  "🇨🇳",
+  "🇪🇬",
+  "🇪🇹",
+  "🇮🇩",
+  "🇮🇳",
+  "🇮🇷",
+  "🇿🇦",
 )
 val APP_CURRENCY_DELIMITER = "</Valute>"
 val APP_CURRENCY_URL = "https://kornerr.ru/cbr.xml"
@@ -69,11 +69,11 @@ fun appShouldResetCurrencies(c: AppContext): AppContext {
 fun appParseCurrencies(raw: String): Array<Currency> {
     var items = arrayOf<Currency>()
     val lines = raw.split(APP_CURRENCY_DELIMITER);
-    for (i in APP_CURRENCY_ITEMS.indices) {
-        val code = APP_CURRENCY_ITEMS[i]
-        val emoji = APP_CURRENCY_EMOJIES[i]
+    for (i in APP_CURRENCY_CODES.indices) {
+        val code = APP_CURRENCY_CODES[i]
+        val flag = APP_CURRENCY_FLAGS[i]
         val value = appParseCurrencyValue(lines, code)
-        items += Currency(code, emoji, value)
+        items += Currency(code, flag, value)
     }
     return items
 }

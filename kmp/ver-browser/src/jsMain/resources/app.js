@@ -60,6 +60,7 @@ function AppComponent() {
 
 // Отобразить валюты
 function appDisplayCurrencies(values) {
+    /*
     let usd = deId(APP_RATE_USD_ID);
     if (usd != null) {
         let vusd = values[0];
@@ -71,8 +72,8 @@ function appDisplayCurrencies(values) {
         let veur = values[1];
         eur.innerHTML = `€${veur.toFixed(2)}`;
     }
+    */
 }
-*/
 
 // Сетевой запрос
 function appLoad(req) {

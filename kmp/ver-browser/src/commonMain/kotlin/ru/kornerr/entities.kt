@@ -52,7 +52,7 @@ data class AppContext(
 @JsExport
 data class Currency(
     var code: String = "",
-    var emoji: String = "",
+    var flag: String = "",
     var value: String = "",
 ) {}
 
