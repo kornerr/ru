@@ -13,3 +13,4 @@ cd $SCRIPT_DIR/kmp && ./gradlew jsBrowserDistribution
 mkdir -p $DIST_DIR
 cp -R $BUILD_DIR/* $DIST_DIR
 rm $DIST_DIR/*map
+open $DIST_DIR/index.html
