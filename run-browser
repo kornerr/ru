@@ -1,9 +1,15 @@
 #!/bin/bash
 SCRIPT_DIR=$(cd "$(dirname "$0")" ; pwd -P)
+BUILD_DIR=$SCRIPT_DIR/kmp/build/js/packages/kornerr-ver-browser/kotlin
+DIST_DIR=$SCRIPT_DIR/dist
 
 REYARN=$1
 
 if [ "$REYARN" == "1" ]; then
     cd $SCRIPT_DIR/kmp && ./gradlew kotlinUpgradeYarnLock
 fi
-cd $SCRIPT_DIR/kmp && ./gradlew jsBrowserProductionRun
+cd $SCRIPT_DIR/kmp && ./gradlew jsBrowserDistribution
+
+mkdir -p $DIST_DIR
+cp -R $BUILD_DIR/* $DIST_DIR
+rm $DIST_DIR/*map
