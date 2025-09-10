@@ -2,5 +2,5 @@
 .gradle
 build
 dist
-kornerr-dist-*
+dist-*tar
 yarn.lock
