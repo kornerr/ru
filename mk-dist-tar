@@ -1,0 +1,7 @@
+#!/bin/bash
+SCRIPT_DIR=$(cd "$(dirname "$0")" ; pwd -P)
+DIST_DIR=$SCRIPT_DIR/dist
+
+cd $SCRIPT_DIR
+hash=$(git rev-parse HEAD)
+tar --no-mac-metadata -cf dist-$hash.tar dist
