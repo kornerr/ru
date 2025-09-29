@@ -20,27 +20,54 @@
       <div class="uk-container uk-padding-small uk-padding-remove-left uk-padding-remove-right">
         <strong>kornerr</strong>
         <br>
-        <span>Пример 1/2: Переведите с Русского на Китайский</span>
+        <span>Пример перевода с Русского на Китайский</span>
+      </div>
+    </div>
+
+    <div class="uk-padding">
+      <div class="uk-container">
+        <progress class="uk-progress" value="10" max="100"></progress>
       </div>
     </div>
 
     <div class="zh-header-bg uk-padding">
       <div class="uk-container">
-        <h1 class="header-fg uk-heading-large uk-width-1-2@s">Она сбежала</h1>
+        <h1 class="header-fg uk-heading-large uk-width-1-2@s">
+          <a onclick="playMusic()" class="uk-button uk-button-large uk-button-primary"><img src="img/speaker-2-svgrepo-com.svg" width="80" height="80" uk-svg></a>
+          她逃了
+        </h1>
         <h2 class="header-fg uk-heading uk-width-1-2@s">- Агент Браун (х/ф «Матрица»)</h2>
         <div class="uk-flex uk-flex-wrap uk-padding uk-padding-remove-left uk-padding-remove-right">
-          <div class="uk-card uk-card-default uk-card-body uk-margin-right"><h2>她</h2></div>
-          <div class="uk-card uk-card-default uk-card-body uk-margin-right"><h2>逃</h2></div>
-          <div class="uk-card uk-card-default uk-card-body uk-margin-right"><h2>了</h2></div>
+          <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-card-hover"><h2>Она</h2></div>
+          <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-card-hover"><h2>сбежала</h2></div>
         </div>
       </div>
     </div>
 
-    <div class="uk-padding-small uk-padding-bottom-remove uk-padding-top">
+    <div class="uk-padding">
       <div class="uk-container">
+        <div class="uk-flex uk-flex-wrap uk-padding uk-padding-remove-left uk-padding-remove-right">
+          <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-background-muted"><h2 class="transparent-color">сбежала</h2></div>
+          <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-card-hover"><h2>Он</h2></div>
+          <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-card-hover"><h2>нашли</h2></div>
+          <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-background-muted"><h2 class="transparent-color">Она</h2></div>
+          <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-card-hover"><h2>на</h2></div>
+          <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-card-hover"><h2>без</h2></div>
+          <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-card-hover"><h2>автомобилем</h2></div>
+          <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-card-hover"><h2>Они</h2></div>
+          <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-card-hover"><h2>перед</h2></div>
+          <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-card-hover"><h2>Тринити</h2></div>
+        </div>
+      </div>
       </div>
     </div>
     <script src="other.js"></script>
     <script src="app.js"></script>
+    <script>
+        function playMusic() {
+            let music = new Audio("img/she-got-out.ogg");
+            music.play();
+        }
+    </script>
   </body>
 </html>

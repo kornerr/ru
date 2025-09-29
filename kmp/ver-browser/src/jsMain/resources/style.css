@@ -22,3 +22,7 @@
   );
   background-size: cover;
 }
+
+.transparent-color {
+  color: transparent;
+}
