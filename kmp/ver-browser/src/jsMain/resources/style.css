@@ -5,14 +5,31 @@
   );
   background-size: cover;
 }
-.header-fg {
-  color: white;
-}
 
 .highlight-article-digit {
   background-color: #666;
   color: white;
   padding-right: 1em;
+}
+
+.no-shadow {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.no-background {
+  background-color: transparent;
+}
+
+.transparent-color {
+  color: transparent;
+}
+
+.white-fg {
+  color: white;
+}
+
+.action-blue-fg {
+  color: #0f7ae5;
 }
 
 .zh-header-bg {
@@ -23,6 +40,3 @@
   background-size: cover;
 }
 
-.transparent-color {
-  color: transparent;
-}
