@@ -36,3 +36,10 @@ NetResponse:
     fields:
         contents: String
         url: String
+
+QuizContext:
+    prefix-kotlin: @JsExport
+    type: context
+    fields:
+        currentId: Int
+        didLaunch: Bool

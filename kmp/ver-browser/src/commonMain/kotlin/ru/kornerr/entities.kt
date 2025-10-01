@@ -75,3 +75,35 @@ data class NetResponse(
     var contents: String = "",
     var url: String = "",
 ) {}
+
+
+@JsExport
+data class QuizContext(
+    var currentId: Int = 0,
+    var didLaunch: Boolean = false,
+    override var recentField: String = "",
+): CLDContext {
+    override fun <T> field(name: String): T {
+        if (name == "currentId") {
+            return currentId as T
+        } else if (name == "didLaunch") {
+            return didLaunch as T
+        }
+        return "unknown-field-name" as T
+    }
+
+    override fun selfCopy(): CLDContext {
+        return this.copy()
+    }
+
+    override fun setField(
+        name: String,
+        value: Any?
+    ) {
+        if (name == "currentId") {
+            currentId = value as Int
+        } else if (name == "didLaunch") {
+            didLaunch = value as Boolean
+        }
+    }
+}
