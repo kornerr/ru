@@ -42,6 +42,7 @@ function QuizComponent() {
 
     this.setupShoulds = function() {
         [
+            KT.quizShouldResetBGImage,
             KT.quizShouldResetCurrentId,
             KT.quizShouldResetTitle,
         ].forEach((f) => {

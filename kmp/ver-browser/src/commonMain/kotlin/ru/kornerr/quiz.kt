@@ -5,6 +5,24 @@ import kotlin.js.JsExport
 
 //<!-- Шуды -->
 
+/* Задать фоновую картинку заголовка
+ *
+ * Условия:
+ * 1. Запустили компоненту
+ */
+@JsExport
+fun quizShouldResetBGImage(c: QuizContext): QuizContext {
+    if (c.recentField == "didLaunch") {
+        c.bgImage = "../img/quiz.01.她逃了.jpg"
+        c.recentField = "bgImage"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
+
 /* Задать текущий номер вопроса
  *
  * Условия:
