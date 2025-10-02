@@ -34,3 +34,11 @@ function loadURL(p, onload, onerror) {
     };
     req.send(p.body);
 };
+
+// Задать текст элементу UI
+function setUIText(id, text) {
+    let el = deId(id);
+    if (el != null) {
+        el.innerHTML = text;
+    }
+}

@@ -6,6 +6,8 @@ function quizCtrl() {
 
 //<!-- Константы -->
 
+let QUIZ_TITLE_ID = "quiz-title";
+
 //<!-- Компонент -->
 
 function QuizComponent() {
@@ -22,6 +24,7 @@ function QuizComponent() {
 
     this.setupEffects = function() {
         let oneliners = [ 
+            "title", (c) => { setUIText(QUIZ_TITLE_ID, c.title) },
         ];
         let halfCount = oneliners.length / 2;
         for (let i = 0; i < halfCount; ++i) {
@@ -40,6 +43,7 @@ function QuizComponent() {
     this.setupShoulds = function() {
         [
             KT.quizShouldResetCurrentId,
+            KT.quizShouldResetTitle,
         ].forEach((f) => {
             this.ctrl.registerFunction(f);
         });

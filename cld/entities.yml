@@ -43,3 +43,4 @@ QuizContext:
     fields:
         currentId: Int
         didLaunch: Bool
+        title: String
