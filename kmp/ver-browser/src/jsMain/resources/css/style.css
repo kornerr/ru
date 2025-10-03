@@ -32,18 +32,8 @@
   color: #0f7ae5;
 }
 
-/*
-.quiz-header-bg {
-  background-size: cover;
+.quiz-inline-button {
+  font-size: unset;
+  line-height: unset;
+  vertical-align: unset;
 }
-*/
-
-/*
-.zh-header-bg {
-  background:
-    linear-gradient(rgba(100,100,100,0.6), rgba(100,100,100,0.6)),
-    url("../img/quiz.01.她逃了.jpg") center;
-  );
-  background-size: cover;
-}
-*/
