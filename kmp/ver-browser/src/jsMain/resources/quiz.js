@@ -6,6 +6,8 @@ function quizCtrl() {
 
 //<!-- Константы -->
 
+let QUIZ_HEADER_BG_T = "linear-gradient(rgba(100,100,100,0.6), rgba(100,100,100,0.6)), url('%PATH%') center";
+let QUIZ_HEADER_ID = "quiz-header";
 let QUIZ_TITLE_ID = "quiz-title";
 
 //<!-- Компонент -->
@@ -24,6 +26,7 @@ function QuizComponent() {
 
     this.setupEffects = function() {
         let oneliners = [ 
+            "bgImage", (c) => { quizSetBGImage(c.bgImage) },
             "title", (c) => { setUIText(QUIZ_TITLE_ID, c.title) },
         ];
         let halfCount = oneliners.length / 2;
@@ -54,6 +57,16 @@ function QuizComponent() {
 }
 
 //<!-- Эффекты -->
+
+function quizSetBGImage(path) {
+    let header = deId(QUIZ_HEADER_ID);
+    if (header != null) {
+        let bg = QUIZ_HEADER_BG_T.replaceAll("%PATH%", path);
+        console.log("ИГР quizSBI path/bg/header:", path, bg, header);
+        header.style.background = bg;
+        header.style.backgroundSize = "cover";
+    }
+}
 
 //<!-- Прочие функции -->
 
