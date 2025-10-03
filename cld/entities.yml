@@ -46,4 +46,6 @@ QuizContext:
         currentId: Int
         didClickPlaySound: Bool
         didLaunch: Bool
+        phrases: [String]
+        selectedPhrases: [String]
         title: String

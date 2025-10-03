@@ -84,6 +84,8 @@ data class QuizContext(
     var currentId: Int = 0,
     var didClickPlaySound: Boolean = false,
     var didLaunch: Boolean = false,
+    var phrases: Array<String> = arrayOf(),
+    var selectedPhrases: Array<String> = arrayOf(),
     var title: String = "",
     override var recentField: String = "",
 ): CLDContext {
@@ -98,6 +100,10 @@ data class QuizContext(
             return didClickPlaySound as T
         } else if (name == "didLaunch") {
             return didLaunch as T
+        } else if (name == "phrases") {
+            return phrases as T
+        } else if (name == "selectedPhrases") {
+            return selectedPhrases as T
         } else if (name == "title") {
             return title as T
         }
@@ -122,6 +128,10 @@ data class QuizContext(
             didClickPlaySound = value as Boolean
         } else if (name == "didLaunch") {
             didLaunch = value as Boolean
+        } else if (name == "phrases") {
+            phrases = value as Array<String>
+        } else if (name == "selectedPhrases") {
+            selectedPhrases = value as Array<String>
         } else if (name == "title") {
             title = value as String
         }

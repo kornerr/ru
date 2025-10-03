@@ -57,6 +57,23 @@ fun quizShouldResetCurrentId(c: QuizContext): QuizContext {
     return c
 }
 
+/* Задать набор фраз для выбора пользователем
+ *
+ * Условия:
+ * 1. Запустили компоненту
+ */
+@JsExport
+fun quizShouldResetPhrases(c: QuizContext): QuizContext {
+    if (c.recentField == "didLaunch") {
+        c.phrases = arrayOf("потерял", "перед", "нашли", "сбежала", "Он", "Она", "на", "автомобилем", "Они", "перед")
+        c.recentField = "phrases"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
 /* Задать текущий заголовок
  *
  * Условия:

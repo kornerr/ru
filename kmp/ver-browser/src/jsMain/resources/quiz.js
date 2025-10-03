@@ -49,6 +49,7 @@ function QuizComponent() {
             KT.quizShouldPlaySound,
             KT.quizShouldResetBGImage,
             KT.quizShouldResetCurrentId,
+            KT.quizShouldResetPhrases,
             KT.quizShouldResetTitle,
         ].forEach((f) => {
             this.ctrl.registerFunction(f);
@@ -69,7 +70,6 @@ function quizSetBGImage(path) {
     let header = deId(QUIZ_HEADER_ID);
     if (header != null) {
         let bg = QUIZ_HEADER_BG_T.replaceAll("%PATH%", path);
-        console.log("ИГР quizSBI path/bg/header:", path, bg, header);
         header.style.background = bg;
         header.style.backgroundSize = "cover";
     }
