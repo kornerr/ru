@@ -26,6 +26,7 @@ function QuizComponent() {
 
     this.setupEffects = function() {
         let oneliners = [ 
+            "activeSound", (c) => { quizPlaySound(c.activeSound) },
             "bgImage", (c) => { quizSetBGImage(c.bgImage) },
             "title", (c) => { setUIText(QUIZ_TITLE_ID, c.title) },
         ];
@@ -45,6 +46,7 @@ function QuizComponent() {
 
     this.setupShoulds = function() {
         [
+            KT.quizShouldPlaySound,
             KT.quizShouldResetBGImage,
             KT.quizShouldResetCurrentId,
             KT.quizShouldResetTitle,
@@ -57,6 +59,11 @@ function QuizComponent() {
 }
 
 //<!-- Эффекты -->
+
+function quizPlaySound(path) {
+    let music = new Audio(path);
+    music.play();
+}
 
 function quizSetBGImage(path) {
     let header = deId(QUIZ_HEADER_ID);

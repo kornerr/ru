@@ -5,6 +5,23 @@ import kotlin.js.JsExport
 
 //<!-- Шуды -->
 
+/* Запустить воспроизведение звука
+ *
+ * Условия:
+ * 1. Нажали на кнопку громкоговорителя
+ */
+@JsExport
+fun quizShouldPlaySound(c: QuizContext): QuizContext {
+    if (c.recentField == "didClickPlaySound") {
+        c.activeSound = "snd/quiz.01.ogg"
+        c.recentField = "activeSound"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
 /* Задать фоновую картинку заголовка
  *
  * Условия:

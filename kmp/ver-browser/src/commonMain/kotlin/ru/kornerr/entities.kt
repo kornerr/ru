@@ -79,17 +79,23 @@ data class NetResponse(
 
 @JsExport
 data class QuizContext(
+    var activeSound: String = "",
     var bgImage: String = "",
     var currentId: Int = 0,
+    var didClickPlaySound: Boolean = false,
     var didLaunch: Boolean = false,
     var title: String = "",
     override var recentField: String = "",
 ): CLDContext {
     override fun <T> field(name: String): T {
-        if (name == "bgImage") {
+        if (name == "activeSound") {
+            return activeSound as T
+        } else if (name == "bgImage") {
             return bgImage as T
         } else if (name == "currentId") {
             return currentId as T
+        } else if (name == "didClickPlaySound") {
+            return didClickPlaySound as T
         } else if (name == "didLaunch") {
             return didLaunch as T
         } else if (name == "title") {
@@ -106,10 +112,14 @@ data class QuizContext(
         name: String,
         value: Any?
     ) {
-        if (name == "bgImage") {
+        if (name == "activeSound") {
+            activeSound = value as String
+        } else if (name == "bgImage") {
             bgImage = value as String
         } else if (name == "currentId") {
             currentId = value as Int
+        } else if (name == "didClickPlaySound") {
+            didClickPlaySound = value as Boolean
         } else if (name == "didLaunch") {
             didLaunch = value as Boolean
         } else if (name == "title") {

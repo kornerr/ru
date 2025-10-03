@@ -41,7 +41,9 @@ QuizContext:
     prefix-kotlin: @JsExport
     type: context
     fields:
+        activeSound: String
         bgImage: String
         currentId: Int
+        didClickPlaySound: Bool
         didLaunch: Bool
         title: String
