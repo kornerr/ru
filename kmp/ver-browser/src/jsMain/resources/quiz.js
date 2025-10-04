@@ -9,7 +9,7 @@ function quizCtrl() {
 let QUIZ_HEADER_BG_T = "linear-gradient(rgba(100,100,100,0.6), rgba(100,100,100,0.6)), url('%PATH%') center";
 let QUIZ_HEADER_ID = "quiz-header";
 let QUIZ_PHRASES_ID = "quiz-phrases";
-let QUIZ_PHRASES_ITEM_T = "<div class='uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-card-hover' onclick='quizCtrl().set('clickedPhraseId', %ID%)'><h2>%PHRASE%</h2></div>";
+let QUIZ_PHRASES_ITEM_T = `<div class='uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-card-hover' onclick='quizCtrl().set("selectedPhraseId", %ID%)'><h2>%PHRASE%</h2></div>`;
 let QUIZ_TITLE_ID = "quiz-title";
 
 //<!-- Компонент -->
@@ -74,7 +74,9 @@ function quizResetPhrases(items) {
     var html = "";
     for (let i in items) {
         let item = items[i];
-        html += QUIZ_PHRASES_ITEM_T.replaceAll("%PHRASE%", item);
+        html += QUIZ_PHRASES_ITEM_T
+            .replaceAll("%ID%", i)
+            .replaceAll("%PHRASE%", item);
     }
     ph.innerHTML = html;
 }

@@ -85,6 +85,7 @@ data class QuizContext(
     var didClickPlaySound: Boolean = false,
     var didLaunch: Boolean = false,
     var phrases: Array<String> = arrayOf(),
+    var selectedPhraseId: Int = 0,
     var selectedPhrases: Array<String> = arrayOf(),
     var title: String = "",
     override var recentField: String = "",
@@ -102,6 +103,8 @@ data class QuizContext(
             return didLaunch as T
         } else if (name == "phrases") {
             return phrases as T
+        } else if (name == "selectedPhraseId") {
+            return selectedPhraseId as T
         } else if (name == "selectedPhrases") {
             return selectedPhrases as T
         } else if (name == "title") {
@@ -130,6 +133,8 @@ data class QuizContext(
             didLaunch = value as Boolean
         } else if (name == "phrases") {
             phrases = value as Array<String>
+        } else if (name == "selectedPhraseId") {
+            selectedPhraseId = value as Int
         } else if (name == "selectedPhrases") {
             selectedPhrases = value as Array<String>
         } else if (name == "title") {
