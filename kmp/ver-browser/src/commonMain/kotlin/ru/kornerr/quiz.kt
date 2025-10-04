@@ -65,7 +65,7 @@ fun quizShouldResetCurrentId(c: QuizContext): QuizContext {
 @JsExport
 fun quizShouldResetPhrases(c: QuizContext): QuizContext {
     if (c.recentField == "didLaunch") {
-        c.phrases = arrayOf("потерял", "перед", "нашли", "сбежала", "Он", "Она", "на", "автомобилем", "Они", "перед")
+        c.phrases = arrayOf("потерял", "перед", "нашли", "сбежала", "Он", "Она", "на", "автомобилем", "Они", "такси")
         c.recentField = "phrases"
         return c
     }
