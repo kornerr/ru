@@ -74,6 +74,23 @@ fun quizShouldResetPhrases(c: QuizContext): QuizContext {
     return c
 }
 
+/* Задать выбранную пользователем последовательность фраз
+ *
+ * Условия:
+ * 1. Выбрали фразу
+ */
+@JsExport
+fun quizShouldResetSelectedPhrases(c: QuizContext): QuizContext {
+    if (c.recentField == "selectedPhraseId") {
+        c.selectedPhrases += c.selectedPhraseId
+        c.recentField = "selectedPhrases"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
 /* Задать текущий заголовок
  *
  * Условия:

@@ -86,7 +86,7 @@ data class QuizContext(
     var didLaunch: Boolean = false,
     var phrases: Array<String> = arrayOf(),
     var selectedPhraseId: Int = 0,
-    var selectedPhrases: Array<String> = arrayOf(),
+    var selectedPhrases: Array<Int> = arrayOf(),
     var title: String = "",
     override var recentField: String = "",
 ): CLDContext {
@@ -136,7 +136,7 @@ data class QuizContext(
         } else if (name == "selectedPhraseId") {
             selectedPhraseId = value as Int
         } else if (name == "selectedPhrases") {
-            selectedPhrases = value as Array<String>
+            selectedPhrases = value as Array<Int>
         } else if (name == "title") {
             title = value as String
         }

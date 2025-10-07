@@ -60,6 +60,7 @@ function QuizComponent() {
             KT.quizShouldResetBGImage,
             KT.quizShouldResetCurrentId,
             KT.quizShouldResetPhrases,
+            KT.quizShouldResetSelectedPhrases,
             KT.quizShouldResetTitle,
         ].forEach((f) => {
             this.ctrl.registerFunction(f);
