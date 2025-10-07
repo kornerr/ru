@@ -35,10 +35,49 @@ function loadURL(p, onload, onerror) {
     req.send(p.body);
 };
 
+// Задать наличие реакции на курсор мыши, парящий над элементом
+function setUICardHoverPermission(id, isPermitted) {
+    let el = deId(id);
+    // Permitted
+    if (isPermitted) {
+        el.classList.add("uk-card-hover");
+    }
+    // Forbidden
+    if (!isPermitted) {
+        el.classList.remove("uk-card-hover");
+    }
+}
+
+// Задать заглушённый фон элементу
+function setUIMuted(id, isMuted) {
+    let el = deId(id);
+    // Mute
+    if (isMuted) {
+        el.classList.add("uk-background-muted");
+    }
+    // Show
+    if (!isMuted) {
+        el.classList.remove("uk-background-muted");
+    }
+}
+
 // Задать текст элементу UI
 function setUIText(id, text) {
     let el = deId(id);
     if (el != null) {
         el.innerHTML = text;
+    }
+}
+
+// Задать прозрачный цвет элементу
+function setUITransparent(id, isTransparent) {
+    let el = deId(id);
+    // Transparent
+    if (isTransparent) {
+        el.classList.add("transparent-color");
+    }
+    // Opaque
+    if (!isTransparent) {
+        el.classList.remove("transparent-color");
     }
 }

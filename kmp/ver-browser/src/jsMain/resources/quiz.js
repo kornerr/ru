@@ -9,7 +9,13 @@ function quizCtrl() {
 let QUIZ_HEADER_BG_T = "linear-gradient(rgba(100,100,100,0.6), rgba(100,100,100,0.6)), url('%PATH%') center";
 let QUIZ_HEADER_ID = "quiz-header";
 let QUIZ_PHRASES_ID = "quiz-phrases";
-let QUIZ_PHRASES_ITEM_T = `<div class='uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-card-hover' onclick='quizCtrl().set("selectedPhraseId", %ID%)'><h2>%PHRASE%</h2></div>`;
+let QUIZ_PHRASES_ITEM_ID_T = "quiz-phrases-%ID%";
+let QUIZ_PHRASES_ITEM_T = `
+    <div id='quiz-phrases-%ID%' class='uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-card-hover' onclick='quizCtrl().set("selectedPhraseId", %ID%)'>
+        <h2 id='quiz-phrases-title-%ID%'>%PHRASE%</h2>
+    </div>
+`;
+let QUIZ_PHRASES_ITEM_TITLE_ID_T = "quiz-phrases-title-%ID%";
 let QUIZ_TITLE_ID = "quiz-title";
 
 //<!-- Компонент -->
@@ -31,6 +37,7 @@ function QuizComponent() {
             "activeSound", (c) => { quizPlaySound(c.activeSound) },
             "bgImage", (c) => { quizSetBGImage(c.bgImage) },
             "phrases", (c) => { quizResetPhrases(c.phrases) },
+            "selectedPhraseId", (c) => { quizHidePhrase(c.selectedPhraseId) },
             "title", (c) => { setUIText(QUIZ_TITLE_ID, c.title) },
         ];
         let halfCount = oneliners.length / 2;
@@ -63,6 +70,14 @@ function QuizComponent() {
 }
 
 //<!-- Эффекты -->
+
+function quizHidePhrase(id) {
+    let itemId = QUIZ_PHRASES_ITEM_ID_T.replaceAll("%ID%", id);
+    let titleId = QUIZ_PHRASES_ITEM_TITLE_ID_T.replaceAll("%ID%", id);
+    setUICardHoverPermission(itemId, false);
+    setUIMuted(itemId, true);
+    setUITransparent(titleId, true);
+}
 
 function quizPlaySound(path) {
     let music = new Audio(path);
