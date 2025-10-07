@@ -16,6 +16,12 @@ let QUIZ_PHRASES_ITEM_T = `
     </div>
 `;
 let QUIZ_PHRASES_ITEM_TITLE_ID_T = "quiz-phrases-title-%ID%";
+let QUIZ_SELECTED_PHRASES_ID = "quiz-selected-phrases";
+let QUIZ_SELECTED_PHRASES_ITEM_T = `
+    <div id='quiz-selected-phrases-%ID%' class='uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-card-hover'>
+        <h2>%PHRASE%</h2>
+    </div>
+`;
 let QUIZ_TITLE_ID = "quiz-title";
 
 //<!-- Компонент -->
@@ -38,6 +44,7 @@ function QuizComponent() {
             "bgImage", (c) => { quizSetBGImage(c.bgImage) },
             "phrases", (c) => { quizResetPhrases(c.phrases) },
             "selectedPhraseId", (c) => { quizHidePhrase(c.selectedPhraseId) },
+            "selectedPhrases", (c) => { quizResetSelectedPhrases(c.phrases, c.selectedPhrases) },
             "title", (c) => { setUIText(QUIZ_TITLE_ID, c.title) },
         ];
         let halfCount = oneliners.length / 2;
@@ -95,6 +102,19 @@ function quizResetPhrases(items) {
             .replaceAll("%PHRASE%", item);
     }
     ph.innerHTML = html;
+}
+
+function quizResetSelectedPhrases(items, selectedIds) {
+    let el = deId(QUIZ_SELECTED_PHRASES_ID);
+    var html = "";
+    for (let i in selectedIds) {
+        let id = selectedIds[i];
+        let item = items[id];
+        html += QUIZ_SELECTED_PHRASES_ITEM_T
+            .replaceAll("%ID%", id)
+            .replaceAll("%PHRASE%", item);
+    }
+    el.innerHTML = html;
 }
 
 function quizSetBGImage(path) {
