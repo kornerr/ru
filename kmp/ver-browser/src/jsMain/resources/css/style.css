@@ -32,6 +32,10 @@
   color: #0f7ae5;
 }
 
+.quiz-card-padding {
+  padding: 15px 15px;
+}
+
 .quiz-inline-button {
   font-size: unset;
   line-height: unset;

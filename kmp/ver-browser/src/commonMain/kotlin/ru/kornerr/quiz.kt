@@ -78,11 +78,17 @@ fun quizShouldResetPhrases(c: QuizContext): QuizContext {
  *
  * Условия:
  * 1. Выбрали фразу
+ * 2. Загрузили компоненту
  */
 @JsExport
 fun quizShouldResetSelectedPhrases(c: QuizContext): QuizContext {
     if (c.recentField == "selectedPhraseId") {
         c.selectedPhrases += c.selectedPhraseId
+        c.recentField = "selectedPhrases"
+        return c
+    }
+
+    if (c.recentField == "didLaunch") {
         c.recentField = "selectedPhrases"
         return c
     }

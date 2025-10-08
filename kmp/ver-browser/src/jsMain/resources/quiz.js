@@ -11,15 +11,20 @@ let QUIZ_HEADER_ID = "quiz-header";
 let QUIZ_PHRASES_ID = "quiz-phrases";
 let QUIZ_PHRASES_ITEM_ID_T = "quiz-phrases-%ID%";
 let QUIZ_PHRASES_ITEM_T = `
-    <div id='quiz-phrases-%ID%' class='uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-card-hover' onclick='quizCtrl().set("selectedPhraseId", %ID%)'>
-        <h2 id='quiz-phrases-title-%ID%'>%PHRASE%</h2>
+    <div id='quiz-phrases-%ID%' class='uk-card uk-card-default uk-card-body uk-margin-small-right uk-margin-bottom uk-card-hover quiz-card-padding' onclick='quizCtrl().set("selectedPhraseId", %ID%)'>
+        <h3 id='quiz-phrases-title-%ID%'>%PHRASE%</h3>
     </div>
 `;
 let QUIZ_PHRASES_ITEM_TITLE_ID_T = "quiz-phrases-title-%ID%";
 let QUIZ_SELECTED_PHRASES_ID = "quiz-selected-phrases";
 let QUIZ_SELECTED_PHRASES_ITEM_T = `
-    <div id='quiz-selected-phrases-%ID%' class='uk-card uk-card-default uk-card-body uk-margin-right uk-margin-bottom uk-card-hover'>
-        <h2>%PHRASE%</h2>
+    <div id='quiz-selected-phrases-%ID%' class='uk-card uk-card-default uk-card-body uk-margin-small-right uk-margin-bottom uk-card-hover quiz-card-padding'>
+        <h3>%PHRASE%</h3>
+    </div>
+`;
+let QUIZ_SELECTED_PHRASES_TRANSPARENT_ITEM_T = `
+    <div class='uk-card uk-card-body uk-margin-small-right uk-margin-bottom quiz-card-padding no-background'>
+        <h3 class="transparent-color">%PHRASE%</h3>
     </div>
 `;
 let QUIZ_TITLE_ID = "quiz-title";
@@ -113,6 +118,12 @@ function quizResetSelectedPhrases(items, selectedIds) {
         html += QUIZ_SELECTED_PHRASES_ITEM_T
             .replaceAll("%ID%", id)
             .replaceAll("%PHRASE%", item);
+    }
+
+    // Разместить заглушку до выбора, чтобы размер не скакал после выбора
+    if (html == "") {
+        html += QUIZ_SELECTED_PHRASES_TRANSPARENT_ITEM_T
+            .replaceAll("%PHRASE%", "1");
     }
     el.innerHTML = html;
 }
