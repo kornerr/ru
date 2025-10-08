@@ -26,6 +26,7 @@
     </div>
 
     <div id="quiz-header" class="uk-padding">
+      <!-- Заголовок с текстом для перевода -->
       <div class="uk-container">
         <h2 class="white-fg uk-heading-medium">
           <a class="uk-button uk-button-primary quiz-inline-button" onclick='quizCtrl().set("didClickPlaySound", true)'>
@@ -35,12 +36,20 @@
           <span id="quiz-title">TODO-Title</span>
         </h2>
       </div>
+
+      <!-- Выбранные фразы -->
       <div class="uk-container">
-        <div id="quiz-selected-phrases" class="uk-flex uk-flex-wrap uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom">
+        <div id="quiz-selected-phrases" class="uk-flex uk-flex-wrap uk-padding uk-padding-remove-left uk-padding-remove-right">
         </div>
+      </div>
+
+      <!-- Кнопка проверки -->
+      <div class="uk-container">
+        <button id="quiz-validate" class="uk-button uk-button-secondary uk-button-large uk-align-right" onclick='quizCtrl().set("didClickValidate", true)'>Проверить</button>
       </div>
     </div>
 
+    <!-- Набор фраз для выбора -->
     <div class="uk-padding">
       <div class="uk-container">
         <div id="quiz-phrases" class="uk-flex uk-flex-wrap uk-padding uk-padding-remove-left uk-padding-remove-right">
