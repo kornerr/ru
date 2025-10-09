@@ -35,6 +35,12 @@ function loadURL(p, onload, onerror) {
     req.send(p.body);
 };
 
+// Задать доступность элемента
+function setUIAvailability(id, isAvailable) {
+    let el = deId(id);
+    el.disabled = !isAvailable;
+}
+
 // Задать наличие реакции на курсор мыши, парящий над элементом
 function setUICardHoverPermission(id, isPermitted) {
     let el = deId(id);

@@ -28,6 +28,7 @@ let QUIZ_SELECTED_PHRASES_TRANSPARENT_ITEM_T = `
     </div>
 `;
 let QUIZ_TITLE_ID = "quiz-title";
+let QUIZ_VALIDATE_ID = "quiz-validate";
 
 //<!-- Компонент -->
 
@@ -47,6 +48,7 @@ function QuizComponent() {
         let oneliners = [ 
             "activeSound", (c) => { quizPlaySound(c.activeSound) },
             "bgImage", (c) => { quizSetBGImage(c.bgImage) },
+            "isValidateAvailable", (c) => { setUIAvailability(QUIZ_VALIDATE_ID, c.isValidateAvailable) },
             "phrases", (c) => { quizResetPhrases(c.phrases) },
             "selectedPhraseId", (c) => { quizHidePhrase(c.selectedPhraseId) },
             "selectedPhrases", (c) => { quizResetSelectedPhrases(c.phrases, c.selectedPhrases) },
@@ -74,6 +76,7 @@ function QuizComponent() {
             KT.quizShouldResetPhrases,
             KT.quizShouldResetSelectedPhrases,
             KT.quizShouldResetTitle,
+            KT.quizShouldResetValidateAvailability,
         ].forEach((f) => {
             this.ctrl.registerFunction(f);
         });

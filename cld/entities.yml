@@ -45,7 +45,9 @@ QuizContext:
         bgImage: String
         currentId: Int
         didClickPlaySound: Bool
+        didClickValidate: Bool
         didLaunch: Bool
+        isValidateAvailable: Bool
         phrases: [String]
         selectedPhraseId: Int
         selectedPhrases: [Int]

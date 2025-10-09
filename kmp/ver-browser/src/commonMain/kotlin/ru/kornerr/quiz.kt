@@ -114,4 +114,21 @@ fun quizShouldResetTitle(c: QuizContext): QuizContext {
     return c
 }
 
+/* Задать доступность кнопки проверки
+ *
+ * Условия:
+ * 1. Изменились выбранные фразы
+ */
+@JsExport
+fun quizShouldResetValidateAvailability(c: QuizContext): QuizContext {
+    if (c.recentField == "selectedPhrases") {
+        c.isValidateAvailable = !c.selectedPhrases.isEmpty()
+        c.recentField = "isValidateAvailable"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
 //<!-- Прочие функции -->
