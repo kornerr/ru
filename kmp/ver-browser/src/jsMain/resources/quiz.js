@@ -73,10 +73,12 @@ function QuizComponent() {
             KT.quizShouldPlaySound,
             KT.quizShouldResetBGImage,
             KT.quizShouldResetCurrentId,
+            KT.quizShouldResetExpectedPhrases,
             KT.quizShouldResetPhrases,
             KT.quizShouldResetSelectedPhrases,
             KT.quizShouldResetTitle,
             KT.quizShouldResetValidateAvailability,
+            KT.quizShouldResetValidity,
         ].forEach((f) => {
             this.ctrl.registerFunction(f);
         });

@@ -57,6 +57,23 @@ fun quizShouldResetCurrentId(c: QuizContext): QuizContext {
     return c
 }
 
+/* Задать ожидаемую последовательность фраз
+ *
+ * Условия:
+ * 1. Загрузили компоненту
+ */
+@JsExport
+fun quizShouldResetExpectedPhrases(c: QuizContext): QuizContext {
+    if (c.recentField == "didLaunch") {
+        c.expectedPhrases = arrayOf(5, 3)
+        c.recentField = "expectedPhrases"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
 /* Задать набор фраз для выбора пользователем
  *
  * Условия:
@@ -131,4 +148,40 @@ fun quizShouldResetValidateAvailability(c: QuizContext): QuizContext {
     return c
 }
 
+/* Задать корректность выбранных фраз
+ *
+ * Условия:
+ * 1. Нажали кнопку проверки
+ */
+@JsExport
+fun quizShouldResetValidity(c: QuizContext): QuizContext {
+    if (c.recentField == "didClickValidate") {
+        c.isValid = quizArePhrasesEqual(c.selectedPhrases, c.expectedPhrases)
+        c.recentField = "isValid"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
 //<!-- Прочие функции -->
+
+fun quizArePhrasesEqual(
+    arr1: Array<Int>,
+    arr2: Array<Int>
+): Boolean {
+    if (arr1.size != arr2.size) {
+        return false
+    }
+
+    for (i in arr1.indices) {
+        val val1 = arr1[i]
+        val val2 = arr2[i]
+        if (val1 != val2) {
+            return false
+        }
+    }
+
+    return true
+}

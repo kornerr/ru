@@ -47,6 +47,8 @@ QuizContext:
         didClickPlaySound: Bool
         didClickValidate: Bool
         didLaunch: Bool
+        expectedPhrases: [Int]
+        isValid: Bool
         isValidateAvailable: Bool
         phrases: [String]
         selectedPhraseId: Int

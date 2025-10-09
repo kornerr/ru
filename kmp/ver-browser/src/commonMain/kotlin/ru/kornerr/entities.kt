@@ -85,6 +85,8 @@ data class QuizContext(
     var didClickPlaySound: Boolean = false,
     var didClickValidate: Boolean = false,
     var didLaunch: Boolean = false,
+    var expectedPhrases: Array<Int> = arrayOf(),
+    var isValid: Boolean = false,
     var isValidateAvailable: Boolean = false,
     var phrases: Array<String> = arrayOf(),
     var selectedPhraseId: Int = 0,
@@ -105,6 +107,10 @@ data class QuizContext(
             return didClickValidate as T
         } else if (name == "didLaunch") {
             return didLaunch as T
+        } else if (name == "expectedPhrases") {
+            return expectedPhrases as T
+        } else if (name == "isValid") {
+            return isValid as T
         } else if (name == "isValidateAvailable") {
             return isValidateAvailable as T
         } else if (name == "phrases") {
@@ -139,6 +145,10 @@ data class QuizContext(
             didClickValidate = value as Boolean
         } else if (name == "didLaunch") {
             didLaunch = value as Boolean
+        } else if (name == "expectedPhrases") {
+            expectedPhrases = value as Array<Int>
+        } else if (name == "isValid") {
+            isValid = value as Boolean
         } else if (name == "isValidateAvailable") {
             isValidateAvailable = value as Boolean
         } else if (name == "phrases") {
