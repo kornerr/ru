@@ -48,6 +48,7 @@ function QuizComponent() {
         let oneliners = [ 
             "activeSound", (c) => { quizPlaySound(c.activeSound) },
             "bgImage", (c) => { quizSetBGImage(c.bgImage) },
+            "hasFailure", (c) => { reportFailure(KT.QUIZ_FAILURE_TITLE, KT.QUIZ_FAILURE_MESSAGE) },
             "isValidateAvailable", (c) => { setUIAvailability(QUIZ_VALIDATE_ID, c.isValidateAvailable) },
             "phrases", (c) => { quizResetPhrases(c.phrases) },
             "selectedPhraseId", (c) => { quizHidePhrase(c.selectedPhraseId) },
@@ -74,6 +75,7 @@ function QuizComponent() {
             KT.quizShouldResetBGImage,
             KT.quizShouldResetCurrentId,
             KT.quizShouldResetExpectedPhrases,
+            KT.quizShouldResetFailure,
             KT.quizShouldResetPhrases,
             KT.quizShouldResetSelectedPhrases,
             KT.quizShouldResetTitle,

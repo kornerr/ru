@@ -35,6 +35,15 @@ function loadURL(p, onload, onerror) {
     req.send(p.body);
 };
 
+// Сообщить об ошибке модальным окном
+function reportFailure(title, details) {
+    let html = `
+<h2>${title}</h2>
+<p>${details}</p>
+    `;
+    UIkit.modal.alert(html);
+}
+
 // Задать доступность элемента
 function setUIAvailability(id, isAvailable) {
     let el = deId(id);

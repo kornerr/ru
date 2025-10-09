@@ -3,6 +3,9 @@ import kotlin.js.JsExport
 
 //<!-- Константы -->
 
+@JsExport val QUIZ_FAILURE_MESSAGE = "Давай попробуем ещё раз!"
+@JsExport val QUIZ_FAILURE_TITLE = "Чуть-чуть мимо"
+
 //<!-- Шуды -->
 
 /* Запустить воспроизведение звука
@@ -67,6 +70,26 @@ fun quizShouldResetExpectedPhrases(c: QuizContext): QuizContext {
     if (c.recentField == "didLaunch") {
         c.expectedPhrases = arrayOf(5, 3)
         c.recentField = "expectedPhrases"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
+/* Задать факт ошибки
+ *
+ * Условия:
+ * 1. Проверка фраз выявила ошибку
+ */
+@JsExport
+fun quizShouldResetFailure(c: QuizContext): QuizContext {
+    if (
+        c.recentField == "isValid" &&
+        !c.isValid
+    ) {
+        c.hasFailure = true
+        c.recentField = "hasFailure"
         return c
     }
 
