@@ -44,6 +44,7 @@ QuizContext:
         activeSound: String
         bgImage: String
         currentId: Int
+        deselectedPhraseId: Int
         didClickPlaySound: Bool
         didClickValidate: Bool
         didLaunch: Bool

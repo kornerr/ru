@@ -6,6 +6,19 @@ import kotlin.js.JsExport
 @JsExport val QUIZ_FAILURE_MESSAGE = "Давай попробуем ещё раз!"
 @JsExport val QUIZ_FAILURE_TITLE = "Чуть-чуть мимо"
 
+@JsExport val QUIZ1_PHRASES = arrayOf(
+    "потерял",
+    "перед",
+    "нашли",
+    "сбежала",
+    "Он",
+    "Она",
+    "на",
+    "автомобилем",
+    "Они",
+    "такси"
+)
+
 //<!-- Шуды -->
 
 /* Запустить воспроизведение звука
@@ -122,7 +135,7 @@ fun quizShouldResetFailure(c: QuizContext): QuizContext {
 @JsExport
 fun quizShouldResetPhrases(c: QuizContext): QuizContext {
     if (c.recentField == "didLaunch") {
-        c.phrases = arrayOf("потерял", "перед", "нашли", "сбежала", "Он", "Она", "на", "автомобилем", "Они", "такси")
+        c.phrases = QUIZ1_PHRASES
         c.recentField = "phrases"
         return c
     }

@@ -18,7 +18,7 @@ let QUIZ_PHRASES_ITEM_T = `
 let QUIZ_PHRASES_ITEM_TITLE_ID_T = "quiz-phrases-title-%ID%";
 let QUIZ_SELECTED_PHRASES_ID = "quiz-selected-phrases";
 let QUIZ_SELECTED_PHRASES_ITEM_T = `
-    <div id='quiz-selected-phrases-%ID%' class='uk-card uk-card-default uk-card-body uk-margin-small-right uk-margin-bottom uk-card-hover quiz-card-padding'>
+    <div id='quiz-selected-phrases-%ID%' class='uk-card uk-card-default uk-card-body uk-margin-small-right uk-margin-bottom uk-card-hover quiz-card-padding' onclick='quizCtrl().set("deselectedPhraseId", %ID%)'>
         <h3>%PHRASE%</h3>
     </div>
 `;

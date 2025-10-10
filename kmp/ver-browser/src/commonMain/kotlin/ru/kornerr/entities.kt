@@ -82,6 +82,7 @@ data class QuizContext(
     var activeSound: String = "",
     var bgImage: String = "",
     var currentId: Int = 0,
+    var deselectedPhraseId: Int = 0,
     var didClickPlaySound: Boolean = false,
     var didClickValidate: Boolean = false,
     var didLaunch: Boolean = false,
@@ -102,6 +103,8 @@ data class QuizContext(
             return bgImage as T
         } else if (name == "currentId") {
             return currentId as T
+        } else if (name == "deselectedPhraseId") {
+            return deselectedPhraseId as T
         } else if (name == "didClickPlaySound") {
             return didClickPlaySound as T
         } else if (name == "didClickValidate") {
@@ -142,6 +145,8 @@ data class QuizContext(
             bgImage = value as String
         } else if (name == "currentId") {
             currentId = value as Int
+        } else if (name == "deselectedPhraseId") {
+            deselectedPhraseId = value as Int
         } else if (name == "didClickPlaySound") {
             didClickPlaySound = value as Boolean
         } else if (name == "didClickValidate") {
