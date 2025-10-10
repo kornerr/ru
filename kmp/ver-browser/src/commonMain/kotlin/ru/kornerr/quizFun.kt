@@ -127,6 +127,26 @@ fun quizShouldResetFailure(c: QuizContext): QuizContext {
     return c
 }
 
+/* Задать видимость кнопки перехода далее
+ *
+ * Условия:
+ * 1. Верно выбрали фразы
+ */
+@JsExport
+fun quizShouldResetNextVisibility(c: QuizContext): QuizContext {
+    if (
+        c.recentField == "isValid" &&
+        c.isValid
+    ) {
+        c.isNextVisible = true
+        c.recentField = "isNextVisible"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
 /* Задать набор фраз для выбора пользователем
  *
  * Условия:
@@ -233,6 +253,34 @@ fun quizShouldResetValidateAvailability(c: QuizContext): QuizContext {
     c.recentField = "none"
     return c
 }
+
+/* Задать видимость кнопки проверки
+ *
+ * Условия:
+ * 1. Запустили компоненту
+ * 2. Верно выбрали фразы
+ */
+@JsExport
+fun quizShouldResetValidateVisibility(c: QuizContext): QuizContext {
+    if (c.recentField == "didLaunch") {
+        c.isValidateVisible = true
+        c.recentField = "isValidateVisible"
+        return c
+    }
+
+    if (
+        c.recentField == "isValid" &&
+        c.isValid
+    ) {
+        c.isValidateVisible = false
+        c.recentField = "isValidateVisible"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
 
 /* Задать корректность выбранных фраз
  *

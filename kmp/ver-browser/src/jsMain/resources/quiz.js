@@ -8,6 +8,7 @@ function quizCtrl() {
 
 let QUIZ_HEADER_BG_T = "linear-gradient(rgba(100,100,100,0.6), rgba(100,100,100,0.6)), url('%PATH%') center";
 let QUIZ_HEADER_ID = "quiz-header";
+let QUIZ_NEXT_ID = "quizNext";
 let QUIZ_PHRASES_ID = "quiz-phrases";
 let QUIZ_PHRASES_ITEM_ID_T = "quiz-phrases-%ID%";
 let QUIZ_PHRASES_ITEM_T = `
@@ -49,7 +50,9 @@ function QuizComponent() {
             "activeSound", (c) => { quizPlaySound(c.activeSound) },
             "bgImage", (c) => { quizSetBGImage(c.bgImage) },
             "hasFailure", (c) => { reportFailure(KT.QUIZ_FAILURE_TITLE, KT.QUIZ_FAILURE_MESSAGE) },
+            "isNextVisible", (c) => { setUIVisibility(QUIZ_NEXT_ID, c.isValidateVisible) },
             "isValidateAvailable", (c) => { setUIAvailability(QUIZ_VALIDATE_ID, c.isValidateAvailable) },
+            "isValidateVisible", (c) => { setUIVisibility(QUIZ_VALIDATE_ID, c.isValidateVisible) },
             "phrases", (c) => { quizResetPhrases(c.phrases) },
             "phraseVisibility", (c) => { quizResetPhraseVisibility(c.phraseVisibility) },
             "selectedPhrases", (c) => { quizResetSelectedPhrases(c.phrases, c.selectedPhrases) },
@@ -76,11 +79,13 @@ function QuizComponent() {
             KT.quizShouldResetCurrentId,
             KT.quizShouldResetExpectedPhrases,
             KT.quizShouldResetFailure,
+            KT.quizShouldResetNextVisibility,
             KT.quizShouldResetPhrases,
             KT.quizShouldResetPhraseVisibility,
             KT.quizShouldResetSelectedPhrases,
             KT.quizShouldResetTitle,
             KT.quizShouldResetValidateAvailability,
+            KT.quizShouldResetValidateVisibility,
             KT.quizShouldResetValidity,
         ].forEach((f) => {
             this.ctrl.registerFunction(f);

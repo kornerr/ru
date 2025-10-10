@@ -87,12 +87,29 @@ function setUIText(id, text) {
 // Задать прозрачный цвет элементу
 function setUITransparent(id, isTransparent) {
     let el = deId(id);
-    // Transparent
+    // Прозрачный
     if (isTransparent) {
         el.classList.add("transparent-color");
     }
-    // Opaque
+    // Непроницаемый
     if (!isTransparent) {
         el.classList.remove("transparent-color");
     }
 }
+
+// Задать видимость элемента
+function setUIVisibility(id, isVisible) {
+    let el = deId(id);
+    // Скрыть
+    if (!isVisible) {
+        el.setAttribute("hidden", true);
+    }
+    // Показать
+    if (
+        isVisible &&
+        el.hasAttribute("hidden")
+    ) {
+        el.removeAttribute("hidden");
+    }
+}
+

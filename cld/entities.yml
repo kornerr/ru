@@ -45,13 +45,16 @@ QuizContext:
         bgImage: String
         currentId: Int
         deselectedPhraseId: Int
+        didClickNext: Bool
         didClickPlaySound: Bool
         didClickValidate: Bool
         didLaunch: Bool
         expectedPhrases: [Int]
         hasFailure: Bool
+        isNextVisible: Bool
         isValid: Bool
         isValidateAvailable: Bool
+        isValidateVisible: Bool
         phrases: [String]
         phraseVisibility: QuizPhraseVisibility
         selectedPhraseId: Int
