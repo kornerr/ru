@@ -49,7 +49,6 @@ QuizContext:
         didLaunch: Bool
         expectedPhrases: [Int]
         hasFailure: Bool
-        hasSuccess: Bool
         isValid: Bool
         isValidateAvailable: Bool
         phrases: [String]

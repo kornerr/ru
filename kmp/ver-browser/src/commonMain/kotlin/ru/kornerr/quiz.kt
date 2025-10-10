@@ -13,6 +13,7 @@ import kotlin.js.JsExport
  * Условия:
  * 1. Нажали на кнопку громкоговорителя
  * 2. Неверно выбрали фразы
+ * 3. Верно выбрали фразы
  */
 @JsExport
 fun quizShouldPlaySound(c: QuizContext): QuizContext {
@@ -23,7 +24,16 @@ fun quizShouldPlaySound(c: QuizContext): QuizContext {
     }
 
     if (c.recentField == "hasFailure") {
-        c.activeSound = "snd/wrong.ogg"
+        c.activeSound = "snd/quiz.wrong.ogg"
+        c.recentField = "activeSound"
+        return c
+    }
+
+    if (
+        c.recentField == "isValid" &&
+        c.isValid
+    ) {
+        c.activeSound = "snd/quiz.correct.ogg"
         c.recentField = "activeSound"
         return c
     }
