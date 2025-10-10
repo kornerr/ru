@@ -149,10 +149,14 @@ fun quizShouldResetPhrases(c: QuizContext): QuizContext {
  * Условия:
  * 1. Выбрали фразу
  * 2. Загрузили компоненту
+ * 3. Вернули фразу
  */
 @JsExport
 fun quizShouldResetSelectedPhrases(c: QuizContext): QuizContext {
-    if (c.recentField == "selectedPhraseId") {
+    if (
+        c.recentField == "selectedPhraseId" &&
+        !c.selectedPhrases.contains(c.selectedPhraseId)
+    ) {
         c.selectedPhrases += c.selectedPhraseId
         c.recentField = "selectedPhrases"
         return c
@@ -163,10 +167,39 @@ fun quizShouldResetSelectedPhrases(c: QuizContext): QuizContext {
         return c
     }
 
+    if (c.recentField == "deselectedPhraseId") {
+        c.selectedPhrases = c.selectedPhrases.filter { it != c.deselectedPhraseId }.toTypedArray()
+        c.recentField = "selectedPhrases"
+        return c
+    }
+
     c.recentField = "none"
     return c
 }
 
+/* Задать видимость фразы в списке-источнике
+ *
+ * Условия:
+ * 1. Выбрали фразу
+ * 2. Вернули фразу
+ */
+@JsExport
+fun quizShouldResetPhraseVisibility(c: QuizContext): QuizContext {
+    if (c.recentField == "selectedPhraseId") {
+        c.phraseVisibility = QuizPhraseVisibility(c.selectedPhraseId, false)
+        c.recentField = "phraseVisibility"
+        return c
+    }
+
+    if (c.recentField == "deselectedPhraseId") {
+        c.phraseVisibility = QuizPhraseVisibility(c.deselectedPhraseId, true)
+        c.recentField = "phraseVisibility"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
 /* Задать текущий заголовок
  *
  * Условия:

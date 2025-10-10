@@ -53,6 +53,14 @@ QuizContext:
         isValid: Bool
         isValidateAvailable: Bool
         phrases: [String]
+        phraseVisibility: QuizPhraseVisibility
         selectedPhraseId: Int
         selectedPhrases: [Int]
         title: String
+
+QuizPhraseVisibility:
+    prefix-kotlin: @JsExport
+    type: struct
+    fields:
+        id: Int
+        isVisible: Bool

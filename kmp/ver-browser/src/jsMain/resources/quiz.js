@@ -51,7 +51,7 @@ function QuizComponent() {
             "hasFailure", (c) => { reportFailure(KT.QUIZ_FAILURE_TITLE, KT.QUIZ_FAILURE_MESSAGE) },
             "isValidateAvailable", (c) => { setUIAvailability(QUIZ_VALIDATE_ID, c.isValidateAvailable) },
             "phrases", (c) => { quizResetPhrases(c.phrases) },
-            "selectedPhraseId", (c) => { quizHidePhrase(c.selectedPhraseId) },
+            "phraseVisibility", (c) => { quizResetPhraseVisibility(c.phraseVisibility) },
             "selectedPhrases", (c) => { quizResetSelectedPhrases(c.phrases, c.selectedPhrases) },
             "title", (c) => { setUIText(QUIZ_TITLE_ID, c.title) },
         ];
@@ -77,6 +77,7 @@ function QuizComponent() {
             KT.quizShouldResetExpectedPhrases,
             KT.quizShouldResetFailure,
             KT.quizShouldResetPhrases,
+            KT.quizShouldResetPhraseVisibility,
             KT.quizShouldResetSelectedPhrases,
             KT.quizShouldResetTitle,
             KT.quizShouldResetValidateAvailability,
@@ -90,14 +91,6 @@ function QuizComponent() {
 }
 
 //<!-- Эффекты -->
-
-function quizHidePhrase(id) {
-    let itemId = QUIZ_PHRASES_ITEM_ID_T.replaceAll("%ID%", id);
-    let titleId = QUIZ_PHRASES_ITEM_TITLE_ID_T.replaceAll("%ID%", id);
-    setUICardHoverPermission(itemId, false);
-    setUIMuted(itemId, true);
-    setUITransparent(titleId, true);
-}
 
 function quizPlaySound(path) {
     let music = new Audio(path);
@@ -114,6 +107,14 @@ function quizResetPhrases(items) {
             .replaceAll("%PHRASE%", item);
     }
     ph.innerHTML = html;
+}
+
+function quizResetPhraseVisibility(p) {
+    let itemId = QUIZ_PHRASES_ITEM_ID_T.replaceAll("%ID%", p.id);
+    let titleId = QUIZ_PHRASES_ITEM_TITLE_ID_T.replaceAll("%ID%", p.id);
+    setUICardHoverPermission(itemId, p.isVisible);
+    setUIMuted(itemId, !p.isVisible);
+    setUITransparent(titleId, !p.isVisible);
 }
 
 function quizResetSelectedPhrases(items, selectedIds) {
