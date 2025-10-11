@@ -35,7 +35,7 @@
   color: #0f7ae5;
 }
 
-.quiz-card-cursor {
+.quiz-card-cursor:not(:disabled) {
   cursor: pointer;
 }
 
