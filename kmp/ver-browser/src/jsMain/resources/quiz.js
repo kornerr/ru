@@ -29,7 +29,6 @@ let QUIZ_SELECTED_PHRASES_TRANSPARENT_ITEM_T = `
     </div>
 `;
 let QUIZ_TITLE_ID = "quiz-title";
-let QUIZ_VALIDATE_ID = "quiz-validate";
 
 //<!-- Компонент -->
 
@@ -50,9 +49,8 @@ function QuizComponent() {
             "activeSound", (c) => { quizPlaySound(c.activeSound) },
             "bgImage", (c) => { quizSetBGImage(c.bgImage) },
             "hasFailure", (c) => { reportFailure(KT.QUIZ_FAILURE_TITLE, KT.QUIZ_FAILURE_MESSAGE) },
-            "isNextVisible", (c) => { setUIVisibility(QUIZ_NEXT_ID, c.isValidateVisible) },
-            "isValidateAvailable", (c) => { setUIAvailability(QUIZ_VALIDATE_ID, c.isValidateAvailable) },
-            "isValidateVisible", (c) => { setUIVisibility(QUIZ_VALIDATE_ID, c.isValidateVisible) },
+            "isNextAdvancing", (c) => { quizResetNextAdvancing(c.isNextAdvancing) },
+            "isNextAvailable", (c) => { setUIAvailability(QUIZ_NEXT_ID, c.isNextAvailable) },
             "phrases", (c) => { quizResetPhrases(c.phrases) },
             "phraseVisibility", (c) => { quizResetPhraseVisibility(c.phraseVisibility) },
             "selectedPhrases", (c) => { quizResetSelectedPhrases(c.phrases, c.selectedPhrases) },
@@ -79,13 +77,12 @@ function QuizComponent() {
             KT.quizShouldResetCurrentId,
             KT.quizShouldResetExpectedPhrases,
             KT.quizShouldResetFailure,
-            KT.quizShouldResetNextVisibility,
+            KT.quizShouldResetNextAdvancing,
+            KT.quizShouldResetNextAvailability,
             KT.quizShouldResetPhrases,
             KT.quizShouldResetPhraseVisibility,
             KT.quizShouldResetSelectedPhrases,
             KT.quizShouldResetTitle,
-            KT.quizShouldResetValidateAvailability,
-            KT.quizShouldResetValidateVisibility,
             KT.quizShouldResetValidity,
         ].forEach((f) => {
             this.ctrl.registerFunction(f);
@@ -100,6 +97,19 @@ function QuizComponent() {
 function quizPlaySound(path) {
     let music = new Audio(path);
     music.play();
+}
+
+function quizResetNextAdvancing(isAdvancing) {
+    let el = deId(QUIZ_NEXT_ID);
+    if (isAdvancing) {
+        el.classList.remove("uk-button-default");
+        el.classList.add("uk-button-primary");
+        el.innerHTML = KT.QUIZ_NEXT_TITLE2;
+    } else {
+        el.classList.remove("uk-button-primary");
+        el.classList.add("uk-button-default");
+        el.innerHTML = KT.QUIZ_NEXT_TITLE1;
+    }
 }
 
 function quizResetPhrases(items) {

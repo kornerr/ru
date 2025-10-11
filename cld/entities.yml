@@ -51,10 +51,9 @@ QuizContext:
         didLaunch: Bool
         expectedPhrases: [Int]
         hasFailure: Bool
-        isNextVisible: Bool
+        isNextAdvancing: Bool
+        isNextAvailable: Bool
         isValid: Bool
-        isValidateAvailable: Bool
-        isValidateVisible: Bool
         phrases: [String]
         phraseVisibility: QuizPhraseVisibility
         selectedPhraseId: Int

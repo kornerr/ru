@@ -6,6 +6,9 @@ import kotlin.js.JsExport
 @JsExport val QUIZ_FAILURE_MESSAGE = "Давай попробуем ещё раз!"
 @JsExport val QUIZ_FAILURE_TITLE = "Чуть-чуть мимо"
 
+@JsExport val QUIZ_NEXT_TITLE1 = "Проверить"
+@JsExport val QUIZ_NEXT_TITLE2 = "Далее"
+
 @JsExport val QUIZ1_PHRASES = arrayOf(
     "потерял",
     "перед",
@@ -127,19 +130,43 @@ fun quizShouldResetFailure(c: QuizContext): QuizContext {
     return c
 }
 
-/* Задать видимость кнопки перехода далее
+/* Задать режим кнопки: проверка или далее
  *
  * Условия:
  * 1. Верно выбрали фразы
+ * 2. Запустили компоненту
  */
 @JsExport
-fun quizShouldResetNextVisibility(c: QuizContext): QuizContext {
+fun quizShouldResetNextAdvancing(c: QuizContext): QuizContext {
     if (
         c.recentField == "isValid" &&
         c.isValid
     ) {
-        c.isNextVisible = true
-        c.recentField = "isNextVisible"
+        c.isNextAdvancing = true
+        c.recentField = "isNextAdvancing"
+        return c
+    }
+
+    if (c.recentField == "didLaunch") {
+        c.isNextAdvancing = false
+        c.recentField = "isNextAdvancing"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
+/* Задать доступность кнопки проверки/далее
+ *
+ * Условия:
+ * 1. Изменились выбранные фразы
+ */
+@JsExport
+fun quizShouldResetNextAvailability(c: QuizContext): QuizContext {
+    if (c.recentField == "selectedPhrases") {
+        c.isNextAvailable = !c.selectedPhrases.isEmpty()
+        c.recentField = "isNextAvailable"
         return c
     }
 
@@ -237,50 +264,6 @@ fun quizShouldResetTitle(c: QuizContext): QuizContext {
     return c
 }
 
-/* Задать доступность кнопки проверки
- *
- * Условия:
- * 1. Изменились выбранные фразы
- */
-@JsExport
-fun quizShouldResetValidateAvailability(c: QuizContext): QuizContext {
-    if (c.recentField == "selectedPhrases") {
-        c.isValidateAvailable = !c.selectedPhrases.isEmpty()
-        c.recentField = "isValidateAvailable"
-        return c
-    }
-
-    c.recentField = "none"
-    return c
-}
-
-/* Задать видимость кнопки проверки
- *
- * Условия:
- * 1. Запустили компоненту
- * 2. Верно выбрали фразы
- */
-@JsExport
-fun quizShouldResetValidateVisibility(c: QuizContext): QuizContext {
-    if (c.recentField == "didLaunch") {
-        c.isValidateVisible = true
-        c.recentField = "isValidateVisible"
-        return c
-    }
-
-    if (
-        c.recentField == "isValid" &&
-        c.isValid
-    ) {
-        c.isValidateVisible = false
-        c.recentField = "isValidateVisible"
-        return c
-    }
-
-    c.recentField = "none"
-    return c
-}
-
 
 /* Задать корректность выбранных фраз
  *
@@ -289,7 +272,7 @@ fun quizShouldResetValidateVisibility(c: QuizContext): QuizContext {
  */
 @JsExport
 fun quizShouldResetValidity(c: QuizContext): QuizContext {
-    if (c.recentField == "didClickValidate") {
+    if (c.recentField == "didClickNext") {
         c.isValid = quizArePhrasesEqual(c.selectedPhrases, c.expectedPhrases)
         c.recentField = "isValid"
         return c

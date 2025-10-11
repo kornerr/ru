@@ -89,10 +89,9 @@ data class QuizContext(
     var didLaunch: Boolean = false,
     var expectedPhrases: Array<Int> = arrayOf(),
     var hasFailure: Boolean = false,
-    var isNextVisible: Boolean = false,
+    var isNextAdvancing: Boolean = false,
+    var isNextAvailable: Boolean = false,
     var isValid: Boolean = false,
-    var isValidateAvailable: Boolean = false,
-    var isValidateVisible: Boolean = false,
     var phraseVisibility: QuizPhraseVisibility = QuizPhraseVisibility(),
     var phrases: Array<String> = arrayOf(),
     var selectedPhraseId: Int = 0,
@@ -121,14 +120,12 @@ data class QuizContext(
             return expectedPhrases as T
         } else if (name == "hasFailure") {
             return hasFailure as T
-        } else if (name == "isNextVisible") {
-            return isNextVisible as T
+        } else if (name == "isNextAdvancing") {
+            return isNextAdvancing as T
+        } else if (name == "isNextAvailable") {
+            return isNextAvailable as T
         } else if (name == "isValid") {
             return isValid as T
-        } else if (name == "isValidateAvailable") {
-            return isValidateAvailable as T
-        } else if (name == "isValidateVisible") {
-            return isValidateVisible as T
         } else if (name == "phraseVisibility") {
             return phraseVisibility as T
         } else if (name == "phrases") {
@@ -171,14 +168,12 @@ data class QuizContext(
             expectedPhrases = value as Array<Int>
         } else if (name == "hasFailure") {
             hasFailure = value as Boolean
-        } else if (name == "isNextVisible") {
-            isNextVisible = value as Boolean
+        } else if (name == "isNextAdvancing") {
+            isNextAdvancing = value as Boolean
+        } else if (name == "isNextAvailable") {
+            isNextAvailable = value as Boolean
         } else if (name == "isValid") {
             isValid = value as Boolean
-        } else if (name == "isValidateAvailable") {
-            isValidateAvailable = value as Boolean
-        } else if (name == "isValidateVisible") {
-            isValidateVisible = value as Boolean
         } else if (name == "phraseVisibility") {
             phraseVisibility = value as QuizPhraseVisibility
         } else if (name == "phrases") {

@@ -24,7 +24,10 @@
   color: transparent;
 }
 
-.white-fg {
+.white-fg:not(:disabled) {
+  color: white;
+}
+.white-fg:not(:disabled):hover {
   color: white;
 }
 
