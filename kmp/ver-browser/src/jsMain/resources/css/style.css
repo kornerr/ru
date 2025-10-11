@@ -35,6 +35,10 @@
   color: #0f7ae5;
 }
 
+.quiz-card-cursor {
+  cursor: pointer;
+}
+
 .quiz-card-padding {
   padding: 15px 15px;
 }
