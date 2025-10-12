@@ -66,8 +66,10 @@ QuizItem:
     type: struct
     fields:
         expected: [Int]
+        img: String
         phrases: [String]
         sentence: String
+        snd: String
 
 QuizPhraseVisibility:
     prefix-kotlin: @JsExport

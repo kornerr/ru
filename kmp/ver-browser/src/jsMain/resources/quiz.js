@@ -8,6 +8,7 @@ function quizCtrl() {
 
 let QUIZ_HEADER_BG_T = "linear-gradient(rgba(100,100,100,0.6), rgba(100,100,100,0.6)), url('%PATH%') center";
 let QUIZ_HEADER_ID = "quiz-header";
+let QUIZ_IMG_DIR = "img/";
 let QUIZ_NEXT_ID = "quizNext";
 let QUIZ_PHRASES_ID = "quiz-phrases";
 let QUIZ_PHRASES_ITEM_ID_T = "quiz-phrases-%ID%";
@@ -155,7 +156,7 @@ function quizResetSelectedPhrases(items, selectedIds) {
 function quizSetBGImage(path) {
     let header = deId(QUIZ_HEADER_ID);
     if (header != null) {
-        let bg = QUIZ_HEADER_BG_T.replaceAll("%PATH%", path);
+        let bg = QUIZ_HEADER_BG_T.replaceAll("%PATH%", QUIZ_IMG_DIR + path);
         header.style.background = bg;
         header.style.backgroundSize = "cover";
     }

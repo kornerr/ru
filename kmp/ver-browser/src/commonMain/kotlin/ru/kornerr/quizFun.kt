@@ -11,19 +11,6 @@ import kotlin.js.JsExport
 @JsExport val QUIZ_NEXT_TITLE1 = "Проверить"
 @JsExport val QUIZ_NEXT_TITLE2 = "Далее"
 
-@JsExport val QUIZ1_PHRASES = arrayOf(
-    "потерял",
-    "перед",
-    "нашли",
-    "сбежала",
-    "Он",
-    "Она",
-    "на",
-    "автомобилем",
-    "Они",
-    "такси"
-)
-
 //<!-- Шуды -->
 
 /* Запустить воспроизведение звука
@@ -63,12 +50,12 @@ fun quizShouldPlaySound(c: QuizContext): QuizContext {
 /* Задать фоновую картинку заголовка
  *
  * Условия:
- * 1. Запустили компоненту
+ * 1. Переключили вопрос
  */
 @JsExport
 fun quizShouldResetBGImage(c: QuizContext): QuizContext {
-    if (c.recentField == "didLaunch") {
-        c.bgImage = "img/quiz.01.jpg"
+    if (c.recentField == "currentId") {
+        c.bgImage = c.items[c.currentId].img
         c.recentField = "bgImage"
         return c
     }
@@ -98,12 +85,12 @@ fun quizShouldResetCurrentId(c: QuizContext): QuizContext {
 /* Задать ожидаемую последовательность фраз
  *
  * Условия:
- * 1. Загрузили компоненту
+ * 1. Переключили вопрос
  */
 @JsExport
 fun quizShouldResetExpectedPhrases(c: QuizContext): QuizContext {
-    if (c.recentField == "didLaunch") {
-        c.expectedPhrases = arrayOf(5, 3)
+    if (c.recentField == "currentId") {
+        c.expectedPhrases = c.items[c.currentId].expected
         c.recentField = "expectedPhrases"
         return c
     }
@@ -196,12 +183,12 @@ fun quizShouldResetNextAvailability(c: QuizContext): QuizContext {
 /* Задать набор фраз для выбора пользователем
  *
  * Условия:
- * 1. Запустили компоненту
+ * 1. Переключили вопрос
  */
 @JsExport
 fun quizShouldResetPhrases(c: QuizContext): QuizContext {
-    if (c.recentField == "didLaunch") {
-        c.phrases = QUIZ1_PHRASES
+    if (c.recentField == "currentId") {
+        c.phrases = c.items[c.currentId].phrases
         c.recentField = "phrases"
         return c
     }
@@ -326,23 +313,26 @@ fun quizItems(): Array<QuizItem> {
     return arrayOf(
         QuizItem(
             arrayOf(5, 2),
+            "quiz.01.jpg",
             arrayOf(
                 "потерял",
-                "нашли",
+                "оплатили",
                 "сбежала",
                 "Он",
                 "билет",
                 "Она",
-                "на",
+                "в",
                 "автомобиле",
                 "Они",
                 "такси"
             ),
             "她逃了",
+            "quiz.01.ogg",
         ),
 
         QuizItem(
             arrayOf(9, 1, 6),
+            "quiz.02.jpg",
             arrayOf(
                 "покажет",
                 "можешь",
@@ -356,6 +346,7 @@ fun quizItems(): Array<QuizItem> {
                 "Ты",
             ),
             "你能赶到",
+            "quiz.02.ogg",
         ),
     )
 }

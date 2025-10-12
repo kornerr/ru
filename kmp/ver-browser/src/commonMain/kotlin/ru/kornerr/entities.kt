@@ -197,8 +197,10 @@ data class QuizContext(
 @JsExport
 data class QuizItem(
     var expected: Array<Int> = arrayOf(),
+    var img: String = "",
     var phrases: Array<String> = arrayOf(),
     var sentence: String = "",
+    var snd: String = "",
 ) {}
 
 
