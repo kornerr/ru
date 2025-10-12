@@ -81,11 +81,11 @@ fun quizShouldResetBGImage(c: QuizContext): QuizContext {
 /* Задать текущий номер вопроса
  *
  * Условия:
- * 1. Запустили компоненту
+ * 1. Задали список вопросов
  */
 @JsExport
 fun quizShouldResetCurrentId(c: QuizContext): QuizContext {
-    if (c.recentField == "didLaunch") {
+    if (c.recentField == "items") {
         c.currentId = 0
         c.recentField = "currentId"
         return c
@@ -269,12 +269,12 @@ fun quizShouldResetPhraseVisibility(c: QuizContext): QuizContext {
 /* Задать текущий заголовок
  *
  * Условия:
- * 1. Запустили компоненту
+ * 1. Переключили вопрос
  */
 @JsExport
 fun quizShouldResetTitle(c: QuizContext): QuizContext {
-    if (c.recentField == "didLaunch") {
-        c.title = "她逃了"
+    if (c.recentField == "currentId") {
+        c.title = c.items[c.currentId].sentence
         c.recentField = "title"
         return c
     }
