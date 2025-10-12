@@ -10,6 +10,8 @@ import kotlin.js.JsExport
 
 @JsExport val QUIZ_NEXT_TITLE1 = "Проверить"
 @JsExport val QUIZ_NEXT_TITLE2 = "Далее"
+@JsExport val QUIZ_SND_CORRECT = "quiz.correct.ogg"
+@JsExport val QUIZ_SND_WRONG = "quiz.wrong.ogg"
 
 //<!-- Шуды -->
 
@@ -23,13 +25,13 @@ import kotlin.js.JsExport
 @JsExport
 fun quizShouldPlaySound(c: QuizContext): QuizContext {
     if (c.recentField == "didClickPlaySound") {
-        c.activeSound = "snd/quiz.01.ogg"
+        c.activeSound = c.items[c.currentId].snd
         c.recentField = "activeSound"
         return c
     }
 
     if (c.recentField == "hasFailure") {
-        c.activeSound = "snd/quiz.wrong.ogg"
+        c.activeSound = QUIZ_SND_WRONG
         c.recentField = "activeSound"
         return c
     }
@@ -38,7 +40,7 @@ fun quizShouldPlaySound(c: QuizContext): QuizContext {
         c.recentField == "isValid" &&
         c.isValid
     ) {
-        c.activeSound = "snd/quiz.correct.ogg"
+        c.activeSound = QUIZ_SND_CORRECT
         c.recentField = "activeSound"
         return c
     }

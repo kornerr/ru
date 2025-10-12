@@ -29,6 +29,7 @@ let QUIZ_SELECTED_PHRASES_TRANSPARENT_ITEM_T = `
         <h3 class="transparent-color">%PHRASE%</h3>
     </div>
 `;
+let QUIZ_SND_DIR = "snd/";
 let QUIZ_TITLE_ID = "quiz-title";
 
 //<!-- Компонент -->
@@ -97,7 +98,7 @@ function QuizComponent() {
 //<!-- Эффекты -->
 
 function quizPlaySound(path) {
-    let music = new Audio(path);
+    let music = new Audio(QUIZ_SND_DIR + path);
     music.play();
 }
 
