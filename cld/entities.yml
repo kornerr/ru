@@ -54,11 +54,20 @@ QuizContext:
         isNextAdvancing: Bool
         isNextAvailable: Bool
         isValid: Bool
+        items: [QuizItem]
         phrases: [String]
         phraseVisibility: QuizPhraseVisibility
         selectedPhraseId: Int
         selectedPhrases: [Int]
         title: String
+
+QuizItem:
+    prefix-kotlin: @JsExport
+    type: struct
+    fields:
+        expected: [Int]
+        phrases: [String]
+        sentence: String
 
 QuizPhraseVisibility:
     prefix-kotlin: @JsExport

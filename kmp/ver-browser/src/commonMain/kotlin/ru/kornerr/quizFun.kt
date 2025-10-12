@@ -2,6 +2,8 @@ package ru.kornerr
 import kotlin.js.JsExport
 
 //<!-- Константы -->
+  //  exp,
+  //  ph
 
 @JsExport val QUIZ_FAILURE_MESSAGE = "Давай попробуем ещё раз!"
 @JsExport val QUIZ_FAILURE_TITLE = "Чуть-чуть мимо"
@@ -123,6 +125,23 @@ fun quizShouldResetFailure(c: QuizContext): QuizContext {
     ) {
         c.hasFailure = true
         c.recentField = "hasFailure"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
+/* Задать набор вопросов
+ *
+ * Условия:
+ * 1. Загрузили компоненту
+ */
+@JsExport
+fun quizShouldResetItems(c: QuizContext): QuizContext {
+    if (c.recentField == "didLaunch") {
+        c.items = quizItems()
+        c.recentField = "items"
         return c
     }
 
@@ -301,4 +320,25 @@ fun quizArePhrasesEqual(
     }
 
     return true
+}
+
+fun quizItems(): Array<QuizItem> {
+    return arrayOf(
+        QuizItem(
+            arrayOf(5, 2),
+            arrayOf(
+                "потерял",
+                "нашли",
+                "сбежала",
+                "Он",
+                "билет",
+                "Она",
+                "на",
+                "автомобиле",
+                "Они",
+                "такси"
+            ),
+            "她逃了",
+        ),
+    )
 }

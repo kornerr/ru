@@ -77,6 +77,7 @@ function QuizComponent() {
             KT.quizShouldResetCurrentId,
             KT.quizShouldResetExpectedPhrases,
             KT.quizShouldResetFailure,
+            KT.quizShouldResetItems,
             KT.quizShouldResetNextAdvancing,
             KT.quizShouldResetNextAvailability,
             KT.quizShouldResetPhrases,

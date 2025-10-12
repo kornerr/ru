@@ -92,6 +92,7 @@ data class QuizContext(
     var isNextAdvancing: Boolean = false,
     var isNextAvailable: Boolean = false,
     var isValid: Boolean = false,
+    var items: Array<QuizItem> = arrayOf(),
     var phraseVisibility: QuizPhraseVisibility = QuizPhraseVisibility(),
     var phrases: Array<String> = arrayOf(),
     var selectedPhraseId: Int = 0,
@@ -126,6 +127,8 @@ data class QuizContext(
             return isNextAvailable as T
         } else if (name == "isValid") {
             return isValid as T
+        } else if (name == "items") {
+            return items as T
         } else if (name == "phraseVisibility") {
             return phraseVisibility as T
         } else if (name == "phrases") {
@@ -174,6 +177,8 @@ data class QuizContext(
             isNextAvailable = value as Boolean
         } else if (name == "isValid") {
             isValid = value as Boolean
+        } else if (name == "items") {
+            items = value as Array<QuizItem>
         } else if (name == "phraseVisibility") {
             phraseVisibility = value as QuizPhraseVisibility
         } else if (name == "phrases") {
@@ -187,6 +192,14 @@ data class QuizContext(
         }
     }
 }
+
+
+@JsExport
+data class QuizItem(
+    var expected: Array<Int> = arrayOf(),
+    var phrases: Array<String> = arrayOf(),
+    var sentence: String = "",
+) {}
 
 
 @JsExport
