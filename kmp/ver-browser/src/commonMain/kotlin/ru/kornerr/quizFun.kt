@@ -52,7 +52,7 @@ fun quizShouldPlaySound(c: QuizContext): QuizContext {
 /* Задать фоновую картинку заголовка
  *
  * Условия:
- * 1. Переключили вопрос
+ * 1. Сменили вопрос
  */
 @JsExport
 fun quizShouldResetBGImage(c: QuizContext): QuizContext {
@@ -87,7 +87,7 @@ fun quizShouldResetCurrentId(c: QuizContext): QuizContext {
 /* Задать ожидаемую последовательность фраз
  *
  * Условия:
- * 1. Переключили вопрос
+ * 1. Сменили вопрос
  */
 @JsExport
 fun quizShouldResetExpectedPhrases(c: QuizContext): QuizContext {
@@ -142,7 +142,7 @@ fun quizShouldResetItems(c: QuizContext): QuizContext {
  *
  * Условия:
  * 1. Верно выбрали фразы
- * 2. Запустили компоненту
+ * 2. Сменили вопрос
  */
 @JsExport
 fun quizShouldResetNextAdvancing(c: QuizContext): QuizContext {
@@ -155,7 +155,7 @@ fun quizShouldResetNextAdvancing(c: QuizContext): QuizContext {
         return c
     }
 
-    if (c.recentField == "didLaunch") {
+    if (c.recentField == "currentId") {
         c.isNextAdvancing = false
         c.recentField = "isNextAdvancing"
         return c
@@ -185,7 +185,7 @@ fun quizShouldResetNextAvailability(c: QuizContext): QuizContext {
 /* Задать набор фраз для выбора пользователем
  *
  * Условия:
- * 1. Переключили вопрос
+ * 1. Сменили вопрос
  */
 @JsExport
 fun quizShouldResetPhrases(c: QuizContext): QuizContext {
@@ -255,10 +255,11 @@ fun quizShouldResetPhraseVisibility(c: QuizContext): QuizContext {
     c.recentField = "none"
     return c
 }
+
 /* Задать текущий заголовок
  *
  * Условия:
- * 1. Переключили вопрос
+ * 1. Сменили вопрос
  */
 @JsExport
 fun quizShouldResetTitle(c: QuizContext): QuizContext {
