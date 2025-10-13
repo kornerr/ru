@@ -21,6 +21,7 @@ import kotlin.js.JsExport
  * 1. Нажали на кнопку громкоговорителя
  * 2. Неверно выбрали фразы
  * 3. Верно выбрали фразы
+ * 4. Сменили вопрос
  */
 @JsExport
 fun quizShouldPlaySound(c: QuizContext): QuizContext {
@@ -44,6 +45,13 @@ fun quizShouldPlaySound(c: QuizContext): QuizContext {
         c.recentField = "activeSound"
         return c
     }
+
+    if (c.recentField == "currentId") {
+        c.activeSound = c.items[c.currentId].snd
+        c.recentField = "activeSound"
+        return c
+    }
+
 
     c.recentField = "none"
     return c
