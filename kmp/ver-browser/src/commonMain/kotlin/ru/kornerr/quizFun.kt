@@ -71,11 +71,22 @@ fun quizShouldResetBGImage(c: QuizContext): QuizContext {
  *
  * Условия:
  * 1. Задали список вопросов
+ * 2. Нажали кнопку для перехода далее
  */
 @JsExport
 fun quizShouldResetCurrentId(c: QuizContext): QuizContext {
     if (c.recentField == "items") {
         c.currentId = 0
+        c.recentField = "currentId"
+        return c
+    }
+
+    if (
+        c.recentField == "didClickNext" &&
+        c.isValid &&
+        c.currentId + 1 <= c.items.size
+    ) {
+        c.currentId += 1
         c.recentField = "currentId"
         return c
     }
@@ -110,7 +121,8 @@ fun quizShouldResetExpectedPhrases(c: QuizContext): QuizContext {
 fun quizShouldResetFailure(c: QuizContext): QuizContext {
     if (
         c.recentField == "isValid" &&
-        !c.isValid
+        !c.isValid &&
+        !c.isNextAdvancing
     ) {
         c.hasFailure = true
         c.recentField = "hasFailure"
@@ -205,6 +217,7 @@ fun quizShouldResetPhrases(c: QuizContext): QuizContext {
  * 1. Выбрали фразу
  * 2. Загрузили компоненту
  * 3. Вернули фразу
+ * 4. Нажали кнопку для перехода далее
  */
 @JsExport
 fun quizShouldResetSelectedPhrases(c: QuizContext): QuizContext {
@@ -224,6 +237,15 @@ fun quizShouldResetSelectedPhrases(c: QuizContext): QuizContext {
 
     if (c.recentField == "deselectedPhraseId") {
         c.selectedPhrases = c.selectedPhrases.filter { it != c.deselectedPhraseId }.toTypedArray()
+        c.recentField = "selectedPhrases"
+        return c
+    }
+
+    if (
+        c.recentField == "didClickNext" &&
+        c.isValid
+    ) {
+        c.selectedPhrases = arrayOf()
         c.recentField = "selectedPhrases"
         return c
     }
@@ -277,12 +299,27 @@ fun quizShouldResetTitle(c: QuizContext): QuizContext {
 /* Задать корректность выбранных фраз
  *
  * Условия:
- * 1. Нажали кнопку проверки
+ * 1. Нажали кнопку для проверки выбранных фраз
+ * 2. Нажали кнопку для перехода далее
  */
 @JsExport
 fun quizShouldResetValidity(c: QuizContext): QuizContext {
-    if (c.recentField == "didClickNext") {
+    if (
+        c.recentField == "didClickNext" &&
+        !c.isValid &&
+        !c.isNextAdvancing
+    ) {
         c.isValid = quizArePhrasesEqual(c.selectedPhrases, c.expectedPhrases)
+        c.recentField = "isValid"
+        return c
+    }
+
+    if (
+        c.recentField == "didClickNext" &&
+        c.isValid &&
+        c.isNextAdvancing
+    ) {
+        c.isValid = false
         c.recentField = "isValid"
         return c
     }
