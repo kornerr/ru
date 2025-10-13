@@ -189,11 +189,21 @@ fun quizShouldResetNextAdvancing(c: QuizContext): QuizContext {
  *
  * Условия:
  * 1. Изменились выбранные фразы
+ * 2. Находимся на первом вопросе-вводной
  */
 @JsExport
 fun quizShouldResetNextAvailability(c: QuizContext): QuizContext {
     if (c.recentField == "selectedPhrases") {
         c.isNextAvailable = !c.selectedPhrases.isEmpty()
+        c.recentField = "isNextAvailable"
+        return c
+    }
+
+    if (
+        c.recentField == "currentId" &&
+        c.currentId == 0
+    ) {
+        c.isNextAvailable = true
         c.recentField = "isNextAvailable"
         return c
     }
@@ -309,6 +319,7 @@ fun quizShouldResetTitle(c: QuizContext): QuizContext {
  * Условия:
  * 1. Нажали кнопку для проверки выбранных фраз
  * 2. Нажали кнопку для перехода далее
+ * 3. Находимся на первом вопросе-вводной
  */
 @JsExport
 fun quizShouldResetValidity(c: QuizContext): QuizContext {
@@ -328,6 +339,15 @@ fun quizShouldResetValidity(c: QuizContext): QuizContext {
         c.isNextAdvancing
     ) {
         c.isValid = false
+        c.recentField = "isValid"
+        return c
+    }
+
+    if (
+        c.recentField == "currentId" &&
+        c.currentId == 0
+    ) {
+        c.isValid = true
         c.recentField = "isValid"
         return c
     }
@@ -359,6 +379,14 @@ fun quizArePhrasesEqual(
 
 fun quizItems(): Array<QuizItem> {
     return arrayOf(
+        QuizItem(
+            arrayOf(),
+            "quiz.00.jpg",
+            arrayOf(),
+            "Нажимай «Далее», чтобы начать",
+            "",
+        ),
+
         QuizItem(
             arrayOf(5, 2),
             "quiz.01.jpg",
