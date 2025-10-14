@@ -53,6 +53,7 @@ QuizContext:
         hasFailure: Bool
         isNextAdvancing: Bool
         isNextAvailable: Bool
+        isSoundVisible: Bool
         isValid: Bool
         items: [QuizItem]
         phrases: [String]

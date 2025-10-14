@@ -91,6 +91,7 @@ data class QuizContext(
     var hasFailure: Boolean = false,
     var isNextAdvancing: Boolean = false,
     var isNextAvailable: Boolean = false,
+    var isSoundVisible: Boolean = false,
     var isValid: Boolean = false,
     var items: Array<QuizItem> = arrayOf(),
     var phraseVisibility: QuizPhraseVisibility = QuizPhraseVisibility(),
@@ -125,6 +126,8 @@ data class QuizContext(
             return isNextAdvancing as T
         } else if (name == "isNextAvailable") {
             return isNextAvailable as T
+        } else if (name == "isSoundVisible") {
+            return isSoundVisible as T
         } else if (name == "isValid") {
             return isValid as T
         } else if (name == "items") {
@@ -175,6 +178,8 @@ data class QuizContext(
             isNextAdvancing = value as Boolean
         } else if (name == "isNextAvailable") {
             isNextAvailable = value as Boolean
+        } else if (name == "isSoundVisible") {
+            isSoundVisible = value as Boolean
         } else if (name == "isValid") {
             isValid = value as Boolean
         } else if (name == "items") {

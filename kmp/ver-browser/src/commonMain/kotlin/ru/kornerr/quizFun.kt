@@ -39,7 +39,8 @@ fun quizShouldPlaySound(c: QuizContext): QuizContext {
 
     if (
         c.recentField == "isValid" &&
-        c.isValid
+        c.isValid &&
+        !c.phrases.isEmpty()
     ) {
         c.activeSound = QUIZ_SND_CORRECT
         c.recentField = "activeSound"
@@ -289,6 +290,23 @@ fun quizShouldResetPhraseVisibility(c: QuizContext): QuizContext {
     if (c.recentField == "deselectedPhraseId") {
         c.phraseVisibility = QuizPhraseVisibility(c.deselectedPhraseId, true)
         c.recentField = "phraseVisibility"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
+/* Задать видимость кнопки динамика
+ *
+ * Условия:
+ * 1. Изменился активный звук
+ */
+@JsExport
+fun quizShouldResetSoundVisibility(c: QuizContext): QuizContext {
+    if (c.recentField == "activeSound") {
+        c.isSoundVisible = !c.activeSound.isEmpty()
+        c.recentField = "isSoundVisible"
         return c
     }
 

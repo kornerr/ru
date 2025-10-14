@@ -7,7 +7,7 @@ function quizCtrl() {
 //<!-- Константы -->
 
 let QUIZ_HEADER_BG_T = "linear-gradient(rgba(100,100,100,0.6), rgba(100,100,100,0.6)), url('%PATH%') center";
-let QUIZ_HEADER_ID = "quiz-header";
+let QUIZ_HEADER_ID = "quizHeader";
 let QUIZ_IMG_DIR = "img/";
 let QUIZ_NEXT_ID = "quizNext";
 let QUIZ_PHRASES_ID = "quiz-phrases";
@@ -30,7 +30,8 @@ let QUIZ_SELECTED_PHRASES_TRANSPARENT_ITEM_T = `
     </div>
 `;
 let QUIZ_SND_DIR = "snd/";
-let QUIZ_TITLE_ID = "quiz-title";
+let QUIZ_SOUND_ID = "quizSound";
+let QUIZ_TITLE_ID = "quizTitle";
 
 //<!-- Компонент -->
 
@@ -53,6 +54,7 @@ function QuizComponent() {
             "hasFailure", (c) => { reportFailure(KT.QUIZ_FAILURE_TITLE, KT.QUIZ_FAILURE_MESSAGE) },
             "isNextAdvancing", (c) => { quizResetNextAdvancing(c.isNextAdvancing) },
             "isNextAvailable", (c) => { setUIAvailability(QUIZ_NEXT_ID, c.isNextAvailable) },
+            "isSoundVisible", (c) => { setUIVisibility(QUIZ_SOUND_ID, c.isSoundVisible) },
             "phrases", (c) => { quizResetPhrases(c.phrases) },
             "phraseVisibility", (c) => { quizResetPhraseVisibility(c.phraseVisibility) },
             "selectedPhrases", (c) => { quizResetSelectedPhrases(c.phrases, c.selectedPhrases) },
@@ -85,6 +87,7 @@ function QuizComponent() {
             KT.quizShouldResetPhrases,
             KT.quizShouldResetPhraseVisibility,
             KT.quizShouldResetSelectedPhrases,
+            KT.quizShouldResetSoundVisibility,
             KT.quizShouldResetTitle,
             KT.quizShouldResetValidity,
         ].forEach((f) => {
