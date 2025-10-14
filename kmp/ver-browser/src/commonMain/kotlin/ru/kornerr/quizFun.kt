@@ -401,7 +401,7 @@ fun quizItems(): Array<QuizItem> {
             arrayOf(),
             "quiz.00.jpg",
             arrayOf(),
-            "Нажимай «Далее», чтобы начать",
+            "Начинаем разминку",
             "",
         ),
 
