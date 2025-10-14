@@ -480,5 +480,13 @@ fun quizItems(): Array<QuizItem> {
             "跟随白兔",
             "quiz.04.ogg",
         ),
+
+        QuizItem(
+            arrayOf(),
+            "quiz.05.jpg",
+            arrayOf(),
+            "Конец ознакомительного фрагмента",
+            "",
+        ),
     )
 }
