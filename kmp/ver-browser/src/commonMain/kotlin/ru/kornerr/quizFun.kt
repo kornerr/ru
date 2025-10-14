@@ -213,6 +213,23 @@ fun quizShouldResetNextAvailability(c: QuizContext): QuizContext {
     return c
 }
 
+/* Задать видимость кнопки проверки/далее
+ *
+ * Условия:
+ * 1. Сменили вопрос
+ */
+@JsExport
+fun quizShouldResetNextVisibility(c: QuizContext): QuizContext {
+    if (c.recentField == "currentId") {
+        c.isNextVisible = (c.currentId != c.items.size - 1)
+        c.recentField = "isNextVisible"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
 /* Задать набор фраз для выбора пользователем
  *
  * Условия:
