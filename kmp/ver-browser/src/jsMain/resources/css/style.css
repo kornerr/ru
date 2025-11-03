@@ -6,6 +6,15 @@
   background-size: cover;
 }
 
+.headerBGBank {
+  background:
+    linear-gradient(rgba(100,100,100,0.6), rgba(100,100,100,0.6)),
+    url("../img/bank.jpg");
+  );
+  background-position: center;
+  background-size: cover;
+}
+
 .highlight-article-digit {
   background-color: #666;
   color: white;
@@ -33,6 +42,10 @@
 
 .action-blue-fg {
   color: #0f7ae5;
+}
+
+.linkNoDecor, .linkNoDecor:hover {
+  text-decoration: none;
 }
 
 .quiz-card-cursor:not(:disabled) {
