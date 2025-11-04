@@ -6,17 +6,6 @@
   background-size: cover;
 }
 
-/*
-.headerBGBank {
-  background:
-    linear-gradient(rgba(100,100,100,0.6), rgba(100,100,100,0.6)),
-    url("../img/bank.jpg");
-  );
-  background-position: center;
-  background-size: cover;
-}
-*/
-
 .highlight-article-digit {
   background-color: #666;
   color: white;
