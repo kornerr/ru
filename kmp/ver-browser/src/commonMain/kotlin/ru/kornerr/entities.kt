@@ -3,7 +3,7 @@ import kotlin.js.JsExport
 
 
 @JsExport
-data class AppContext(
+data class BankContext(
     var cbrDate: String = "",
     var currencies: Array<Currency> = arrayOf(),
     var didLaunch: Boolean = false,

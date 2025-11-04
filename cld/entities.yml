@@ -3,7 +3,7 @@ version: 1
 kotlin: package ru.kornerr
 kotlin: import kotlin.js.JsExport
 
-AppContext:
+BankContext:
     prefix-kotlin: @JsExport
     type: context
     fields:

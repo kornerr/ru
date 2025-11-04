@@ -1,21 +1,21 @@
 //<!-- API -->
 
-function appCtrl() {
-    return window.appCmp.ctrl;
+function bankCtrl() {
+    return window.bankCmp.ctrl;
 }
 
 //<!-- Константы -->
 
-APP_CBR_DATE_ID = "cbr-dt";
+BANK_CBR_DATE_ID = "cbr-dt";
 
 //<!-- Компонент -->
 
-function AppComponent() {
+function BankComponent() {
     this._construct = function() {
-        this.ctrl = new KT.CLDController(new KT.AppContext());
+        this.ctrl = new KT.CLDController(new KT.BankContext());
         // Отладка.
         this.ctrl.registerCallback((c) => {
-            console.log(`ИГР AppC._construct ctrl key/value: '${c.recentField}'/'${c.field(c.recentField)}'`);
+            console.log(`ИГР BankC._construct ctrl key/value: '${c.recentField}'/'${c.field(c.recentField)}'`);
         });
         this.setupEffects();
         this.setupEvents();
@@ -24,9 +24,9 @@ function AppComponent() {
 
     this.setupEffects = function() {
         let oneliners = [ 
-            "cbrDate", (c) => { appDisplayCBRDate(c.cbrDate); },
-            "currencies", (c) => { appDisplayCurrencies(c.currencies); },
-            "request", (c) => { appLoad(c.request); },
+            "cbrDate", (c) => { bankDisplayCBRDate(c.cbrDate); },
+            "currencies", (c) => { bankDisplayCurrencies(c.currencies); },
+            "request", (c) => { bankLoad(c.request); },
         ];
         let halfCount = oneliners.length / 2;
         for (let i = 0; i < halfCount; ++i) {
@@ -44,9 +44,9 @@ function AppComponent() {
 
     this.setupShoulds = function() {
         [
-            KT.appShouldLoad,
-            KT.appShouldResetCBRDate,
-            KT.appShouldResetCurrencies,
+            KT.bankShouldLoad,
+            KT.bankShouldResetCBRDate,
+            KT.bankShouldResetCurrencies,
         ].forEach((f) => {
             this.ctrl.registerFunction(f);
         });
@@ -58,19 +58,19 @@ function AppComponent() {
 //<!-- Эффекты -->
 
 // Отобразить дату курсов валют
-function appDisplayCBRDate(value) {
-    let dt = deId(APP_CBR_DATE_ID);
+function bankDisplayCBRDate(value) {
+    let dt = deId(BANK_CBR_DATE_ID);
     if (dt != null) {
         dt.innerHTML = value;
     }
 }
 
 // Отобразить валюты
-function appDisplayCurrencies(items) {
+function bankDisplayCurrencies(items) {
     for (let i in items) {
         let item = items[i];
-        let keyId = appCurrencyKeyId(item.code);
-        let valId = appCurrencyValueId(item.code);
+        let keyId = bankCurrencyKeyId(item.code);
+        let valId = bankCurrencyValueId(item.code);
         let key = deId(keyId);
         if (key != null) {
             key.innerHTML = `${item.flag} ${item.code}`;
@@ -83,31 +83,31 @@ function appDisplayCurrencies(items) {
 }
 
 // Сетевой запрос
-function appLoad(req) {
+function bankLoad(req) {
     loadURL(
         req,
         (res) => {
             var response = new KT.NetResponse(res.responseText, res.responseURL);
-            appCtrl().set("response", response);
+            bankCtrl().set("response", response);
         },
         (res) => {
             var err = new KT.NetResponse(res.contents, res.url);
-            appCtrl().set("responseError", err);
+            bankCtrl().set("responseError", err);
         }
     );
 }
 
 //<!-- Прочие функции -->
 
-function appCurrencyKeyId(code) {
+function bankCurrencyKeyId(code) {
     return `${code}-key`;
 }
 
-function appCurrencyValueId(code) {
+function bankCurrencyValueId(code) {
     return `${code}-value`;
 }
 
 //<!-- Установка -->
 
-window.appCmp = new AppComponent();
-window.components.push(window.appCmp);
+window.bankCmp = new BankComponent();
+window.components.push(window.bankCmp);
