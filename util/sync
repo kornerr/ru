@@ -20,12 +20,13 @@ FILES=(
 
 for file in ${FILES[@]}; do
     echo $file
-    # Copy file from CLD
+    # Copy original file
     cp $CLD_DIR/kotlin/$file $DST_DIR
     cd $DST_DIR
     # Correct the package and imports
     replace $file "package org.opengamestudio" "package ru.kornerr\nimport kotlin.js.JsExport"
-    # Add "@JsExport" to interfaces and classes
+    # Make entities available in JS
     replace $file "interface" "@JsExport\ninterface"
     replace $file "class" "@JsExport\nclass"
+    replace $file "fun registerOne" "@JsExport\nfun registerOne"
 done
