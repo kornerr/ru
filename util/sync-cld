@@ -22,8 +22,8 @@ for file in ${FILES[@]}; do
     echo $file
     # Copy file from CLD
     cp $CLD_DIR/kotlin/$file $DST_DIR
-    # Remove "import kotlin.js.JsExport"
-    #replace $DST_DIR/$file "import kotlin.js.JsExport" ""
+    # Correct the package and imports
+    replace $DST_DIR/$file "package org.opengamestudio" "pacakge ru.kornerr\nimport kotlin.js.JsExport"
     # Remove "@JsExport"
     #replace $file "@JsExport" ""
 done
