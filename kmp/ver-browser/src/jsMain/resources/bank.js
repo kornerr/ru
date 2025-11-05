@@ -28,12 +28,7 @@ function BankComponent() {
             "currencies", (c) => { bankDisplayCurrencies(c.currencies); },
             "request", (c) => { bankLoad(c.request); },
         ];
-        let halfCount = oneliners.length / 2;
-        for (let i = 0; i < halfCount; ++i) {
-            let field = oneliners[i * 2];
-            let cb = oneliners[i * 2 + 1];
-            this.ctrl.registerFieldCallback(field, cb);
-        }
+        KT.registerOneliners(this.ctrl, oneliners);
     };
 
     this.setupEvents = function() {

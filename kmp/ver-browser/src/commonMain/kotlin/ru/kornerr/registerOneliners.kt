@@ -9,6 +9,7 @@ package ru.kornerr
 import kotlin.js.JsExport
 
 // Register several oneliner callbacks to a controller
+@JsExport
 fun registerOneliners(
     ctrl: CLDController,
     items: Array<Any>
