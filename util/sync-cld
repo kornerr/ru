@@ -1,0 +1,29 @@
+#!/bin/bash -e
+SDIR=$(cd "$(dirname "$0")" ; pwd -P)
+
+CLD_DIR=$SDIR/../../cross-language-dialect
+DST_DIR=$SDIR/../kmp/ver-browser/src/commonMain/kotlin/ru/kornerr
+
+function replace {
+    file=$1
+    was=$2
+    now=$3
+    cmd="sed -i '' 's/$was/$now/g' $file"
+    eval "$cmd"
+}
+
+FILES=(
+  CLDContext.kt
+  CLDController.kt
+  registerOneliners.kt
+)
+
+for file in ${FILES[@]}; do
+    echo $file
+    # Copy file from CLD
+    cp $CLD_DIR/kotlin/$file $DST_DIR
+    # Remove "import kotlin.js.JsExport"
+    #replace $DST_DIR/$file "import kotlin.js.JsExport" ""
+    # Remove "@JsExport"
+    #replace $file "@JsExport" ""
+done
