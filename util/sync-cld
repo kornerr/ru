@@ -24,6 +24,7 @@ for file in ${FILES[@]}; do
     cp $CLD_DIR/kotlin/$file $DST_DIR
     # Correct the package and imports
     replace $DST_DIR/$file "package org.opengamestudio" "package ru.kornerr\nimport kotlin.js.JsExport"
-    # Add "@JsExport"
-    #replace $file "@JsExport" ""
+    # Add "@JsExport" to interfaces and classes
+    replace $DST_DIR/$file "interface" "@JsExport\ninterface"
+    replace $DST_DIR/$file "class" "@JsExport\nclass"
 done
