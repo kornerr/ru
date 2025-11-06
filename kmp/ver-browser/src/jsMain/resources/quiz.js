@@ -26,7 +26,7 @@ let QUIZ_SELECTED_PHRASES_ITEM_T = `
 `;
 let QUIZ_SELECTED_PHRASES_TRANSPARENT_ITEM_T = `
     <div class='uk-card uk-card-body uk-margin-small-right uk-margin-bottom quiz-card-padding no-background'>
-        <h3 class="transparent-color">%PHRASE%</h3>
+        <h3 class="transparentColor">%PHRASE%</h3>
     </div>
 `;
 let QUIZ_SND_DIR = "snd/";
@@ -61,12 +61,7 @@ function QuizComponent() {
             "selectedPhrases", (c) => { quizResetSelectedPhrases(c.phrases, c.selectedPhrases) },
             "title", (c) => { setUIText(QUIZ_TITLE_ID, c.title) },
         ];
-        let halfCount = oneliners.length / 2;
-        for (let i = 0; i < halfCount; ++i) {
-            let field = oneliners[i * 2];
-            let cb = oneliners[i * 2 + 1];
-            this.ctrl.registerFieldCallback(field, cb);
-        }
+        KT.registerOneliners(this.ctrl, oneliners);
     };
 
     this.setupEvents = function() {

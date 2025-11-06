@@ -33,23 +33,21 @@
     </div>
 
     <div class="bankHeaderBG uk-padding-small">
-      <div class="uk-container">
+      <div class="uk-container uk-padding uk-padding-remove-top uk-padding-remove-left uk-padding-remove-right">
         <h1 class="white-fg uk-heading-large uk-width-1-2@s">Пример интеграции</h1>
         <h1 class="white-fg uk-heading uk-width-1-2@s">Со сторонним сервисом</h1>
-        <p> </p>
       </div>
     </div>
 
     <div class="uk-padding-small uk-padding-bottom-remove uk-padding-top">
-      <div class="uk-container">
-        <p> </p>
+      <div class="uk-container uk-padding uk-padding-remove-left uk-padding-remove-right uk-padding-remove-bottom">
         <h3 class="uk-card-title">Получение и разбор курса валют с сайта ЦБ РФ</h3>
         <p>По данным ЦБ РФ на <span id="cbr-dt">хм.хм.хмхм</span>, курсы валют стран БРИКС по отношению к рублю следующие:</p>
         <table class="uk-table uk-table-divider">
           <thead>
             <tr>
               <th>Валюта <div id="currencyLoader" uk-spinner></div></th>
-              <th>Страна</th>
+              <th>Страна <div class="transparentColor" uk-spinner></th>
               <th>Дают рублей за единицу валюты <div id="rateLoader" uk-spinner></div></th>
             </tr>
           </thead>

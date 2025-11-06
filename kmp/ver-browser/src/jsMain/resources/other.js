@@ -89,11 +89,11 @@ function setUITransparent(id, isTransparent) {
     let el = deId(id);
     // Прозрачный
     if (isTransparent) {
-        el.classList.add("transparent-color");
+        el.classList.add("transparentColor");
     }
     // Непроницаемый
     if (!isTransparent) {
-        el.classList.remove("transparent-color");
+        el.classList.remove("transparentColor");
     }
 }
 
