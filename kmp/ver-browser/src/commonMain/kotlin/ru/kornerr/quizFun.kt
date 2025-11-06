@@ -331,6 +331,27 @@ fun quizShouldResetSoundVisibility(c: QuizContext): QuizContext {
     return c
 }
 
+/* Задать видимость подзаголовока
+ *
+ * Условия:
+ * 1. Только начали
+ * 2. Перешли к вопросам
+ */
+@JsExport
+fun quizShouldResetSubtitleVisibility(c: QuizContext): QuizContext {
+    if (
+        c.recentField == "currentId" &&
+        c.currentId == 1
+    ) {
+        c.isSubtitleVisible = false
+        c.recentField = "isSubtitleVisible"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
 /* Задать текущий заголовок
  *
  * Условия:
@@ -418,7 +439,7 @@ fun quizItems(): Array<QuizItem> {
             arrayOf(),
             "quiz.00.jpg",
             arrayOf(),
-            "Начинаем разминку",
+            "Пример тренажёра",
             "",
         ),
 

@@ -31,6 +31,7 @@ let QUIZ_SELECTED_PHRASES_TRANSPARENT_ITEM_T = `
 `;
 let QUIZ_SND_DIR = "snd/";
 let QUIZ_SOUND_ID = "quizSound";
+let QUIZ_SUBTITLE_ID = "quizSubtitle";
 let QUIZ_TITLE_ID = "quizTitle";
 
 //<!-- Компонент -->
@@ -56,6 +57,7 @@ function QuizComponent() {
             "isNextAvailable", (c) => { setUIAvailability(QUIZ_NEXT_ID, c.isNextAvailable) },
             "isNextVisible", (c) => { setUIVisibility(QUIZ_NEXT_ID, c.isNextVisible) },
             "isSoundVisible", (c) => { setUIVisibility(QUIZ_SOUND_ID, c.isSoundVisible) },
+            "isSubtitleVisible", (c) => { setUIVisibility(QUIZ_SUBTITLE_ID, c.isSubtitleVisible) },
             "phrases", (c) => { quizResetPhrases(c.phrases) },
             "phraseVisibility", (c) => { quizResetPhraseVisibility(c.phraseVisibility) },
             "selectedPhrases", (c) => { quizResetSelectedPhrases(c.phrases, c.selectedPhrases) },
@@ -85,6 +87,7 @@ function QuizComponent() {
             KT.quizShouldResetPhraseVisibility,
             KT.quizShouldResetSelectedPhrases,
             KT.quizShouldResetSoundVisibility,
+            KT.quizShouldResetSubtitleVisibility,
             KT.quizShouldResetTitle,
             KT.quizShouldResetValidity,
         ].forEach((f) => {
