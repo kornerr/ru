@@ -83,6 +83,23 @@ fun bankShouldResetCurrencies(c: BankContext): BankContext {
     return c
 }
 
+/* Задать статус загрузки
+ *
+ * Условия:
+ * 1. Получили успешный ответ по валютам
+ */
+@JsExport
+fun bankShouldResetLoading(c: BankContext): BankContext {
+    if (c.recentField == "response") {
+        c.isLoading = false
+        c.recentField = "isLoading"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
 //<!-- Прочие функции -->
 
 fun bankParseCBRDate(raw: String): String {

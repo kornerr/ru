@@ -7,6 +7,7 @@ data class BankContext(
     var cbrDate: String = "",
     var currencies: Array<Currency> = arrayOf(),
     var didLaunch: Boolean = false,
+    var isLoading: Boolean = false,
     var request: NetRequest = NetRequest(),
     var response: NetResponse = NetResponse(),
     var responseError: NetResponse = NetResponse(),
@@ -19,6 +20,8 @@ data class BankContext(
             return currencies as T
         } else if (name == "didLaunch") {
             return didLaunch as T
+        } else if (name == "isLoading") {
+            return isLoading as T
         } else if (name == "request") {
             return request as T
         } else if (name == "response") {
@@ -43,6 +46,8 @@ data class BankContext(
             currencies = value as Array<Currency>
         } else if (name == "didLaunch") {
             didLaunch = value as Boolean
+        } else if (name == "isLoading") {
+            isLoading = value as Boolean
         } else if (name == "request") {
             request = value as NetRequest
         } else if (name == "response") {

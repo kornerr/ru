@@ -7,6 +7,8 @@ function bankCtrl() {
 //<!-- Константы -->
 
 BANK_CBR_DATE_ID = "cbr-dt";
+BANK_CURRENCY_LOADER_ID = "currencyLoader";
+BANK_RATE_LOADER_ID = "rateLoader";
 
 //<!-- Компонент -->
 
@@ -26,6 +28,7 @@ function BankComponent() {
         let oneliners = [ 
             "cbrDate", (c) => { bankDisplayCBRDate(c.cbrDate); },
             "currencies", (c) => { bankDisplayCurrencies(c.currencies); },
+            "isLoading", (c) => { bankHideSpinners(); },
             "request", (c) => { bankLoad(c.request); },
         ];
         KT.registerOneliners(this.ctrl, oneliners);
@@ -42,6 +45,7 @@ function BankComponent() {
             KT.bankShouldLoad,
             KT.bankShouldResetCBRDate,
             KT.bankShouldResetCurrencies,
+            KT.bankShouldResetLoading,
         ].forEach((f) => {
             this.ctrl.registerFunction(f);
         });
@@ -75,6 +79,12 @@ function bankDisplayCurrencies(items) {
             val.innerHTML = item.value;
         }
     }
+}
+
+// Скрыть спиннеры
+function bankHideSpinners() {
+    setUITransparent(BANK_CURRENCY_LOADER_ID, true);
+    setUITransparent(BANK_RATE_LOADER_ID, true);
 }
 
 // Сетевой запрос
