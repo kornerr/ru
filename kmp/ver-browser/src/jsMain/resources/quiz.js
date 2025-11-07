@@ -10,7 +10,6 @@ let QUIZ_HEADER_BG_T = "linear-gradient(rgba(100,100,100,0.6), rgba(100,100,100,
 let QUIZ_HEADER_ID = "quizHeader";
 let QUIZ_IMG_DIR = "img/";
 let QUIZ_NEXT_ID = "quizNext";
-let QUIZ_PHRASES_ID = "quiz-phrases";
 let QUIZ_PHRASES_ITEM_ID_T = "quiz-phrases-%ID%";
 let QUIZ_PHRASES_ITEM_T = `
     <div id='quiz-phrases-%ID%' class='uk-card uk-card-default uk-card-body uk-margin-small-right uk-margin-bottom uk-card-hover quiz-card-cursor quiz-card-padding' onclick='quizCtrl().set("selectedPhraseId", %ID%)'>
@@ -18,6 +17,7 @@ let QUIZ_PHRASES_ITEM_T = `
     </div>
 `;
 let QUIZ_PHRASES_ITEM_TITLE_ID_T = "quiz-phrases-title-%ID%";
+let QUIZ_PHRASES_ITEMS_ID = "quizPhrasesItems";
 let QUIZ_SELECTED_PHRASES_ID = "quiz-selected-phrases";
 let QUIZ_SELECTED_PHRASES_ITEM_T = `
     <div id='quiz-selected-phrases-%ID%' class='uk-card uk-card-default uk-card-body uk-margin-small-right uk-margin-bottom uk-card-hover quiz-card-cursor quiz-card-padding' onclick='quizCtrl().set("deselectedPhraseId", %ID%)'>
@@ -119,7 +119,7 @@ function quizResetNextAdvancing(isAdvancing) {
 }
 
 function quizResetPhrases(items) {
-    let ph = deId(QUIZ_PHRASES_ID);
+    let ph = deId(QUIZ_PHRASES_ITEMS_ID);
     var html = "";
     for (let i in items) {
         let item = items[i];
