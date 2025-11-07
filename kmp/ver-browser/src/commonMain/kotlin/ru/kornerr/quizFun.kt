@@ -104,6 +104,36 @@ fun quizShouldResetCurrentId(c: QuizContext): QuizContext {
     return c
 }
 
+/* Задать видимость деталей
+ *
+ * Условия:
+ * 1. Вопрос с индексом 0
+ * 2. Вопрос с индексом 1
+ */
+@JsExport
+fun quizShouldResetDetailsVisibility(c: QuizContext): QuizContext {
+    if (
+        c.recentField == "currentId" &&
+        c.currentId == 0
+    ) {
+        c.areDetailsVisible = true
+        c.recentField = "areDetailsVisible"
+        return c
+    }
+
+    if (
+        c.recentField == "currentId" &&
+        c.currentId == 1
+    ) {
+        c.areDetailsVisible = false
+        c.recentField = "areDetailsVisible"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
 /* Задать ожидаемую последовательность фраз
  *
  * Условия:
@@ -240,6 +270,36 @@ fun quizShouldResetPhrases(c: QuizContext): QuizContext {
     if (c.recentField == "currentId") {
         c.phrases = c.items[c.currentId].phrases
         c.recentField = "phrases"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
+/* Задать видимость фраз
+ *
+ * Условия:
+ * 1. Вопрос с индексом 0
+ * 2. Вопрос с другим индексом
+ */
+@JsExport
+fun quizShouldResetPhrasesVisibility(c: QuizContext): QuizContext {
+    if (
+        c.recentField == "currentId" &&
+        c.currentId == 0
+    ) {
+        c.arePhrasesVisible = false
+        c.recentField = "arePhrasesVisible"
+        return c
+    }
+
+    if (
+        c.recentField == "currentId" &&
+        c.currentId == 1
+    ) {
+        c.arePhrasesVisible = true
+        c.recentField = "arePhrasesVisible"
         return c
     }
 

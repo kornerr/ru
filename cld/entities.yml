@@ -43,6 +43,8 @@ QuizContext:
     type: context
     fields:
         activeSound: String
+        areDetailsVisible: Bool
+        arePhrasesVisible: Bool
         bgImage: String
         currentId: Int
         deselectedPhraseId: Int

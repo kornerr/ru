@@ -6,10 +6,12 @@ function quizCtrl() {
 
 //<!-- Константы -->
 
+let QUIZ_DETAILS_ID = "quizDetails";
 let QUIZ_HEADER_BG_T = "linear-gradient(rgba(100,100,100,0.6), rgba(100,100,100,0.6)), url('%PATH%') center";
 let QUIZ_HEADER_ID = "quizHeader";
 let QUIZ_IMG_DIR = "img/";
 let QUIZ_NEXT_ID = "quizNext";
+let QUIZ_PHRASES_ID = "quizPhrases";
 let QUIZ_PHRASES_ITEM_ID_T = "quiz-phrases-%ID%";
 let QUIZ_PHRASES_ITEM_T = `
     <div id='quiz-phrases-%ID%' class='uk-card uk-card-default uk-card-body uk-margin-small-right uk-margin-bottom uk-card-hover quiz-card-cursor quiz-card-padding' onclick='quizCtrl().set("selectedPhraseId", %ID%)'>
@@ -51,6 +53,8 @@ function QuizComponent() {
     this.setupEffects = function() {
         let oneliners = [ 
             "activeSound", (c) => { quizPlaySound(c.activeSound) },
+            "areDetailsVisible", (c) => { setUIVisibility(QUIZ_DETAILS_ID, c.areDetailsVisible) },
+            "arePhrasesVisible", (c) => { setUIVisibility(QUIZ_PHRASES_ID, c.arePhrasesVisible) },
             "bgImage", (c) => { quizSetBGImage(c.bgImage) },
             "hasFailure", (c) => { reportFailure(KT.QUIZ_FAILURE_TITLE, KT.QUIZ_FAILURE_MESSAGE) },
             "isNextAdvancing", (c) => { quizResetNextAdvancing(c.isNextAdvancing) },
@@ -77,6 +81,7 @@ function QuizComponent() {
             KT.quizShouldPlaySound,
             KT.quizShouldResetBGImage,
             KT.quizShouldResetCurrentId,
+            KT.quizShouldResetDetailsVisibility,
             KT.quizShouldResetExpectedPhrases,
             KT.quizShouldResetFailure,
             KT.quizShouldResetItems,
@@ -84,6 +89,7 @@ function QuizComponent() {
             KT.quizShouldResetNextAvailability,
             KT.quizShouldResetNextVisibility,
             KT.quizShouldResetPhrases,
+            KT.quizShouldResetPhrasesVisibility,
             KT.quizShouldResetPhraseVisibility,
             KT.quizShouldResetSelectedPhrases,
             KT.quizShouldResetSoundVisibility,
