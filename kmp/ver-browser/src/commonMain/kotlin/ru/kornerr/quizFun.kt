@@ -350,6 +350,36 @@ fun quizShouldResetSelectedPhrases(c: QuizContext): QuizContext {
     return c
 }
 
+/* Задать видимость выбранных фраз
+ *
+ * Условия:
+ * 1. Вопрос с индексом 0
+ * 2. Вопрос с индексом 1
+ */
+@JsExport
+fun quizShouldResetSelectedPhrasesVisibility(c: QuizContext): QuizContext {
+    if (
+        c.recentField == "currentId" &&
+        c.currentId == 0
+    ) {
+        c.areSelectedPhrasesVisible = false
+        c.recentField = "areSelectedPhrasesVisible"
+        return c
+    }
+
+    if (
+        c.recentField == "currentId" &&
+        c.currentId == 1
+    ) {
+        c.areSelectedPhrasesVisible = true
+        c.recentField = "areSelectedPhrasesVisible"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
 /* Задать видимость фразы в списке-источнике
  *
  * Условия:

@@ -20,12 +20,13 @@ let QUIZ_PHRASES_ITEM_T = `
 `;
 let QUIZ_PHRASES_ITEM_TITLE_ID_T = "quiz-phrases-title-%ID%";
 let QUIZ_PHRASES_ITEMS_ID = "quizPhrasesItems";
-let QUIZ_SELECTED_PHRASES_ID = "quiz-selected-phrases";
+let QUIZ_SELECTED_PHRASES_ID = "quizSelectedPhrases";
 let QUIZ_SELECTED_PHRASES_ITEM_T = `
     <div id='quiz-selected-phrases-%ID%' class='uk-card uk-card-default uk-card-body uk-margin-small-right uk-margin-bottom uk-card-hover quiz-card-cursor quiz-card-padding' onclick='quizCtrl().set("deselectedPhraseId", %ID%)'>
         <h3>%PHRASE%</h3>
     </div>
 `;
+let QUIZ_SELECTED_PHRASES_ITEMS_ID = "quizSelectedPhrasesItems";
 let QUIZ_SELECTED_PHRASES_TRANSPARENT_ITEM_T = `
     <div class='uk-card uk-card-body uk-margin-small-right uk-margin-bottom quiz-card-padding no-background'>
         <h3 class="transparentColor">%PHRASE%</h3>
@@ -55,6 +56,7 @@ function QuizComponent() {
             "activeSound", (c) => { quizPlaySound(c.activeSound) },
             "areDetailsVisible", (c) => { setUIVisibility(QUIZ_DETAILS_ID, c.areDetailsVisible) },
             "arePhrasesVisible", (c) => { setUIVisibility(QUIZ_PHRASES_ID, c.arePhrasesVisible) },
+            "areSelectedPhrasesVisible", (c) => { setUIVisibility(QUIZ_SELECTED_PHRASES_ID, c.areSelectedPhrasesVisible) },
             "bgImage", (c) => { quizSetBGImage(c.bgImage) },
             "hasFailure", (c) => { reportFailure(KT.QUIZ_FAILURE_TITLE, KT.QUIZ_FAILURE_MESSAGE) },
             "isNextAdvancing", (c) => { quizResetNextAdvancing(c.isNextAdvancing) },
@@ -92,6 +94,7 @@ function QuizComponent() {
             KT.quizShouldResetPhrasesVisibility,
             KT.quizShouldResetPhraseVisibility,
             KT.quizShouldResetSelectedPhrases,
+            KT.quizShouldResetSelectedPhrasesVisibility,
             KT.quizShouldResetSoundVisibility,
             KT.quizShouldResetSubtitleVisibility,
             KT.quizShouldResetTitle,
@@ -145,7 +148,7 @@ function quizResetPhraseVisibility(p) {
 }
 
 function quizResetSelectedPhrases(items, selectedIds) {
-    let el = deId(QUIZ_SELECTED_PHRASES_ID);
+    let el = deId(QUIZ_SELECTED_PHRASES_ITEMS_ID);
     var html = "";
     for (let i in selectedIds) {
         let id = selectedIds[i];

@@ -26,24 +26,26 @@
     <div id="quizHeader" class="uk-padding-small">
       <!-- Заголовок с текстом для перевода -->
       <div class="uk-container">
-        <h1 class="white-fg uk-heading-large">
+        <h1 class="white-fg uk-heading-large uk-padding uk-padding-remove-left uk-padding-remove-right">
           <a id="quizSound" class="uk-button uk-button-default quiz-inline-button white-fg" onclick='quizCtrl().set("didClickPlaySound", true)'>
             <i class="fa fa-volume-up"></i>
           </a>
           <span id="quizTitle">TODO-Title</span>
         </h1>
-        <h1 id="quizSubtitle" class="white-fg uk-heading uk-width-1-2@s">Для изучения Китайского</h1>
+        <h1 id="quizSubtitle" class="white-fg uk-heading uk-width-1-2@s uk-padding uk-padding-remove-top uk-padding-remove-left uk-padding-remove-right">Для изучения Китайского</h1>
       </div>
 
       <!-- Выбранные фразы -->
-      <div class="uk-container">
-        <div id="quiz-selected-phrases" class="uk-flex uk-flex-wrap uk-padding uk-padding-remove-left uk-padding-remove-right">
+      <div id="quizSelectedPhrases" class="uk-container">
+        <div id="quizSelectedPhrasesItems" class="uk-flex uk-flex-wrap uk-padding uk-padding-remove-left uk-padding-remove-right">
         </div>
       </div>
 
       <!-- Кнопка проверки -->
       <div class="uk-container">
-        <button id="quizNext" class="uk-button uk-button-large uk-align-right white-fg" onclick='quizCtrl().set("didClickNext", true)'>TODO-Next</button>
+        <div class="uk-padding uk-padding-remove-right">
+          <button id="quizNext" class="uk-button uk-button-large uk-align-right white-fg" onclick='quizCtrl().set("didClickNext", true)'>TODO-Next</button>
+        </div>
       </div>
     </div>
 

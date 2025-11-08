@@ -87,6 +87,7 @@ data class QuizContext(
     var activeSound: String = "",
     var areDetailsVisible: Boolean = false,
     var arePhrasesVisible: Boolean = false,
+    var areSelectedPhrasesVisible: Boolean = false,
     var bgImage: String = "",
     var currentId: Int = 0,
     var deselectedPhraseId: Int = 0,
@@ -117,6 +118,8 @@ data class QuizContext(
             return areDetailsVisible as T
         } else if (name == "arePhrasesVisible") {
             return arePhrasesVisible as T
+        } else if (name == "areSelectedPhrasesVisible") {
+            return areSelectedPhrasesVisible as T
         } else if (name == "bgImage") {
             return bgImage as T
         } else if (name == "currentId") {
@@ -177,6 +180,8 @@ data class QuizContext(
             areDetailsVisible = value as Boolean
         } else if (name == "arePhrasesVisible") {
             arePhrasesVisible = value as Boolean
+        } else if (name == "areSelectedPhrasesVisible") {
+            areSelectedPhrasesVisible = value as Boolean
         } else if (name == "bgImage") {
             bgImage = value as String
         } else if (name == "currentId") {

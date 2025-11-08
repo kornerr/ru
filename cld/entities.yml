@@ -45,6 +45,7 @@ QuizContext:
         activeSound: String
         areDetailsVisible: Bool
         arePhrasesVisible: Bool
+        areSelectedPhrasesVisible: Bool
         bgImage: String
         currentId: Int
         deselectedPhraseId: Int
