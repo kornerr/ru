@@ -7,5 +7,3 @@ tmux new-window -n b-js
 
 cd $ROOT_DIR/kmp/ver-browser/src/commonMain/kotlin/ru/kornerr
 tmux new-window -n b-kt
-
-echo "Test-1"
