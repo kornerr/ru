@@ -611,7 +611,7 @@ fun quizItems(): Array<QuizItem> {
             arrayOf(),
             "quiz.start.end.jpg",
             arrayOf(),
-            "Конец ознакомительного фрагмента",
+            "Конец примера",
             "",
         ),
     )

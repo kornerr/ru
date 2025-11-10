@@ -1868,7 +1868,7 @@
     // Inline function 'kotlin.arrayOf' call
     // Inline function 'kotlin.js.unsafeCast' call
     // Inline function 'kotlin.js.asDynamic' call
-    return [tmp_0, tmp_2, tmp_4, tmp_6, tmp_8, new QuizItem(tmp_9, 'quiz.start.end.jpg', tmp$ret$35, '\u041A\u043E\u043D\u0435\u0446 \u043E\u0437\u043D\u0430\u043A\u043E\u043C\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0433\u043E \u0444\u0440\u0430\u0433\u043C\u0435\u043D\u0442\u0430', '')];
+    return [tmp_0, tmp_2, tmp_4, tmp_6, tmp_8, new QuizItem(tmp_9, 'quiz.start.end.jpg', tmp$ret$35, '\u041A\u043E\u043D\u0435\u0446 \u043F\u0440\u0438\u043C\u0435\u0440\u0430', '')];
   }
   function registerOneliners(ctrl, items) {
     var halfCount = items.length / 2 | 0;
