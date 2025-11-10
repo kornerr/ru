@@ -2,8 +2,6 @@ package ru.kornerr
 import kotlin.js.JsExport
 
 //<!-- Константы -->
-  //  exp,
-  //  ph
 
 @JsExport val QUIZ_FAILURE_MESSAGE = "Давай попробуем ещё раз!"
 @JsExport val QUIZ_FAILURE_TITLE = "Чуть-чуть мимо"
@@ -527,7 +525,7 @@ fun quizItems(): Array<QuizItem> {
     return arrayOf(
         QuizItem(
             arrayOf(),
-            "quiz.00.jpg",
+            "quiz.start.end.jpg",
             arrayOf(),
             "Пример тренажёра",
             "",
@@ -611,7 +609,7 @@ fun quizItems(): Array<QuizItem> {
 
         QuizItem(
             arrayOf(),
-            "quiz.05.jpg",
+            "quiz.start.end.jpg",
             arrayOf(),
             "Конец ознакомительного фрагмента",
             "",
