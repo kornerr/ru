@@ -281,7 +281,7 @@
       // Inline function 'kotlin.js.asDynamic' call
       BANK_CURRENCY_FLAGS = ['\uD83C\uDDE6\uD83C\uDDEA', '\uD83C\uDDE7\uD83C\uDDF7', '\uD83C\uDDE8\uD83C\uDDF3', '\uD83C\uDDEA\uD83C\uDDEC', '\uD83C\uDDEA\uD83C\uDDF9', '\uD83C\uDDEE\uD83C\uDDE9', '\uD83C\uDDEE\uD83C\uDDF3', '\uD83C\uDDEE\uD83C\uDDF7', '\uD83C\uDDFF\uD83C\uDDE6'];
       BANK_CURRENCY_DELIMITER = '<\/Valute>';
-      BANK_CURRENCY_URL = 'https://kornerr.ru/cbr.xml';
+      BANK_CURRENCY_URL = 'https://kornerr.ru/cbr/cur.xml';
     }
   }
   function BankContext(cbrDate, currencies, didLaunch, isLoading, request, response, responseError, recentField) {

@@ -28,7 +28,7 @@ val BANK_CURRENCY_FLAGS = arrayOf(
   "🇿🇦",
 )
 val BANK_CURRENCY_DELIMITER = "</Valute>"
-val BANK_CURRENCY_URL = "https://kornerr.ru/cbr.xml"
+val BANK_CURRENCY_URL = "https://kornerr.ru/cbr/cur.xml"
 
 //<!-- Шуды -->
 
