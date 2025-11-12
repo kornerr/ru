@@ -3,13 +3,14 @@ version: 1
 kotlin: package ru.kornerr
 kotlin: import kotlin.js.JsExport
 
-AppContext:
+BankContext:
     prefix-kotlin: @JsExport
     type: context
     fields:
         cbrDate: String
         currencies: [Currency]
         didLaunch: Bool
+        isLoading: Bool
         request: NetRequest
         response: NetResponse
         responseError: NetResponse
@@ -36,3 +37,50 @@ NetResponse:
     fields:
         contents: String
         url: String
+
+QuizContext:
+    prefix-kotlin: @JsExport
+    type: context
+    fields:
+        activeSound: String
+        areDetailsVisible: Bool
+        arePhrasesVisible: Bool
+        areSelectedPhrasesVisible: Bool
+        bgImage: String
+        currentId: Int
+        deselectedPhraseId: Int
+        didClickNext: Bool
+        didClickPlaySound: Bool
+        didClickValidate: Bool
+        didLaunch: Bool
+        expectedPhrases: [Int]
+        hasFailure: Bool
+        isNextAdvancing: Bool
+        isNextAvailable: Bool
+        isNextVisible: Bool
+        isSoundVisible: Bool
+        isSubtitleVisible: Bool
+        isValid: Bool
+        items: [QuizItem]
+        phrases: [String]
+        phraseVisibility: QuizPhraseVisibility
+        selectedPhraseId: Int
+        selectedPhrases: [Int]
+        title: String
+
+QuizItem:
+    prefix-kotlin: @JsExport
+    type: struct
+    fields:
+        expected: [Int]
+        img: String
+        phrases: [String]
+        sentence: String
+        snd: String
+
+QuizPhraseVisibility:
+    prefix-kotlin: @JsExport
+    type: struct
+    fields:
+        id: Int
+        isVisible: Bool

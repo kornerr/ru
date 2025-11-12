@@ -3,9 +3,9 @@ import kotlin.js.JsExport
 
 //<!-- Константы -->
 
-val APP_CBR_DATE_DELIMITER_LEFT = "Date=\""
-val APP_CBR_DATE_DELIMITER_RIGHT = "\" name="
-val APP_CURRENCY_CODES = arrayOf(
+val BANK_CBR_DATE_DELIMITER_LEFT = "Date=\""
+val BANK_CBR_DATE_DELIMITER_RIGHT = "\" name="
+val BANK_CURRENCY_CODES = arrayOf(
   "AED",
   "BRL",
   "CNY",
@@ -16,7 +16,7 @@ val APP_CURRENCY_CODES = arrayOf(
   "IRR",
   "ZAR",
 )
-val APP_CURRENCY_FLAGS = arrayOf(
+val BANK_CURRENCY_FLAGS = arrayOf(
   "🇦🇪",
   "🇧🇷",
   "🇨🇳",
@@ -27,8 +27,8 @@ val APP_CURRENCY_FLAGS = arrayOf(
   "🇮🇷",
   "🇿🇦",
 )
-val APP_CURRENCY_DELIMITER = "</Valute>"
-val APP_CURRENCY_URL = "https://kornerr.ru/cbr.xml"
+val BANK_CURRENCY_DELIMITER = "</Valute>"
+val BANK_CURRENCY_URL = "https://kornerr.ru/cbr/cur.xml"
 
 //<!-- Шуды -->
 
@@ -38,9 +38,9 @@ val APP_CURRENCY_URL = "https://kornerr.ru/cbr.xml"
  * 1. Запустили компоненту
  */
 @JsExport
-fun appShouldLoad(c: AppContext): AppContext {
+fun bankShouldLoad(c: BankContext): BankContext {
     if (c.recentField == "didLaunch") {
-        c.request = NetRequest("", "GET", APP_CURRENCY_URL)
+        c.request = NetRequest("", "GET", BANK_CURRENCY_URL)
         c.recentField = "request"
         return c
     }
@@ -55,9 +55,9 @@ fun appShouldLoad(c: AppContext): AppContext {
  * 1. Получили успешный ответ по валютам
  */
 @JsExport
-fun appShouldResetCBRDate(c: AppContext): AppContext {
+fun bankShouldResetCBRDate(c: BankContext): BankContext {
     if (c.recentField == "response") {
-        c.cbrDate = appParseCBRDate(c.response.contents)
+        c.cbrDate = bankParseCBRDate(c.response.contents)
         c.recentField = "cbrDate"
         return c
     }
@@ -72,10 +72,27 @@ fun appShouldResetCBRDate(c: AppContext): AppContext {
  * 1. Получили успешный ответ по валютам
  */
 @JsExport
-fun appShouldResetCurrencies(c: AppContext): AppContext {
+fun bankShouldResetCurrencies(c: BankContext): BankContext {
     if (c.recentField == "response") {
-        c.currencies = appParseCurrencies(c.response.contents)
+        c.currencies = bankParseCurrencies(c.response.contents)
         c.recentField = "currencies"
+        return c
+    }
+
+    c.recentField = "none"
+    return c
+}
+
+/* Задать статус загрузки
+ *
+ * Условия:
+ * 1. Получили успешный ответ по валютам
+ */
+@JsExport
+fun bankShouldResetLoading(c: BankContext): BankContext {
+    if (c.recentField == "response") {
+        c.isLoading = false
+        c.recentField = "isLoading"
         return c
     }
 
@@ -85,25 +102,25 @@ fun appShouldResetCurrencies(c: AppContext): AppContext {
 
 //<!-- Прочие функции -->
 
-fun appParseCBRDate(raw: String): String {
-    val parts = raw.split(APP_CBR_DATE_DELIMITER_LEFT)
-    val subparts = parts[1].split(APP_CBR_DATE_DELIMITER_RIGHT)
+fun bankParseCBRDate(raw: String): String {
+    val parts = raw.split(BANK_CBR_DATE_DELIMITER_LEFT)
+    val subparts = parts[1].split(BANK_CBR_DATE_DELIMITER_RIGHT)
     return subparts[0]
 }
 
-fun appParseCurrencies(raw: String): Array<Currency> {
+fun bankParseCurrencies(raw: String): Array<Currency> {
     var items = arrayOf<Currency>()
-    val lines = raw.split(APP_CURRENCY_DELIMITER);
-    for (i in APP_CURRENCY_CODES.indices) {
-        val code = APP_CURRENCY_CODES[i]
-        val flag = APP_CURRENCY_FLAGS[i]
-        val value = appParseCurrencyValue(lines, code)
+    val lines = raw.split(BANK_CURRENCY_DELIMITER);
+    for (i in BANK_CURRENCY_CODES.indices) {
+        val code = BANK_CURRENCY_CODES[i]
+        val flag = BANK_CURRENCY_FLAGS[i]
+        val value = bankParseCurrencyValue(lines, code)
         items += Currency(code, flag, value)
     }
     return items
 }
 
-fun appParseCurrencyValue(
+fun bankParseCurrencyValue(
     lines: List<String>,
     code: String
 ): String {

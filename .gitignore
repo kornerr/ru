@@ -1,6 +1,5 @@
 .DS_Store
 .gradle
 build
-dist
 dist-*tar
 yarn.lock

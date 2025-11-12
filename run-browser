@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 SCRIPT_DIR=$(cd "$(dirname "$0")" ; pwd -P)
 BUILD_DIR=$SCRIPT_DIR/kmp/build/js/packages/kornerr-ver-browser/kotlin
 DIST_DIR=$SCRIPT_DIR/dist
@@ -10,6 +10,7 @@ if [ "$REYARN" == "1" ]; then
 fi
 cd $SCRIPT_DIR/kmp && ./gradlew jsBrowserDistribution
 
+rm -fR $DIST_DIR
 mkdir -p $DIST_DIR
 cp -R $BUILD_DIR/* $DIST_DIR
 rm $DIST_DIR/*map

@@ -1,0 +1,46 @@
+.highlight-article-digit {
+  background-color: #666;
+  color: white;
+  padding-right: 1em;
+}
+
+.no-shadow {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.no-background {
+  background-color: transparent;
+}
+
+.transparentColor {
+  color: transparent;
+}
+
+.white-fg:not(:disabled) {
+  color: white;
+}
+.white-fg:not(:disabled):hover {
+  color: white;
+}
+
+.action-blue-fg {
+  color: #0f7ae5;
+}
+
+.linkNoDecor, .linkNoDecor:hover {
+  text-decoration: none;
+}
+
+.quiz-card-cursor:not(:disabled) {
+  cursor: pointer;
+}
+
+.quiz-card-padding {
+  padding: 15px 15px;
+}
+
+.quiz-inline-button {
+  font-size: unset;
+  line-height: unset;
+  vertical-align: unset;
+}
