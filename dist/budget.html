@@ -21,45 +21,32 @@
         <table class="uk-table uk-table-divider uk-table-middle">
           <thead>
             <tr>
-              <th>Key</th>
-              <th>Value</th>
+              <th>Ключ</th>
+              <th>Значение</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Date:</td>
+              <td>Дата:</td>
               <td>
                 <input class="uk-input uk-form-width-small" type="text" oninput='budgetCtrl().set("inputDate", this.value);'>
               </td>
             </tr>
             <tr>
-              <td>Spent:</td>
+              <td>Трат:</td>
               <td>
                 <input class="uk-input uk-form-width-small" type="text" oninput='budgetCtrl().set("inputSpent", this.value);'>
               </td>
             </tr>
             <tr>
-              <td>Total:</td>
+              <td>Было до трат:</td>
               <td>
                 <input class="uk-input uk-form-width-small" type="text" oninput='budgetCtrl().set("inputTotal", this.value);'>
               </td>
             </tr>
           </tbody>
         </table>
-        <form onsubmit="return false;">
-          <div class="uk-margin-small">
-            <span id="budgetDate">TODO-Date</span><span>: </span>
-            <input class="uk-input uk-form-width-small" type="text" oninput='budgetCtrl().set("inputDate", this.value);'>
-          </div>
-          <div class="uk-margin-small">
-            <span id="budgetYesterdaySum">TODO-YesterdaySum</span><span>: </span>
-            <input class="uk-input uk-form-width-small" type="text" oninput='budgetCtrl().set("inputYesterdaySum", this.value);'>
-          </div>
-          <div class="uk-margin-small">
-            <span id="budgetYesterdayTotal">TODO-YesterdayTotal</span><span>: </span>
-            <input class="uk-input uk-form-width-small" type="text" oninput='budgetCtrl().set("inputYesterdayTotal", this.value);'>
-          </div>
-        </form>
+        <p id="budgetResult"></p>
       </div>
     </div>
     <script src="other.js"></script>
