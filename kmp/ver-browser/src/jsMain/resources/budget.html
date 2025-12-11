@@ -27,27 +27,22 @@
         <table class="uk-table uk-table-divider uk-table-middle">
           <thead>
             <tr>
-              <th>№</th>
-              <th>Unread</th>
-              <th>Ava, Name</th>
               <th>Date</th>
-              <th>Go</th>
+              <th>Spent</th>
+              <th>Prev. total</th>
             </tr>
           </thead>
-          <tbody id="chatChatsItems">
+          <tbody>
             <tr>
-              <td>1</td>
-              <td><span uk-icon="check"></span></td>
-              <td><span uk-icon="users"></span> Once upon a time</td>
-              <td>14:09</td>
-              <td>TODO-btn</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td><span class="uk-badge">35</span></td>
-              <td><span uk-icon="user"></span> Mobile user1</td>
-              <td>14:00</td>
-              <td>TODO-btn</td>
+              <td>
+                <input class="uk-input uk-form-width-small" type="text" oninput='budgetCtrl().set("inputDate", this.value);'>
+              </td>
+              <td>
+                <input class="uk-input uk-form-width-small" type="text" oninput='budgetCtrl().set("inputSpent", this.value);'>
+              </td>
+              <td>
+                <input class="uk-input uk-form-width-small" type="text" oninput='budgetCtrl().set("inputTotal", this.value);'>
+              </td>
             </tr>
           </tbody>
         </table>
