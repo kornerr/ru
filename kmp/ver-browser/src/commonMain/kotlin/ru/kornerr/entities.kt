@@ -60,6 +60,53 @@ data class BankContext(
 
 
 @JsExport
+data class BudgetContext(
+    var didLaunch: Boolean = false,
+    var inputDate: String = "",
+    var inputMorningBalance: String = "",
+    var inputSpent: String = "",
+    var result: String = "",
+    override var recentField: String = "",
+): CLDContext {
+    override fun <T> field(name: String): T {
+        if (name == "didLaunch") {
+            return didLaunch as T
+        } else if (name == "inputDate") {
+            return inputDate as T
+        } else if (name == "inputMorningBalance") {
+            return inputMorningBalance as T
+        } else if (name == "inputSpent") {
+            return inputSpent as T
+        } else if (name == "result") {
+            return result as T
+        }
+        return "unknown-field-name" as T
+    }
+
+    override fun selfCopy(): CLDContext {
+        return this.copy()
+    }
+
+    override fun setField(
+        name: String,
+        value: Any?
+    ) {
+        if (name == "didLaunch") {
+            didLaunch = value as Boolean
+        } else if (name == "inputDate") {
+            inputDate = value as String
+        } else if (name == "inputMorningBalance") {
+            inputMorningBalance = value as String
+        } else if (name == "inputSpent") {
+            inputSpent = value as String
+        } else if (name == "result") {
+            result = value as String
+        }
+    }
+}
+
+
+@JsExport
 data class Currency(
     var code: String = "",
     var flag: String = "",
