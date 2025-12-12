@@ -16,38 +16,61 @@
     <title>kornerr: budget</title>
   </head>
   <body>
-    <div>
-      <div class="uk-container">
-        <table class="uk-table uk-table-divider uk-table-middle">
-          <thead>
-            <tr>
-              <th>Ключ</th>
-              <th>Значение</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Дата:</td>
-              <td>
-                <input class="uk-input uk-form-width-small" type="text" oninput='budgetCtrl().set("inputDate", this.value);'>
-              </td>
-            </tr>
-            <tr>
-              <td>Трат:</td>
-              <td>
-                <input class="uk-input uk-form-width-small" type="text" oninput='budgetCtrl().set("inputSpent", this.value);'>
-              </td>
-            </tr>
-            <tr>
-              <td>Было до трат:</td>
-              <td>
-                <input class="uk-input uk-form-width-small" type="text" oninput='budgetCtrl().set("inputTotal", this.value);'>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <p id="budgetResult"></p>
-      </div>
+    <div class="uk-container">
+      <table class="uk-table uk-table-divider uk-table-middle">
+        <thead>
+          <tr>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputDate", this.value);' type="text" placeholder="Дата">
+            </td>
+            <td>
+              <input class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputSpent", this.value);' type="text" placeholder="Траты">
+            </td>
+            <td>
+              <input class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputMorningBalance", this.value);' type="text" placeholder="Баланс утр.">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="uk-container">
+      <table class="uk-table uk-table-divider uk-table-middle">
+        <thead>
+          <tr>
+            <th>Ключ</th>
+            <th>Значение</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Дата:</td>
+            <td>
+              <input class="uk-input uk-form-width-small" type="text" oninput='budgetCtrl().set("inputDate", this.value);'>
+            </td>
+          </tr>
+          <tr>
+            <td>Трат:</td>
+            <td>
+              <input class="uk-input uk-form-width-small" type="text" oninput='budgetCtrl().set("inputSpent", this.value);'>
+            </td>
+          </tr>
+          <tr>
+            <td>б. Баланс:</td>
+            <td>
+              <input class="uk-input uk-form-width-small" type="text" oninput='budgetCtrl().set("inputTotal", this.value);'>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p id="budgetResult"></p>
     </div>
     <script src="other.js"></script>
     <script src="budget.js"></script>
