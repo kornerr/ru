@@ -19,6 +19,7 @@ BudgetContext:
     prefix-kotlin: @JsExport
     type: context
     fields:
+        defaultDate: String
         didLaunch: Bool
         inputDate: String
         inputMorningBalance: String

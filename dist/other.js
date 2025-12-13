@@ -63,6 +63,14 @@ function setUICardHoverPermission(id, isPermitted) {
     }
 }
 
+// Задать значение полю ввода
+function setUIInputValue(id, value) {
+    let el = deId(id);
+    if (el != null) {
+        el.value = value;
+    }
+}
+
 // Задать заглушённый фон элементу
 function setUIMuted(id, isMuted) {
     let el = deId(id);

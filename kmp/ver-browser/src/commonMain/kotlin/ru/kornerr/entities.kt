@@ -61,6 +61,7 @@ data class BankContext(
 
 @JsExport
 data class BudgetContext(
+    var defaultDate: String = "",
     var didLaunch: Boolean = false,
     var inputDate: String = "",
     var inputMorningBalance: String = "",
@@ -69,7 +70,9 @@ data class BudgetContext(
     override var recentField: String = "",
 ): CLDContext {
     override fun <T> field(name: String): T {
-        if (name == "didLaunch") {
+        if (name == "defaultDate") {
+            return defaultDate as T
+        } else if (name == "didLaunch") {
             return didLaunch as T
         } else if (name == "inputDate") {
             return inputDate as T
@@ -91,7 +94,9 @@ data class BudgetContext(
         name: String,
         value: Any?
     ) {
-        if (name == "didLaunch") {
+        if (name == "defaultDate") {
+            defaultDate = value as String
+        } else if (name == "didLaunch") {
             didLaunch = value as Boolean
         } else if (name == "inputDate") {
             inputDate = value as String

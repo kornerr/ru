@@ -6,6 +6,7 @@ function budgetCtrl() {
 
 //<!-- Константы -->
 
+BUDGET_DATE_ID = "budgetDate";
 BUDGET_RESULT_ID = "budgetResult";
 
 //<!-- Компонент -->
@@ -24,6 +25,7 @@ function BudgetComponent() {
 
     this.setupEffects = function() {
         let oneliners = [ 
+            "defaultDate", (c) => { setUIInputValue(BUDGET_DATE_ID, c.defaultDate); },
             "result", (c) => { budgetDisplayResult(c.result); },
         ];
         KT.registerOneliners(this.ctrl, oneliners);
@@ -37,6 +39,7 @@ function BudgetComponent() {
 
     this.setupShoulds = function() {
         [
+            budgetShouldResetDefaultDate,
             KT.budgetShouldResetResult,
         ].forEach((f) => {
             this.ctrl.registerFunction(f);
@@ -44,6 +47,20 @@ function BudgetComponent() {
     };
     
     this._construct();
+}
+
+//<!-- Шуды на стороне JS (исключения) -->
+
+function budgetShouldResetDefaultDate(c) {
+    if (c.recentField == "didLaunch") {
+        c.defaultDate = "TODO-dt";
+        c.recentField = "defaultDate";
+        /**/console.log("ИГР budgetSRDD");
+        return c;
+    }
+
+    c.recentField = "none";
+    return c;
 }
 
 //<!-- Эффекты -->
