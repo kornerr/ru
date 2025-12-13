@@ -49,7 +49,7 @@ function BudgetComponent() {
     this._construct();
 }
 
-//<!-- Шуды на стороне JS (исключения) -->
+//<!-- Шуды на стороне JS (исключительно для зависимостей на стороне JS) -->
 
 function budgetShouldResetDefaultDate(c) {
     if (c.recentField == "didLaunch") {

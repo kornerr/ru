@@ -17,8 +17,7 @@
     <title>kornerr: budget</title>
   </head>
   <body>
-    <div class="uk-container">
-      <table class="uk-table uk-table-divider uk-table-middle">
+      <table class="uk-table uk-table-middle">
         <tbody>
           <tr>
             <td>
@@ -29,7 +28,7 @@
           </tr>
           <tr>
             <td>
-              <input class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputMorningBalance", this.value);' type="text" placeholder="Баланс (утро)">
+              <input class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputMorningBalance", this.value);' type="text" placeholder="Баланс утр.">
             </td>
             <td>
               <input class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputSpent", this.value);' type="text" placeholder="Траты">
@@ -37,8 +36,9 @@
           </tr>
         </tbody>
       </table>
-      <p id="budgetResult"></p>
-    </div>
+      <div class="uk-container">
+        <p id="budgetResult"></p>
+      </div>
     <script src="other.js"></script>
     <script src="budget.js"></script>
   </body>

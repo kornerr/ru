@@ -18,10 +18,11 @@
   var Unit_instance = kotlin_kotlin.$_$.c;
   var ArrayList_init_$Create$ = kotlin_kotlin.$_$.b;
   var initMetadataForClass = kotlin_kotlin.$_$.l;
-  var split = kotlin_kotlin.$_$.r;
+  var split = kotlin_kotlin.$_$.s;
   var contains = kotlin_kotlin.$_$.q;
+  var replace = kotlin_kotlin.$_$.r;
   var VOID = kotlin_kotlin.$_$.a;
-  var THROW_CCE = kotlin_kotlin.$_$.s;
+  var THROW_CCE = kotlin_kotlin.$_$.t;
   var isArray = kotlin_kotlin.$_$.n;
   var toString = kotlin_kotlin.$_$.p;
   var getStringHashCode = kotlin_kotlin.$_$.j;
@@ -63,55 +64,55 @@
     this.context = context;
     var tmp = this;
     // Inline function 'kotlin.collections.mutableListOf' call
-    tmp.e3_1 = ArrayList_init_$Create$();
+    tmp.j3_1 = ArrayList_init_$Create$();
     var tmp_0 = this;
     // Inline function 'kotlin.collections.mutableListOf' call
-    tmp_0.f3_1 = ArrayList_init_$Create$();
+    tmp_0.k3_1 = ArrayList_init_$Create$();
     this.isProcessingQueue = false;
     var tmp_1 = this;
     // Inline function 'kotlin.collections.mutableListOf' call
-    tmp_1.g3_1 = ArrayList_init_$Create$();
+    tmp_1.l3_1 = ArrayList_init_$Create$();
   }
-  protoOf(CLDController).h3 = function (_set____db54di) {
+  protoOf(CLDController).m3 = function (_set____db54di) {
     this.context = _set____db54di;
   };
-  protoOf(CLDController).i3 = function () {
+  protoOf(CLDController).n3 = function () {
     return this.context;
   };
-  protoOf(CLDController).j3 = function (_set____db54di) {
-    this.e3_1 = _set____db54di;
+  protoOf(CLDController).o3 = function (_set____db54di) {
+    this.j3_1 = _set____db54di;
   };
-  protoOf(CLDController).k3 = function () {
-    return this.e3_1;
+  protoOf(CLDController).p3 = function () {
+    return this.j3_1;
   };
-  protoOf(CLDController).l3 = function (_set____db54di) {
-    this.f3_1 = _set____db54di;
+  protoOf(CLDController).q3 = function (_set____db54di) {
+    this.k3_1 = _set____db54di;
   };
-  protoOf(CLDController).m3 = function () {
-    return this.f3_1;
+  protoOf(CLDController).r3 = function () {
+    return this.k3_1;
   };
-  protoOf(CLDController).n3 = function (_set____db54di) {
+  protoOf(CLDController).s3 = function (_set____db54di) {
     this.isProcessingQueue = _set____db54di;
   };
-  protoOf(CLDController).o3 = function () {
+  protoOf(CLDController).t3 = function () {
     return this.isProcessingQueue;
   };
-  protoOf(CLDController).p3 = function (_set____db54di) {
-    this.g3_1 = _set____db54di;
+  protoOf(CLDController).u3 = function (_set____db54di) {
+    this.l3_1 = _set____db54di;
   };
-  protoOf(CLDController).q3 = function () {
-    return this.g3_1;
+  protoOf(CLDController).v3 = function () {
+    return this.l3_1;
   };
   protoOf(CLDController).executeFunctions = function () {
-    var c = this.g3_1.j1(0);
-    this.context.c3(c.recentField);
+    var c = this.l3_1.j1(0);
+    this.context.h3(c.recentField);
     this.context.setField(c.recentField, c.fieldAny(c.recentField));
-    var _iterator__ex2g4s = this.f3_1.e();
+    var _iterator__ex2g4s = this.k3_1.e();
     while (_iterator__ex2g4s.f()) {
       var f = _iterator__ex2g4s.g();
       var ctx = f(this.context.selfCopy());
       if (!(ctx.recentField === 'none')) {
-        this.g3_1.c1(ctx);
+        this.l3_1.c1(ctx);
       }
     }
     this.reportContext();
@@ -121,23 +122,23 @@
       return Unit_instance;
     }
     this.isProcessingQueue = true;
-    while (this.g3_1.h() > 0) {
+    while (this.l3_1.h() > 0) {
       this.executeFunctions();
     }
     this.isProcessingQueue = false;
   };
   protoOf(CLDController).registerCallback = function (cb) {
-    this.e3_1.c1(cb);
+    this.j3_1.c1(cb);
   };
   protoOf(CLDController).registerFieldCallback = function (fieldName, cb) {
-    var tmp = this.e3_1;
+    var tmp = this.j3_1;
     tmp.c1(CLDController$registerFieldCallback$lambda(fieldName, cb));
   };
   protoOf(CLDController).registerFunction = function (f) {
-    this.f3_1.c1(f);
+    this.k3_1.c1(f);
   };
   protoOf(CLDController).reportContext = function () {
-    var _iterator__ex2g4s = this.e3_1.e();
+    var _iterator__ex2g4s = this.j3_1.e();
     while (_iterator__ex2g4s.f()) {
       var cb = _iterator__ex2g4s.g();
       cb(this.context);
@@ -146,8 +147,8 @@
   protoOf(CLDController).set = function (fieldName, value) {
     var c = this.context.selfCopy();
     c.setField(fieldName, value);
-    c.c3(fieldName);
-    this.g3_1.c1(c);
+    c.h3(fieldName);
+    this.l3_1.c1(c);
     this.processQueue();
   };
   function get_BANK_CBR_DATE_DELIMITER_LEFT() {
@@ -182,42 +183,42 @@
   var BANK_CURRENCY_URL;
   function bankShouldLoad(c) {
     _init_properties_bankFun_kt__15q51t();
-    if (c.r3_1 === 'didLaunch') {
+    if (c.w3_1 === 'didLaunch') {
       c.request = new NetRequest('', 'GET', get_BANK_CURRENCY_URL());
-      c.r3_1 = 'request';
+      c.w3_1 = 'request';
       return c;
     }
-    c.r3_1 = 'none';
+    c.w3_1 = 'none';
     return c;
   }
   function bankShouldResetCBRDate(c) {
     _init_properties_bankFun_kt__15q51t();
-    if (c.r3_1 === 'response') {
+    if (c.w3_1 === 'response') {
       c.cbrDate = bankParseCBRDate(c.response.contents);
-      c.r3_1 = 'cbrDate';
+      c.w3_1 = 'cbrDate';
       return c;
     }
-    c.r3_1 = 'none';
+    c.w3_1 = 'none';
     return c;
   }
   function bankShouldResetCurrencies(c) {
     _init_properties_bankFun_kt__15q51t();
-    if (c.r3_1 === 'response') {
+    if (c.w3_1 === 'response') {
       c.currencies = bankParseCurrencies(c.response.contents);
-      c.r3_1 = 'currencies';
+      c.w3_1 = 'currencies';
       return c;
     }
-    c.r3_1 = 'none';
+    c.w3_1 = 'none';
     return c;
   }
   function bankShouldResetLoading(c) {
     _init_properties_bankFun_kt__15q51t();
-    if (c.r3_1 === 'response') {
+    if (c.w3_1 === 'response') {
       c.isLoading = false;
-      c.r3_1 = 'isLoading';
+      c.w3_1 = 'isLoading';
       return c;
     }
-    c.r3_1 = 'none';
+    c.w3_1 = 'none';
     return c;
   }
   function bankParseCBRDate(raw) {
@@ -285,14 +286,18 @@
       BANK_CURRENCY_URL = 'https://kornerr.ru/cbr/cur.xml';
     }
   }
+  var BUDGET_RESULT_DATE_T;
   function budgetShouldResetResult(c) {
-    if (c.s3_1 === 'didLaunch') {
-      c.result = 'TODO-result';
-      c.s3_1 = 'result';
+    if (c.x3_1 === 'defaultDate') {
+      c.result = budgetResult(c.defaultDate);
+      c.x3_1 = 'result';
       return c;
     }
-    c.s3_1 = 'none';
+    c.x3_1 = 'none';
     return c;
+  }
+  function budgetResult(defaultDate) {
+    return replace(BUDGET_RESULT_DATE_T, '%DATE%', defaultDate);
   }
   function BankContext(cbrDate, currencies, didLaunch, isLoading, request, response, responseError, recentField) {
     cbrDate = cbrDate === VOID ? '' : cbrDate;
@@ -319,55 +324,55 @@
     this.request = request;
     this.response = response;
     this.responseError = responseError;
-    this.r3_1 = recentField;
+    this.w3_1 = recentField;
   }
-  protoOf(BankContext).t3 = function (_set____db54di) {
+  protoOf(BankContext).y3 = function (_set____db54di) {
     this.cbrDate = _set____db54di;
   };
-  protoOf(BankContext).u3 = function () {
+  protoOf(BankContext).z3 = function () {
     return this.cbrDate;
   };
-  protoOf(BankContext).v3 = function (_set____db54di) {
+  protoOf(BankContext).a4 = function (_set____db54di) {
     this.currencies = _set____db54di;
   };
-  protoOf(BankContext).w3 = function () {
+  protoOf(BankContext).b4 = function () {
     return this.currencies;
   };
-  protoOf(BankContext).x3 = function (_set____db54di) {
+  protoOf(BankContext).c4 = function (_set____db54di) {
     this.didLaunch = _set____db54di;
   };
-  protoOf(BankContext).y3 = function () {
+  protoOf(BankContext).d4 = function () {
     return this.didLaunch;
   };
-  protoOf(BankContext).z3 = function (_set____db54di) {
+  protoOf(BankContext).e4 = function (_set____db54di) {
     this.isLoading = _set____db54di;
   };
-  protoOf(BankContext).a4 = function () {
+  protoOf(BankContext).f4 = function () {
     return this.isLoading;
   };
-  protoOf(BankContext).b4 = function (_set____db54di) {
+  protoOf(BankContext).g4 = function (_set____db54di) {
     this.request = _set____db54di;
   };
-  protoOf(BankContext).c4 = function () {
+  protoOf(BankContext).h4 = function () {
     return this.request;
   };
-  protoOf(BankContext).d4 = function (_set____db54di) {
+  protoOf(BankContext).i4 = function (_set____db54di) {
     this.response = _set____db54di;
   };
-  protoOf(BankContext).e4 = function () {
+  protoOf(BankContext).j4 = function () {
     return this.response;
   };
-  protoOf(BankContext).f4 = function (_set____db54di) {
+  protoOf(BankContext).k4 = function (_set____db54di) {
     this.responseError = _set____db54di;
   };
-  protoOf(BankContext).g4 = function () {
+  protoOf(BankContext).l4 = function () {
     return this.responseError;
   };
-  protoOf(BankContext).c3 = function (_set____db54di) {
-    this.r3_1 = _set____db54di;
+  protoOf(BankContext).h3 = function (_set____db54di) {
+    this.w3_1 = _set____db54di;
   };
-  protoOf(BankContext).d3 = function () {
-    return this.r3_1;
+  protoOf(BankContext).i3 = function () {
+    return this.w3_1;
   };
   protoOf(BankContext).field = function (name) {
     switch (name) {
@@ -430,31 +435,31 @@
         break;
     }
   };
-  protoOf(BankContext).a3 = function () {
+  protoOf(BankContext).f3 = function () {
     return this.cbrDate;
   };
-  protoOf(BankContext).b3 = function () {
+  protoOf(BankContext).g3 = function () {
     return this.currencies;
   };
-  protoOf(BankContext).h4 = function () {
+  protoOf(BankContext).m4 = function () {
     return this.didLaunch;
   };
-  protoOf(BankContext).i4 = function () {
+  protoOf(BankContext).n4 = function () {
     return this.isLoading;
   };
-  protoOf(BankContext).j4 = function () {
+  protoOf(BankContext).o4 = function () {
     return this.request;
   };
-  protoOf(BankContext).k4 = function () {
+  protoOf(BankContext).p4 = function () {
     return this.response;
   };
-  protoOf(BankContext).l4 = function () {
+  protoOf(BankContext).q4 = function () {
     return this.responseError;
   };
-  protoOf(BankContext).m4 = function () {
-    return this.r3_1;
+  protoOf(BankContext).r4 = function () {
+    return this.w3_1;
   };
-  protoOf(BankContext).n4 = function (cbrDate, currencies, didLaunch, isLoading, request, response, responseError, recentField) {
+  protoOf(BankContext).s4 = function (cbrDate, currencies, didLaunch, isLoading, request, response, responseError, recentField) {
     return new BankContext(cbrDate, currencies, didLaunch, isLoading, request, response, responseError, recentField);
   };
   protoOf(BankContext).copy = function (cbrDate, currencies, didLaunch, isLoading, request, response, responseError, recentField, $super) {
@@ -465,11 +470,11 @@
     request = request === VOID ? this.request : request;
     response = response === VOID ? this.response : response;
     responseError = responseError === VOID ? this.responseError : responseError;
-    recentField = recentField === VOID ? this.r3_1 : recentField;
-    return $super === VOID ? this.n4(cbrDate, currencies, didLaunch, isLoading, request, response, responseError, recentField) : $super.n4.call(this, cbrDate, currencies, didLaunch, isLoading, request, response, responseError, recentField);
+    recentField = recentField === VOID ? this.w3_1 : recentField;
+    return $super === VOID ? this.s4(cbrDate, currencies, didLaunch, isLoading, request, response, responseError, recentField) : $super.s4.call(this, cbrDate, currencies, didLaunch, isLoading, request, response, responseError, recentField);
   };
   protoOf(BankContext).toString = function () {
-    return 'BankContext(cbrDate=' + this.cbrDate + ', currencies=' + toString(this.currencies) + ', didLaunch=' + this.didLaunch + ', isLoading=' + this.isLoading + ', request=' + this.request.toString() + ', response=' + this.response.toString() + ', responseError=' + this.responseError.toString() + ', recentField=' + this.r3_1 + ')';
+    return 'BankContext(cbrDate=' + this.cbrDate + ', currencies=' + toString(this.currencies) + ', didLaunch=' + this.didLaunch + ', isLoading=' + this.isLoading + ', request=' + this.request.toString() + ', response=' + this.response.toString() + ', responseError=' + this.responseError.toString() + ', recentField=' + this.w3_1 + ')';
   };
   protoOf(BankContext).hashCode = function () {
     var result = getStringHashCode(this.cbrDate);
@@ -479,7 +484,7 @@
     result = imul(result, 31) + this.request.hashCode() | 0;
     result = imul(result, 31) + this.response.hashCode() | 0;
     result = imul(result, 31) + this.responseError.hashCode() | 0;
-    result = imul(result, 31) + getStringHashCode(this.r3_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.w3_1) | 0;
     return result;
   };
   protoOf(BankContext).equals = function (other) {
@@ -502,7 +507,7 @@
       return false;
     if (!this.responseError.equals(tmp0_other_with_cast.responseError))
       return false;
-    if (!(this.r3_1 === tmp0_other_with_cast.r3_1))
+    if (!(this.w3_1 === tmp0_other_with_cast.w3_1))
       return false;
     return true;
   };
@@ -520,49 +525,49 @@
     this.inputMorningBalance = inputMorningBalance;
     this.inputSpent = inputSpent;
     this.result = result;
-    this.s3_1 = recentField;
+    this.x3_1 = recentField;
   }
-  protoOf(BudgetContext).o4 = function (_set____db54di) {
+  protoOf(BudgetContext).t4 = function (_set____db54di) {
     this.defaultDate = _set____db54di;
   };
-  protoOf(BudgetContext).p4 = function () {
+  protoOf(BudgetContext).u4 = function () {
     return this.defaultDate;
   };
-  protoOf(BudgetContext).x3 = function (_set____db54di) {
+  protoOf(BudgetContext).c4 = function (_set____db54di) {
     this.didLaunch = _set____db54di;
   };
-  protoOf(BudgetContext).y3 = function () {
+  protoOf(BudgetContext).d4 = function () {
     return this.didLaunch;
   };
-  protoOf(BudgetContext).q4 = function (_set____db54di) {
+  protoOf(BudgetContext).v4 = function (_set____db54di) {
     this.inputDate = _set____db54di;
   };
-  protoOf(BudgetContext).r4 = function () {
+  protoOf(BudgetContext).w4 = function () {
     return this.inputDate;
   };
-  protoOf(BudgetContext).s4 = function (_set____db54di) {
+  protoOf(BudgetContext).x4 = function (_set____db54di) {
     this.inputMorningBalance = _set____db54di;
   };
-  protoOf(BudgetContext).t4 = function () {
+  protoOf(BudgetContext).y4 = function () {
     return this.inputMorningBalance;
   };
-  protoOf(BudgetContext).u4 = function (_set____db54di) {
+  protoOf(BudgetContext).z4 = function (_set____db54di) {
     this.inputSpent = _set____db54di;
   };
-  protoOf(BudgetContext).v4 = function () {
+  protoOf(BudgetContext).a5 = function () {
     return this.inputSpent;
   };
-  protoOf(BudgetContext).w4 = function (_set____db54di) {
+  protoOf(BudgetContext).b5 = function (_set____db54di) {
     this.result = _set____db54di;
   };
-  protoOf(BudgetContext).x4 = function () {
+  protoOf(BudgetContext).c5 = function () {
     return this.result;
   };
-  protoOf(BudgetContext).c3 = function (_set____db54di) {
-    this.s3_1 = _set____db54di;
+  protoOf(BudgetContext).h3 = function (_set____db54di) {
+    this.x3_1 = _set____db54di;
   };
-  protoOf(BudgetContext).d3 = function () {
-    return this.s3_1;
+  protoOf(BudgetContext).i3 = function () {
+    return this.x3_1;
   };
   protoOf(BudgetContext).field = function (name) {
     switch (name) {
@@ -618,28 +623,28 @@
         break;
     }
   };
-  protoOf(BudgetContext).a3 = function () {
+  protoOf(BudgetContext).f3 = function () {
     return this.defaultDate;
   };
-  protoOf(BudgetContext).b3 = function () {
+  protoOf(BudgetContext).g3 = function () {
     return this.didLaunch;
   };
-  protoOf(BudgetContext).h4 = function () {
+  protoOf(BudgetContext).m4 = function () {
     return this.inputDate;
   };
-  protoOf(BudgetContext).i4 = function () {
+  protoOf(BudgetContext).n4 = function () {
     return this.inputMorningBalance;
   };
-  protoOf(BudgetContext).j4 = function () {
+  protoOf(BudgetContext).o4 = function () {
     return this.inputSpent;
   };
-  protoOf(BudgetContext).k4 = function () {
+  protoOf(BudgetContext).p4 = function () {
     return this.result;
   };
-  protoOf(BudgetContext).l4 = function () {
-    return this.s3_1;
+  protoOf(BudgetContext).q4 = function () {
+    return this.x3_1;
   };
-  protoOf(BudgetContext).y4 = function (defaultDate, didLaunch, inputDate, inputMorningBalance, inputSpent, result, recentField) {
+  protoOf(BudgetContext).d5 = function (defaultDate, didLaunch, inputDate, inputMorningBalance, inputSpent, result, recentField) {
     return new BudgetContext(defaultDate, didLaunch, inputDate, inputMorningBalance, inputSpent, result, recentField);
   };
   protoOf(BudgetContext).copy = function (defaultDate, didLaunch, inputDate, inputMorningBalance, inputSpent, result, recentField, $super) {
@@ -649,11 +654,11 @@
     inputMorningBalance = inputMorningBalance === VOID ? this.inputMorningBalance : inputMorningBalance;
     inputSpent = inputSpent === VOID ? this.inputSpent : inputSpent;
     result = result === VOID ? this.result : result;
-    recentField = recentField === VOID ? this.s3_1 : recentField;
-    return $super === VOID ? this.y4(defaultDate, didLaunch, inputDate, inputMorningBalance, inputSpent, result, recentField) : $super.y4.call(this, defaultDate, didLaunch, inputDate, inputMorningBalance, inputSpent, result, recentField);
+    recentField = recentField === VOID ? this.x3_1 : recentField;
+    return $super === VOID ? this.d5(defaultDate, didLaunch, inputDate, inputMorningBalance, inputSpent, result, recentField) : $super.d5.call(this, defaultDate, didLaunch, inputDate, inputMorningBalance, inputSpent, result, recentField);
   };
   protoOf(BudgetContext).toString = function () {
-    return 'BudgetContext(defaultDate=' + this.defaultDate + ', didLaunch=' + this.didLaunch + ', inputDate=' + this.inputDate + ', inputMorningBalance=' + this.inputMorningBalance + ', inputSpent=' + this.inputSpent + ', result=' + this.result + ', recentField=' + this.s3_1 + ')';
+    return 'BudgetContext(defaultDate=' + this.defaultDate + ', didLaunch=' + this.didLaunch + ', inputDate=' + this.inputDate + ', inputMorningBalance=' + this.inputMorningBalance + ', inputSpent=' + this.inputSpent + ', result=' + this.result + ', recentField=' + this.x3_1 + ')';
   };
   protoOf(BudgetContext).hashCode = function () {
     var result = getStringHashCode(this.defaultDate);
@@ -662,7 +667,7 @@
     result = imul(result, 31) + getStringHashCode(this.inputMorningBalance) | 0;
     result = imul(result, 31) + getStringHashCode(this.inputSpent) | 0;
     result = imul(result, 31) + getStringHashCode(this.result) | 0;
-    result = imul(result, 31) + getStringHashCode(this.s3_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.x3_1) | 0;
     return result;
   };
   protoOf(BudgetContext).equals = function (other) {
@@ -683,7 +688,7 @@
       return false;
     if (!(this.result === tmp0_other_with_cast.result))
       return false;
-    if (!(this.s3_1 === tmp0_other_with_cast.s3_1))
+    if (!(this.x3_1 === tmp0_other_with_cast.x3_1))
       return false;
     return true;
   };
@@ -695,41 +700,41 @@
     this.flag = flag;
     this.value = value;
   }
-  protoOf(Currency).z4 = function (_set____db54di) {
+  protoOf(Currency).e5 = function (_set____db54di) {
     this.code = _set____db54di;
   };
-  protoOf(Currency).a5 = function () {
+  protoOf(Currency).f5 = function () {
     return this.code;
   };
-  protoOf(Currency).b5 = function (_set____db54di) {
+  protoOf(Currency).g5 = function (_set____db54di) {
     this.flag = _set____db54di;
   };
-  protoOf(Currency).c5 = function () {
+  protoOf(Currency).h5 = function () {
     return this.flag;
   };
-  protoOf(Currency).d5 = function (_set____db54di) {
+  protoOf(Currency).i5 = function (_set____db54di) {
     this.value = _set____db54di;
   };
-  protoOf(Currency).e5 = function () {
+  protoOf(Currency).j5 = function () {
     return this.value;
   };
-  protoOf(Currency).a3 = function () {
+  protoOf(Currency).f3 = function () {
     return this.code;
   };
-  protoOf(Currency).b3 = function () {
+  protoOf(Currency).g3 = function () {
     return this.flag;
   };
-  protoOf(Currency).h4 = function () {
+  protoOf(Currency).m4 = function () {
     return this.value;
   };
-  protoOf(Currency).f5 = function (code, flag, value) {
+  protoOf(Currency).k5 = function (code, flag, value) {
     return new Currency(code, flag, value);
   };
   protoOf(Currency).copy = function (code, flag, value, $super) {
     code = code === VOID ? this.code : code;
     flag = flag === VOID ? this.flag : flag;
     value = value === VOID ? this.value : value;
-    return $super === VOID ? this.f5(code, flag, value) : $super.f5.call(this, code, flag, value);
+    return $super === VOID ? this.k5(code, flag, value) : $super.k5.call(this, code, flag, value);
   };
   protoOf(Currency).toString = function () {
     return 'Currency(code=' + this.code + ', flag=' + this.flag + ', value=' + this.value + ')';
@@ -762,41 +767,41 @@
     this.method = method;
     this.url = url;
   }
-  protoOf(NetRequest).g5 = function (_set____db54di) {
+  protoOf(NetRequest).l5 = function (_set____db54di) {
     this.body = _set____db54di;
   };
-  protoOf(NetRequest).h5 = function () {
+  protoOf(NetRequest).m5 = function () {
     return this.body;
   };
-  protoOf(NetRequest).i5 = function (_set____db54di) {
+  protoOf(NetRequest).n5 = function (_set____db54di) {
     this.method = _set____db54di;
   };
-  protoOf(NetRequest).j5 = function () {
+  protoOf(NetRequest).o5 = function () {
     return this.method;
   };
-  protoOf(NetRequest).k5 = function (_set____db54di) {
+  protoOf(NetRequest).p5 = function (_set____db54di) {
     this.url = _set____db54di;
   };
-  protoOf(NetRequest).l5 = function () {
+  protoOf(NetRequest).q5 = function () {
     return this.url;
   };
-  protoOf(NetRequest).a3 = function () {
+  protoOf(NetRequest).f3 = function () {
     return this.body;
   };
-  protoOf(NetRequest).b3 = function () {
+  protoOf(NetRequest).g3 = function () {
     return this.method;
   };
-  protoOf(NetRequest).h4 = function () {
+  protoOf(NetRequest).m4 = function () {
     return this.url;
   };
-  protoOf(NetRequest).f5 = function (body, method, url) {
+  protoOf(NetRequest).k5 = function (body, method, url) {
     return new NetRequest(body, method, url);
   };
   protoOf(NetRequest).copy = function (body, method, url, $super) {
     body = body === VOID ? this.body : body;
     method = method === VOID ? this.method : method;
     url = url === VOID ? this.url : url;
-    return $super === VOID ? this.f5(body, method, url) : $super.f5.call(this, body, method, url);
+    return $super === VOID ? this.k5(body, method, url) : $super.k5.call(this, body, method, url);
   };
   protoOf(NetRequest).toString = function () {
     return 'NetRequest(body=' + this.body + ', method=' + this.method + ', url=' + this.url + ')';
@@ -827,31 +832,31 @@
     this.contents = contents;
     this.url = url;
   }
-  protoOf(NetResponse).m5 = function (_set____db54di) {
+  protoOf(NetResponse).r5 = function (_set____db54di) {
     this.contents = _set____db54di;
   };
-  protoOf(NetResponse).n5 = function () {
+  protoOf(NetResponse).s5 = function () {
     return this.contents;
   };
-  protoOf(NetResponse).k5 = function (_set____db54di) {
+  protoOf(NetResponse).p5 = function (_set____db54di) {
     this.url = _set____db54di;
   };
-  protoOf(NetResponse).l5 = function () {
+  protoOf(NetResponse).q5 = function () {
     return this.url;
   };
-  protoOf(NetResponse).a3 = function () {
+  protoOf(NetResponse).f3 = function () {
     return this.contents;
   };
-  protoOf(NetResponse).b3 = function () {
+  protoOf(NetResponse).g3 = function () {
     return this.url;
   };
-  protoOf(NetResponse).o5 = function (contents, url) {
+  protoOf(NetResponse).t5 = function (contents, url) {
     return new NetResponse(contents, url);
   };
   protoOf(NetResponse).copy = function (contents, url, $super) {
     contents = contents === VOID ? this.contents : contents;
     url = url === VOID ? this.url : url;
-    return $super === VOID ? this.o5(contents, url) : $super.o5.call(this, contents, url);
+    return $super === VOID ? this.t5(contents, url) : $super.t5.call(this, contents, url);
   };
   protoOf(NetResponse).toString = function () {
     return 'NetResponse(contents=' + this.contents + ', url=' + this.url + ')';
@@ -961,163 +966,163 @@
     this.selectedPhraseId = selectedPhraseId;
     this.selectedPhrases = selectedPhrases;
     this.title = title;
-    this.p5_1 = recentField;
+    this.u5_1 = recentField;
   }
-  protoOf(QuizContext).q5 = function (_set____db54di) {
+  protoOf(QuizContext).v5 = function (_set____db54di) {
     this.activeSound = _set____db54di;
   };
-  protoOf(QuizContext).r5 = function () {
+  protoOf(QuizContext).w5 = function () {
     return this.activeSound;
   };
-  protoOf(QuizContext).s5 = function (_set____db54di) {
+  protoOf(QuizContext).x5 = function (_set____db54di) {
     this.areDetailsVisible = _set____db54di;
   };
-  protoOf(QuizContext).t5 = function () {
+  protoOf(QuizContext).y5 = function () {
     return this.areDetailsVisible;
   };
-  protoOf(QuizContext).u5 = function (_set____db54di) {
+  protoOf(QuizContext).z5 = function (_set____db54di) {
     this.arePhrasesVisible = _set____db54di;
   };
-  protoOf(QuizContext).v5 = function () {
+  protoOf(QuizContext).a6 = function () {
     return this.arePhrasesVisible;
   };
-  protoOf(QuizContext).w5 = function (_set____db54di) {
+  protoOf(QuizContext).b6 = function (_set____db54di) {
     this.areSelectedPhrasesVisible = _set____db54di;
   };
-  protoOf(QuizContext).x5 = function () {
+  protoOf(QuizContext).c6 = function () {
     return this.areSelectedPhrasesVisible;
   };
-  protoOf(QuizContext).y5 = function (_set____db54di) {
+  protoOf(QuizContext).d6 = function (_set____db54di) {
     this.bgImage = _set____db54di;
   };
-  protoOf(QuizContext).z5 = function () {
+  protoOf(QuizContext).e6 = function () {
     return this.bgImage;
   };
-  protoOf(QuizContext).a6 = function (_set____db54di) {
+  protoOf(QuizContext).f6 = function (_set____db54di) {
     this.currentId = _set____db54di;
   };
-  protoOf(QuizContext).b6 = function () {
+  protoOf(QuizContext).g6 = function () {
     return this.currentId;
   };
-  protoOf(QuizContext).c6 = function (_set____db54di) {
+  protoOf(QuizContext).h6 = function (_set____db54di) {
     this.deselectedPhraseId = _set____db54di;
   };
-  protoOf(QuizContext).d6 = function () {
+  protoOf(QuizContext).i6 = function () {
     return this.deselectedPhraseId;
   };
-  protoOf(QuizContext).e6 = function (_set____db54di) {
+  protoOf(QuizContext).j6 = function (_set____db54di) {
     this.didClickNext = _set____db54di;
   };
-  protoOf(QuizContext).f6 = function () {
+  protoOf(QuizContext).k6 = function () {
     return this.didClickNext;
   };
-  protoOf(QuizContext).g6 = function (_set____db54di) {
+  protoOf(QuizContext).l6 = function (_set____db54di) {
     this.didClickPlaySound = _set____db54di;
   };
-  protoOf(QuizContext).h6 = function () {
+  protoOf(QuizContext).m6 = function () {
     return this.didClickPlaySound;
   };
-  protoOf(QuizContext).i6 = function (_set____db54di) {
+  protoOf(QuizContext).n6 = function (_set____db54di) {
     this.didClickValidate = _set____db54di;
   };
-  protoOf(QuizContext).j6 = function () {
+  protoOf(QuizContext).o6 = function () {
     return this.didClickValidate;
   };
-  protoOf(QuizContext).x3 = function (_set____db54di) {
+  protoOf(QuizContext).c4 = function (_set____db54di) {
     this.didLaunch = _set____db54di;
   };
-  protoOf(QuizContext).y3 = function () {
+  protoOf(QuizContext).d4 = function () {
     return this.didLaunch;
   };
-  protoOf(QuizContext).k6 = function (_set____db54di) {
+  protoOf(QuizContext).p6 = function (_set____db54di) {
     this.expectedPhrases = _set____db54di;
   };
-  protoOf(QuizContext).l6 = function () {
+  protoOf(QuizContext).q6 = function () {
     return this.expectedPhrases;
   };
-  protoOf(QuizContext).m6 = function (_set____db54di) {
+  protoOf(QuizContext).r6 = function (_set____db54di) {
     this.hasFailure = _set____db54di;
   };
-  protoOf(QuizContext).n6 = function () {
+  protoOf(QuizContext).s6 = function () {
     return this.hasFailure;
   };
-  protoOf(QuizContext).o6 = function (_set____db54di) {
+  protoOf(QuizContext).t6 = function (_set____db54di) {
     this.isNextAdvancing = _set____db54di;
   };
-  protoOf(QuizContext).p6 = function () {
+  protoOf(QuizContext).u6 = function () {
     return this.isNextAdvancing;
   };
-  protoOf(QuizContext).q6 = function (_set____db54di) {
+  protoOf(QuizContext).v6 = function (_set____db54di) {
     this.isNextAvailable = _set____db54di;
   };
-  protoOf(QuizContext).r6 = function () {
+  protoOf(QuizContext).w6 = function () {
     return this.isNextAvailable;
   };
-  protoOf(QuizContext).s6 = function (_set____db54di) {
+  protoOf(QuizContext).x6 = function (_set____db54di) {
     this.isNextVisible = _set____db54di;
   };
-  protoOf(QuizContext).t6 = function () {
+  protoOf(QuizContext).y6 = function () {
     return this.isNextVisible;
   };
-  protoOf(QuizContext).u6 = function (_set____db54di) {
+  protoOf(QuizContext).z6 = function (_set____db54di) {
     this.isSoundVisible = _set____db54di;
   };
-  protoOf(QuizContext).v6 = function () {
+  protoOf(QuizContext).a7 = function () {
     return this.isSoundVisible;
   };
-  protoOf(QuizContext).w6 = function (_set____db54di) {
+  protoOf(QuizContext).b7 = function (_set____db54di) {
     this.isSubtitleVisible = _set____db54di;
   };
-  protoOf(QuizContext).x6 = function () {
+  protoOf(QuizContext).c7 = function () {
     return this.isSubtitleVisible;
   };
-  protoOf(QuizContext).y6 = function (_set____db54di) {
+  protoOf(QuizContext).d7 = function (_set____db54di) {
     this.isValid = _set____db54di;
   };
-  protoOf(QuizContext).z6 = function () {
+  protoOf(QuizContext).e7 = function () {
     return this.isValid;
   };
-  protoOf(QuizContext).a7 = function (_set____db54di) {
+  protoOf(QuizContext).f7 = function (_set____db54di) {
     this.items = _set____db54di;
   };
-  protoOf(QuizContext).b7 = function () {
+  protoOf(QuizContext).g7 = function () {
     return this.items;
   };
-  protoOf(QuizContext).c7 = function (_set____db54di) {
+  protoOf(QuizContext).h7 = function (_set____db54di) {
     this.phraseVisibility = _set____db54di;
   };
-  protoOf(QuizContext).d7 = function () {
+  protoOf(QuizContext).i7 = function () {
     return this.phraseVisibility;
   };
-  protoOf(QuizContext).e7 = function (_set____db54di) {
+  protoOf(QuizContext).j7 = function (_set____db54di) {
     this.phrases = _set____db54di;
   };
-  protoOf(QuizContext).f7 = function () {
+  protoOf(QuizContext).k7 = function () {
     return this.phrases;
   };
-  protoOf(QuizContext).g7 = function (_set____db54di) {
+  protoOf(QuizContext).l7 = function (_set____db54di) {
     this.selectedPhraseId = _set____db54di;
   };
-  protoOf(QuizContext).h7 = function () {
+  protoOf(QuizContext).m7 = function () {
     return this.selectedPhraseId;
   };
-  protoOf(QuizContext).i7 = function (_set____db54di) {
+  protoOf(QuizContext).n7 = function (_set____db54di) {
     this.selectedPhrases = _set____db54di;
   };
-  protoOf(QuizContext).j7 = function () {
+  protoOf(QuizContext).o7 = function () {
     return this.selectedPhrases;
   };
-  protoOf(QuizContext).k7 = function (_set____db54di) {
+  protoOf(QuizContext).p7 = function (_set____db54di) {
     this.title = _set____db54di;
   };
-  protoOf(QuizContext).l7 = function () {
+  protoOf(QuizContext).q7 = function () {
     return this.title;
   };
-  protoOf(QuizContext).c3 = function (_set____db54di) {
-    this.p5_1 = _set____db54di;
+  protoOf(QuizContext).h3 = function (_set____db54di) {
+    this.u5_1 = _set____db54di;
   };
-  protoOf(QuizContext).d3 = function () {
-    return this.p5_1;
+  protoOf(QuizContext).i3 = function () {
+    return this.u5_1;
   };
   protoOf(QuizContext).field = function (name) {
     switch (name) {
@@ -1306,85 +1311,85 @@
         break;
     }
   };
-  protoOf(QuizContext).a3 = function () {
+  protoOf(QuizContext).f3 = function () {
     return this.activeSound;
   };
-  protoOf(QuizContext).b3 = function () {
+  protoOf(QuizContext).g3 = function () {
     return this.areDetailsVisible;
   };
-  protoOf(QuizContext).h4 = function () {
+  protoOf(QuizContext).m4 = function () {
     return this.arePhrasesVisible;
   };
-  protoOf(QuizContext).i4 = function () {
+  protoOf(QuizContext).n4 = function () {
     return this.areSelectedPhrasesVisible;
   };
-  protoOf(QuizContext).j4 = function () {
+  protoOf(QuizContext).o4 = function () {
     return this.bgImage;
   };
-  protoOf(QuizContext).k4 = function () {
+  protoOf(QuizContext).p4 = function () {
     return this.currentId;
   };
-  protoOf(QuizContext).l4 = function () {
+  protoOf(QuizContext).q4 = function () {
     return this.deselectedPhraseId;
   };
-  protoOf(QuizContext).m4 = function () {
+  protoOf(QuizContext).r4 = function () {
     return this.didClickNext;
   };
-  protoOf(QuizContext).m7 = function () {
+  protoOf(QuizContext).r7 = function () {
     return this.didClickPlaySound;
   };
-  protoOf(QuizContext).n7 = function () {
+  protoOf(QuizContext).s7 = function () {
     return this.didClickValidate;
   };
-  protoOf(QuizContext).o7 = function () {
+  protoOf(QuizContext).t7 = function () {
     return this.didLaunch;
   };
-  protoOf(QuizContext).p7 = function () {
+  protoOf(QuizContext).u7 = function () {
     return this.expectedPhrases;
   };
-  protoOf(QuizContext).q7 = function () {
+  protoOf(QuizContext).v7 = function () {
     return this.hasFailure;
   };
-  protoOf(QuizContext).r7 = function () {
+  protoOf(QuizContext).w7 = function () {
     return this.isNextAdvancing;
   };
-  protoOf(QuizContext).s7 = function () {
+  protoOf(QuizContext).x7 = function () {
     return this.isNextAvailable;
   };
-  protoOf(QuizContext).t7 = function () {
+  protoOf(QuizContext).y7 = function () {
     return this.isNextVisible;
   };
-  protoOf(QuizContext).u7 = function () {
+  protoOf(QuizContext).z7 = function () {
     return this.isSoundVisible;
   };
-  protoOf(QuizContext).v7 = function () {
+  protoOf(QuizContext).a8 = function () {
     return this.isSubtitleVisible;
   };
-  protoOf(QuizContext).w7 = function () {
+  protoOf(QuizContext).b8 = function () {
     return this.isValid;
   };
-  protoOf(QuizContext).x7 = function () {
+  protoOf(QuizContext).c8 = function () {
     return this.items;
   };
-  protoOf(QuizContext).y7 = function () {
+  protoOf(QuizContext).d8 = function () {
     return this.phraseVisibility;
   };
-  protoOf(QuizContext).z7 = function () {
+  protoOf(QuizContext).e8 = function () {
     return this.phrases;
   };
-  protoOf(QuizContext).a8 = function () {
+  protoOf(QuizContext).f8 = function () {
     return this.selectedPhraseId;
   };
-  protoOf(QuizContext).b8 = function () {
+  protoOf(QuizContext).g8 = function () {
     return this.selectedPhrases;
   };
-  protoOf(QuizContext).c8 = function () {
+  protoOf(QuizContext).h8 = function () {
     return this.title;
   };
-  protoOf(QuizContext).d8 = function () {
-    return this.p5_1;
+  protoOf(QuizContext).i8 = function () {
+    return this.u5_1;
   };
-  protoOf(QuizContext).e8 = function (activeSound, areDetailsVisible, arePhrasesVisible, areSelectedPhrasesVisible, bgImage, currentId, deselectedPhraseId, didClickNext, didClickPlaySound, didClickValidate, didLaunch, expectedPhrases, hasFailure, isNextAdvancing, isNextAvailable, isNextVisible, isSoundVisible, isSubtitleVisible, isValid, items, phraseVisibility, phrases, selectedPhraseId, selectedPhrases, title, recentField) {
+  protoOf(QuizContext).j8 = function (activeSound, areDetailsVisible, arePhrasesVisible, areSelectedPhrasesVisible, bgImage, currentId, deselectedPhraseId, didClickNext, didClickPlaySound, didClickValidate, didLaunch, expectedPhrases, hasFailure, isNextAdvancing, isNextAvailable, isNextVisible, isSoundVisible, isSubtitleVisible, isValid, items, phraseVisibility, phrases, selectedPhraseId, selectedPhrases, title, recentField) {
     return new QuizContext(activeSound, areDetailsVisible, arePhrasesVisible, areSelectedPhrasesVisible, bgImage, currentId, deselectedPhraseId, didClickNext, didClickPlaySound, didClickValidate, didLaunch, expectedPhrases, hasFailure, isNextAdvancing, isNextAvailable, isNextVisible, isSoundVisible, isSubtitleVisible, isValid, items, phraseVisibility, phrases, selectedPhraseId, selectedPhrases, title, recentField);
   };
   protoOf(QuizContext).copy = function (activeSound, areDetailsVisible, arePhrasesVisible, areSelectedPhrasesVisible, bgImage, currentId, deselectedPhraseId, didClickNext, didClickPlaySound, didClickValidate, didLaunch, expectedPhrases, hasFailure, isNextAdvancing, isNextAvailable, isNextVisible, isSoundVisible, isSubtitleVisible, isValid, items, phraseVisibility, phrases, selectedPhraseId, selectedPhrases, title, recentField, $super) {
@@ -1413,11 +1418,11 @@
     selectedPhraseId = selectedPhraseId === VOID ? this.selectedPhraseId : selectedPhraseId;
     selectedPhrases = selectedPhrases === VOID ? this.selectedPhrases : selectedPhrases;
     title = title === VOID ? this.title : title;
-    recentField = recentField === VOID ? this.p5_1 : recentField;
-    return $super === VOID ? this.e8(activeSound, areDetailsVisible, arePhrasesVisible, areSelectedPhrasesVisible, bgImage, currentId, deselectedPhraseId, didClickNext, didClickPlaySound, didClickValidate, didLaunch, expectedPhrases, hasFailure, isNextAdvancing, isNextAvailable, isNextVisible, isSoundVisible, isSubtitleVisible, isValid, items, phraseVisibility, phrases, selectedPhraseId, selectedPhrases, title, recentField) : $super.e8.call(this, activeSound, areDetailsVisible, arePhrasesVisible, areSelectedPhrasesVisible, bgImage, currentId, deselectedPhraseId, didClickNext, didClickPlaySound, didClickValidate, didLaunch, expectedPhrases, hasFailure, isNextAdvancing, isNextAvailable, isNextVisible, isSoundVisible, isSubtitleVisible, isValid, items, phraseVisibility, phrases, selectedPhraseId, selectedPhrases, title, recentField);
+    recentField = recentField === VOID ? this.u5_1 : recentField;
+    return $super === VOID ? this.j8(activeSound, areDetailsVisible, arePhrasesVisible, areSelectedPhrasesVisible, bgImage, currentId, deselectedPhraseId, didClickNext, didClickPlaySound, didClickValidate, didLaunch, expectedPhrases, hasFailure, isNextAdvancing, isNextAvailable, isNextVisible, isSoundVisible, isSubtitleVisible, isValid, items, phraseVisibility, phrases, selectedPhraseId, selectedPhrases, title, recentField) : $super.j8.call(this, activeSound, areDetailsVisible, arePhrasesVisible, areSelectedPhrasesVisible, bgImage, currentId, deselectedPhraseId, didClickNext, didClickPlaySound, didClickValidate, didLaunch, expectedPhrases, hasFailure, isNextAdvancing, isNextAvailable, isNextVisible, isSoundVisible, isSubtitleVisible, isValid, items, phraseVisibility, phrases, selectedPhraseId, selectedPhrases, title, recentField);
   };
   protoOf(QuizContext).toString = function () {
-    return 'QuizContext(activeSound=' + this.activeSound + ', areDetailsVisible=' + this.areDetailsVisible + ', arePhrasesVisible=' + this.arePhrasesVisible + ', areSelectedPhrasesVisible=' + this.areSelectedPhrasesVisible + ', bgImage=' + this.bgImage + ', currentId=' + this.currentId + ', deselectedPhraseId=' + this.deselectedPhraseId + ', didClickNext=' + this.didClickNext + ', didClickPlaySound=' + this.didClickPlaySound + ', didClickValidate=' + this.didClickValidate + ', didLaunch=' + this.didLaunch + ', expectedPhrases=' + toString(this.expectedPhrases) + ', hasFailure=' + this.hasFailure + ', isNextAdvancing=' + this.isNextAdvancing + ', isNextAvailable=' + this.isNextAvailable + ', isNextVisible=' + this.isNextVisible + ', isSoundVisible=' + this.isSoundVisible + ', isSubtitleVisible=' + this.isSubtitleVisible + ', isValid=' + this.isValid + ', items=' + toString(this.items) + ', phraseVisibility=' + this.phraseVisibility.toString() + ', phrases=' + toString(this.phrases) + ', selectedPhraseId=' + this.selectedPhraseId + ', selectedPhrases=' + toString(this.selectedPhrases) + ', title=' + this.title + ', recentField=' + this.p5_1 + ')';
+    return 'QuizContext(activeSound=' + this.activeSound + ', areDetailsVisible=' + this.areDetailsVisible + ', arePhrasesVisible=' + this.arePhrasesVisible + ', areSelectedPhrasesVisible=' + this.areSelectedPhrasesVisible + ', bgImage=' + this.bgImage + ', currentId=' + this.currentId + ', deselectedPhraseId=' + this.deselectedPhraseId + ', didClickNext=' + this.didClickNext + ', didClickPlaySound=' + this.didClickPlaySound + ', didClickValidate=' + this.didClickValidate + ', didLaunch=' + this.didLaunch + ', expectedPhrases=' + toString(this.expectedPhrases) + ', hasFailure=' + this.hasFailure + ', isNextAdvancing=' + this.isNextAdvancing + ', isNextAvailable=' + this.isNextAvailable + ', isNextVisible=' + this.isNextVisible + ', isSoundVisible=' + this.isSoundVisible + ', isSubtitleVisible=' + this.isSubtitleVisible + ', isValid=' + this.isValid + ', items=' + toString(this.items) + ', phraseVisibility=' + this.phraseVisibility.toString() + ', phrases=' + toString(this.phrases) + ', selectedPhraseId=' + this.selectedPhraseId + ', selectedPhrases=' + toString(this.selectedPhrases) + ', title=' + this.title + ', recentField=' + this.u5_1 + ')';
   };
   protoOf(QuizContext).hashCode = function () {
     var result = getStringHashCode(this.activeSound);
@@ -1445,7 +1450,7 @@
     result = imul(result, 31) + this.selectedPhraseId | 0;
     result = imul(result, 31) + hashCode(this.selectedPhrases) | 0;
     result = imul(result, 31) + getStringHashCode(this.title) | 0;
-    result = imul(result, 31) + getStringHashCode(this.p5_1) | 0;
+    result = imul(result, 31) + getStringHashCode(this.u5_1) | 0;
     return result;
   };
   protoOf(QuizContext).equals = function (other) {
@@ -1504,7 +1509,7 @@
       return false;
     if (!(this.title === tmp0_other_with_cast.title))
       return false;
-    if (!(this.p5_1 === tmp0_other_with_cast.p5_1))
+    if (!(this.u5_1 === tmp0_other_with_cast.u5_1))
       return false;
     return true;
   };
@@ -1538,52 +1543,52 @@
     this.sentence = sentence;
     this.snd = snd;
   }
-  protoOf(QuizItem).f8 = function (_set____db54di) {
+  protoOf(QuizItem).k8 = function (_set____db54di) {
     this.expected = _set____db54di;
   };
-  protoOf(QuizItem).g8 = function () {
+  protoOf(QuizItem).l8 = function () {
     return this.expected;
   };
-  protoOf(QuizItem).h8 = function (_set____db54di) {
+  protoOf(QuizItem).m8 = function (_set____db54di) {
     this.img = _set____db54di;
   };
-  protoOf(QuizItem).i8 = function () {
+  protoOf(QuizItem).n8 = function () {
     return this.img;
   };
-  protoOf(QuizItem).e7 = function (_set____db54di) {
+  protoOf(QuizItem).j7 = function (_set____db54di) {
     this.phrases = _set____db54di;
   };
-  protoOf(QuizItem).f7 = function () {
+  protoOf(QuizItem).k7 = function () {
     return this.phrases;
   };
-  protoOf(QuizItem).j8 = function (_set____db54di) {
+  protoOf(QuizItem).o8 = function (_set____db54di) {
     this.sentence = _set____db54di;
   };
-  protoOf(QuizItem).k8 = function () {
+  protoOf(QuizItem).p8 = function () {
     return this.sentence;
   };
-  protoOf(QuizItem).l8 = function (_set____db54di) {
+  protoOf(QuizItem).q8 = function (_set____db54di) {
     this.snd = _set____db54di;
   };
-  protoOf(QuizItem).m8 = function () {
+  protoOf(QuizItem).r8 = function () {
     return this.snd;
   };
-  protoOf(QuizItem).a3 = function () {
+  protoOf(QuizItem).f3 = function () {
     return this.expected;
   };
-  protoOf(QuizItem).b3 = function () {
+  protoOf(QuizItem).g3 = function () {
     return this.img;
   };
-  protoOf(QuizItem).h4 = function () {
+  protoOf(QuizItem).m4 = function () {
     return this.phrases;
   };
-  protoOf(QuizItem).i4 = function () {
+  protoOf(QuizItem).n4 = function () {
     return this.sentence;
   };
-  protoOf(QuizItem).j4 = function () {
+  protoOf(QuizItem).o4 = function () {
     return this.snd;
   };
-  protoOf(QuizItem).n8 = function (expected, img, phrases, sentence, snd) {
+  protoOf(QuizItem).s8 = function (expected, img, phrases, sentence, snd) {
     return new QuizItem(expected, img, phrases, sentence, snd);
   };
   protoOf(QuizItem).copy = function (expected, img, phrases, sentence, snd, $super) {
@@ -1592,7 +1597,7 @@
     phrases = phrases === VOID ? this.phrases : phrases;
     sentence = sentence === VOID ? this.sentence : sentence;
     snd = snd === VOID ? this.snd : snd;
-    return $super === VOID ? this.n8(expected, img, phrases, sentence, snd) : $super.n8.call(this, expected, img, phrases, sentence, snd);
+    return $super === VOID ? this.s8(expected, img, phrases, sentence, snd) : $super.s8.call(this, expected, img, phrases, sentence, snd);
   };
   protoOf(QuizItem).toString = function () {
     return 'QuizItem(expected=' + toString(this.expected) + ', img=' + this.img + ', phrases=' + toString(this.phrases) + ', sentence=' + this.sentence + ', snd=' + this.snd + ')';
@@ -1629,31 +1634,31 @@
     this.id = id;
     this.isVisible = isVisible;
   }
-  protoOf(QuizPhraseVisibility).o8 = function (_set____db54di) {
+  protoOf(QuizPhraseVisibility).t8 = function (_set____db54di) {
     this.id = _set____db54di;
   };
-  protoOf(QuizPhraseVisibility).p8 = function () {
+  protoOf(QuizPhraseVisibility).u8 = function () {
     return this.id;
   };
-  protoOf(QuizPhraseVisibility).q8 = function (_set____db54di) {
+  protoOf(QuizPhraseVisibility).v8 = function (_set____db54di) {
     this.isVisible = _set____db54di;
   };
-  protoOf(QuizPhraseVisibility).r8 = function () {
+  protoOf(QuizPhraseVisibility).w8 = function () {
     return this.isVisible;
   };
-  protoOf(QuizPhraseVisibility).a3 = function () {
+  protoOf(QuizPhraseVisibility).f3 = function () {
     return this.id;
   };
-  protoOf(QuizPhraseVisibility).b3 = function () {
+  protoOf(QuizPhraseVisibility).g3 = function () {
     return this.isVisible;
   };
-  protoOf(QuizPhraseVisibility).s8 = function (id, isVisible) {
+  protoOf(QuizPhraseVisibility).x8 = function (id, isVisible) {
     return new QuizPhraseVisibility(id, isVisible);
   };
   protoOf(QuizPhraseVisibility).copy = function (id, isVisible, $super) {
     id = id === VOID ? this.id : id;
     isVisible = isVisible === VOID ? this.isVisible : isVisible;
-    return $super === VOID ? this.s8(id, isVisible) : $super.s8.call(this, id, isVisible);
+    return $super === VOID ? this.x8(id, isVisible) : $super.x8.call(this, id, isVisible);
   };
   protoOf(QuizPhraseVisibility).toString = function () {
     return 'QuizPhraseVisibility(id=' + this.id + ', isVisible=' + this.isVisible + ')';
@@ -1700,18 +1705,18 @@
   }
   var QUIZ_SND_WRONG;
   function quizShouldPlaySound(c) {
-    if (c.p5_1 === 'didClickPlaySound') {
+    if (c.u5_1 === 'didClickPlaySound') {
       c.activeSound = c.items[c.currentId].snd;
-      c.p5_1 = 'activeSound';
+      c.u5_1 = 'activeSound';
       return c;
     }
-    if (c.p5_1 === 'hasFailure') {
+    if (c.u5_1 === 'hasFailure') {
       c.activeSound = QUIZ_SND_WRONG;
-      c.p5_1 = 'activeSound';
+      c.u5_1 = 'activeSound';
       return c;
     }
     var tmp;
-    if (c.p5_1 === 'isValid' && c.isValid) {
+    if (c.u5_1 === 'isValid' && c.isValid) {
       // Inline function 'kotlin.collections.isEmpty' call
       tmp = !(c.phrases.length === 0);
     } else {
@@ -1719,145 +1724,145 @@
     }
     if (tmp) {
       c.activeSound = QUIZ_SND_CORRECT;
-      c.p5_1 = 'activeSound';
+      c.u5_1 = 'activeSound';
       return c;
     }
-    if (c.p5_1 === 'currentId') {
+    if (c.u5_1 === 'currentId') {
       c.activeSound = c.items[c.currentId].snd;
-      c.p5_1 = 'activeSound';
+      c.u5_1 = 'activeSound';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetBGImage(c) {
-    if (c.p5_1 === 'currentId') {
+    if (c.u5_1 === 'currentId') {
       c.bgImage = c.items[c.currentId].img;
-      c.p5_1 = 'bgImage';
+      c.u5_1 = 'bgImage';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetCurrentId(c) {
-    if (c.p5_1 === 'items') {
+    if (c.u5_1 === 'items') {
       c.currentId = 0;
-      c.p5_1 = 'currentId';
+      c.u5_1 = 'currentId';
       return c;
     }
-    if (c.p5_1 === 'didClickNext' && c.isValid && (c.currentId + 1 | 0) <= c.items.length) {
+    if (c.u5_1 === 'didClickNext' && c.isValid && (c.currentId + 1 | 0) <= c.items.length) {
       c.currentId = c.currentId + 1 | 0;
-      c.p5_1 = 'currentId';
+      c.u5_1 = 'currentId';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetDetailsVisibility(c) {
-    if (c.p5_1 === 'currentId' && c.currentId === 0) {
+    if (c.u5_1 === 'currentId' && c.currentId === 0) {
       c.areDetailsVisible = true;
-      c.p5_1 = 'areDetailsVisible';
+      c.u5_1 = 'areDetailsVisible';
       return c;
     }
-    if (c.p5_1 === 'currentId' && c.currentId === 1) {
+    if (c.u5_1 === 'currentId' && c.currentId === 1) {
       c.areDetailsVisible = false;
-      c.p5_1 = 'areDetailsVisible';
+      c.u5_1 = 'areDetailsVisible';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetExpectedPhrases(c) {
-    if (c.p5_1 === 'currentId') {
+    if (c.u5_1 === 'currentId') {
       c.expectedPhrases = c.items[c.currentId].expected;
-      c.p5_1 = 'expectedPhrases';
+      c.u5_1 = 'expectedPhrases';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetFailure(c) {
-    if (c.p5_1 === 'isValid' && !c.isValid && !c.isNextAdvancing) {
+    if (c.u5_1 === 'isValid' && !c.isValid && !c.isNextAdvancing) {
       c.hasFailure = true;
-      c.p5_1 = 'hasFailure';
+      c.u5_1 = 'hasFailure';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetItems(c) {
-    if (c.p5_1 === 'didLaunch') {
+    if (c.u5_1 === 'didLaunch') {
       c.items = quizItems();
-      c.p5_1 = 'items';
+      c.u5_1 = 'items';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetNextAdvancing(c) {
-    if (c.p5_1 === 'isValid' && c.isValid) {
+    if (c.u5_1 === 'isValid' && c.isValid) {
       c.isNextAdvancing = true;
-      c.p5_1 = 'isNextAdvancing';
+      c.u5_1 = 'isNextAdvancing';
       return c;
     }
-    if (c.p5_1 === 'currentId') {
+    if (c.u5_1 === 'currentId') {
       c.isNextAdvancing = false;
-      c.p5_1 = 'isNextAdvancing';
+      c.u5_1 = 'isNextAdvancing';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetNextAvailability(c) {
-    if (c.p5_1 === 'selectedPhrases') {
+    if (c.u5_1 === 'selectedPhrases') {
       var tmp = c;
       // Inline function 'kotlin.collections.isEmpty' call
       tmp.isNextAvailable = !(c.selectedPhrases.length === 0);
-      c.p5_1 = 'isNextAvailable';
+      c.u5_1 = 'isNextAvailable';
       return c;
     }
-    if (c.p5_1 === 'currentId' && c.currentId === 0) {
+    if (c.u5_1 === 'currentId' && c.currentId === 0) {
       c.isNextAvailable = true;
-      c.p5_1 = 'isNextAvailable';
+      c.u5_1 = 'isNextAvailable';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetNextVisibility(c) {
-    if (c.p5_1 === 'currentId') {
+    if (c.u5_1 === 'currentId') {
       c.isNextVisible = !(c.currentId === (c.items.length - 1 | 0));
-      c.p5_1 = 'isNextVisible';
+      c.u5_1 = 'isNextVisible';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetPhrases(c) {
-    if (c.p5_1 === 'currentId') {
+    if (c.u5_1 === 'currentId') {
       c.phrases = c.items[c.currentId].phrases;
-      c.p5_1 = 'phrases';
+      c.u5_1 = 'phrases';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetPhrasesVisibility(c) {
-    if (c.p5_1 === 'currentId' && c.currentId === 0) {
+    if (c.u5_1 === 'currentId' && c.currentId === 0) {
       c.arePhrasesVisible = false;
-      c.p5_1 = 'arePhrasesVisible';
+      c.u5_1 = 'arePhrasesVisible';
       return c;
     }
-    if (c.p5_1 === 'currentId' && c.currentId === 1) {
+    if (c.u5_1 === 'currentId' && c.currentId === 1) {
       c.arePhrasesVisible = true;
-      c.p5_1 = 'arePhrasesVisible';
+      c.u5_1 = 'arePhrasesVisible';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetSelectedPhrases(c) {
-    if (c.p5_1 === 'selectedPhraseId' && !contains_0(c.selectedPhrases, c.selectedPhraseId)) {
+    if (c.u5_1 === 'selectedPhraseId' && !contains_0(c.selectedPhrases, c.selectedPhraseId)) {
       var tmp = c;
       var tmp0 = c.selectedPhrases;
       // Inline function 'kotlin.collections.plus' call
@@ -1867,14 +1872,14 @@
       // Inline function 'kotlin.js.asDynamic' call
       var tmp$ret$3 = [c.selectedPhraseId];
       tmp.selectedPhrases = tmp0.concat(tmp$ret$3);
-      c.p5_1 = 'selectedPhrases';
+      c.u5_1 = 'selectedPhrases';
       return c;
     }
-    if (c.p5_1 === 'didLaunch') {
-      c.p5_1 = 'selectedPhrases';
+    if (c.u5_1 === 'didLaunch') {
+      c.u5_1 = 'selectedPhrases';
       return c;
     }
-    if (c.p5_1 === 'deselectedPhraseId') {
+    if (c.u5_1 === 'deselectedPhraseId') {
       var tmp_0 = c;
       // Inline function 'kotlin.collections.filter' call
       var tmp0_0 = c.selectedPhrases;
@@ -1891,96 +1896,96 @@
       }
       // Inline function 'kotlin.collections.toTypedArray' call
       tmp_0.selectedPhrases = copyToArray(destination);
-      c.p5_1 = 'selectedPhrases';
+      c.u5_1 = 'selectedPhrases';
       return c;
     }
-    if (c.p5_1 === 'didClickNext' && c.isValid) {
+    if (c.u5_1 === 'didClickNext' && c.isValid) {
       var tmp_1 = c;
       // Inline function 'kotlin.arrayOf' call
       // Inline function 'kotlin.js.unsafeCast' call
       // Inline function 'kotlin.js.asDynamic' call
       tmp_1.selectedPhrases = [];
-      c.p5_1 = 'selectedPhrases';
+      c.u5_1 = 'selectedPhrases';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetSelectedPhrasesVisibility(c) {
-    if (c.p5_1 === 'currentId' && c.currentId === 0) {
+    if (c.u5_1 === 'currentId' && c.currentId === 0) {
       c.areSelectedPhrasesVisible = false;
-      c.p5_1 = 'areSelectedPhrasesVisible';
+      c.u5_1 = 'areSelectedPhrasesVisible';
       return c;
     }
-    if (c.p5_1 === 'currentId' && c.currentId === 1) {
+    if (c.u5_1 === 'currentId' && c.currentId === 1) {
       c.areSelectedPhrasesVisible = true;
-      c.p5_1 = 'areSelectedPhrasesVisible';
+      c.u5_1 = 'areSelectedPhrasesVisible';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetPhraseVisibility(c) {
-    if (c.p5_1 === 'selectedPhraseId') {
+    if (c.u5_1 === 'selectedPhraseId') {
       c.phraseVisibility = new QuizPhraseVisibility(c.selectedPhraseId, false);
-      c.p5_1 = 'phraseVisibility';
+      c.u5_1 = 'phraseVisibility';
       return c;
     }
-    if (c.p5_1 === 'deselectedPhraseId') {
+    if (c.u5_1 === 'deselectedPhraseId') {
       c.phraseVisibility = new QuizPhraseVisibility(c.deselectedPhraseId, true);
-      c.p5_1 = 'phraseVisibility';
+      c.u5_1 = 'phraseVisibility';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetSoundVisibility(c) {
-    if (c.p5_1 === 'activeSound') {
+    if (c.u5_1 === 'activeSound') {
       var tmp = c;
       // Inline function 'kotlin.text.isEmpty' call
       var this_0 = c.activeSound;
       tmp.isSoundVisible = !(charSequenceLength(this_0) === 0);
-      c.p5_1 = 'isSoundVisible';
+      c.u5_1 = 'isSoundVisible';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetSubtitleVisibility(c) {
-    if (c.p5_1 === 'currentId' && c.currentId === 1) {
+    if (c.u5_1 === 'currentId' && c.currentId === 1) {
       c.isSubtitleVisible = false;
-      c.p5_1 = 'isSubtitleVisible';
+      c.u5_1 = 'isSubtitleVisible';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetTitle(c) {
-    if (c.p5_1 === 'currentId') {
+    if (c.u5_1 === 'currentId') {
       c.title = c.items[c.currentId].sentence;
-      c.p5_1 = 'title';
+      c.u5_1 = 'title';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizShouldResetValidity(c) {
-    if (c.p5_1 === 'didClickNext' && !c.isValid && !c.isNextAdvancing) {
+    if (c.u5_1 === 'didClickNext' && !c.isValid && !c.isNextAdvancing) {
       c.isValid = quizArePhrasesEqual(c.selectedPhrases, c.expectedPhrases);
-      c.p5_1 = 'isValid';
+      c.u5_1 = 'isValid';
       return c;
     }
-    if (c.p5_1 === 'didClickNext' && c.isValid && c.isNextAdvancing) {
+    if (c.u5_1 === 'didClickNext' && c.isValid && c.isNextAdvancing) {
       c.isValid = false;
-      c.p5_1 = 'isValid';
+      c.u5_1 = 'isValid';
       return c;
     }
-    if (c.p5_1 === 'currentId' && c.currentId === 0) {
+    if (c.u5_1 === 'currentId' && c.currentId === 0) {
       c.isValid = true;
-      c.p5_1 = 'isValid';
+      c.u5_1 = 'isValid';
       return c;
     }
-    c.p5_1 = 'none';
+    c.u5_1 = 'none';
     return c;
   }
   function quizArePhrasesEqual(arr1, arr2) {
@@ -2079,24 +2084,25 @@
   //region block: post-declaration
   protoOf(BankContext).fieldAny = fieldAny;
   defineProp(protoOf(BankContext), 'recentField', function () {
-    return this.d3();
+    return this.i3();
   }, function (value) {
-    this.c3(value);
+    this.h3(value);
   });
   protoOf(BudgetContext).fieldAny = fieldAny;
   defineProp(protoOf(BudgetContext), 'recentField', function () {
-    return this.d3();
+    return this.i3();
   }, function (value) {
-    this.c3(value);
+    this.h3(value);
   });
   protoOf(QuizContext).fieldAny = fieldAny;
   defineProp(protoOf(QuizContext), 'recentField', function () {
-    return this.d3();
+    return this.i3();
   }, function (value) {
-    this.c3(value);
+    this.h3(value);
   });
   //endregion
   //region block: init
+  BUDGET_RESULT_DATE_T = '<b>%DATE%<\/b>';
   QUIZ_FAILURE_MESSAGE = '\u0414\u0430\u0432\u0430\u0439 \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0435\u043C \u0435\u0449\u0451 \u0440\u0430\u0437!';
   QUIZ_FAILURE_TITLE = '\u0427\u0443\u0442\u044C-\u0447\u0443\u0442\u044C \u043C\u0438\u043C\u043E';
   QUIZ_NEXT_TITLE1 = '\u041F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C';
