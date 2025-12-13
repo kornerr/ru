@@ -13,26 +13,28 @@
   'use strict';
   //region block: imports
   var imul = Math.imul;
-  var protoOf = kotlin_kotlin.$_$.o;
-  var initMetadataForInterface = kotlin_kotlin.$_$.m;
+  var protoOf = kotlin_kotlin.$_$.p;
+  var initMetadataForInterface = kotlin_kotlin.$_$.n;
   var Unit_instance = kotlin_kotlin.$_$.c;
   var ArrayList_init_$Create$ = kotlin_kotlin.$_$.b;
-  var initMetadataForClass = kotlin_kotlin.$_$.l;
-  var split = kotlin_kotlin.$_$.s;
-  var contains = kotlin_kotlin.$_$.q;
-  var replace = kotlin_kotlin.$_$.r;
+  var initMetadataForClass = kotlin_kotlin.$_$.m;
+  var split = kotlin_kotlin.$_$.t;
+  var contains = kotlin_kotlin.$_$.r;
+  var replace = kotlin_kotlin.$_$.s;
+  var toDoubleOrNull = kotlin_kotlin.$_$.u;
+  var joinToString = kotlin_kotlin.$_$.f;
   var VOID = kotlin_kotlin.$_$.a;
-  var THROW_CCE = kotlin_kotlin.$_$.t;
-  var isArray = kotlin_kotlin.$_$.n;
-  var toString = kotlin_kotlin.$_$.p;
-  var getStringHashCode = kotlin_kotlin.$_$.j;
-  var hashCode = kotlin_kotlin.$_$.k;
-  var getBooleanHashCode = kotlin_kotlin.$_$.i;
-  var equals = kotlin_kotlin.$_$.h;
-  var defineProp = kotlin_kotlin.$_$.g;
+  var THROW_CCE = kotlin_kotlin.$_$.v;
+  var isArray = kotlin_kotlin.$_$.o;
+  var toString = kotlin_kotlin.$_$.q;
+  var getStringHashCode = kotlin_kotlin.$_$.k;
+  var hashCode = kotlin_kotlin.$_$.l;
+  var getBooleanHashCode = kotlin_kotlin.$_$.j;
+  var equals = kotlin_kotlin.$_$.i;
+  var defineProp = kotlin_kotlin.$_$.h;
   var contains_0 = kotlin_kotlin.$_$.d;
   var copyToArray = kotlin_kotlin.$_$.e;
-  var charSequenceLength = kotlin_kotlin.$_$.f;
+  var charSequenceLength = kotlin_kotlin.$_$.g;
   //endregion
   //region block: pre-declaration
   function fieldAny(name) {
@@ -287,17 +289,48 @@
     }
   }
   var BUDGET_RESULT_DATE_T;
+  var BUDGET_RESULT_WEEKDAY_T;
   function budgetShouldResetResult(c) {
-    if (c.x3_1 === 'defaultDate') {
-      c.result = budgetResult(c.defaultDate);
+    if (c.x3_1 === 'defaultDate' || c.x3_1 === 'inputMorningBalance' || c.x3_1 === 'inputSpent') {
+      var mbalance = budgetNumber(c.inputMorningBalance);
+      var spent = budgetNumber(c.inputSpent);
+      c.result = budgetResult(c.defaultDate, mbalance, spent);
       c.x3_1 = 'result';
       return c;
     }
     c.x3_1 = 'none';
     return c;
   }
-  function budgetResult(defaultDate) {
-    return replace(BUDGET_RESULT_DATE_T, '%DATE%', defaultDate);
+  function budgetNumber(s) {
+    var dotted = replace(s, ',', '.');
+    // Inline function 'kotlin.text.toFloatOrNull' call
+    // Inline function 'kotlin.js.unsafeCast' call
+    // Inline function 'kotlin.js.asDynamic' call
+    var almost = toDoubleOrNull(dotted);
+    return almost == null ? 0.0 : almost;
+  }
+  function budgetResult(defaultDate, morningBalance, spent) {
+    // Inline function 'kotlin.arrayOf' call
+    // Inline function 'kotlin.js.unsafeCast' call
+    // Inline function 'kotlin.js.asDynamic' call
+    var lines = [];
+    var tmp0 = lines;
+    // Inline function 'kotlin.collections.plus' call
+    // Inline function 'kotlin.js.asDynamic' call
+    // Inline function 'kotlin.arrayOf' call
+    // Inline function 'kotlin.js.unsafeCast' call
+    // Inline function 'kotlin.js.asDynamic' call
+    var tmp$ret$6 = [replace(BUDGET_RESULT_DATE_T, '%DATE%', defaultDate)];
+    lines = tmp0.concat(tmp$ret$6);
+    var tmp0_0 = lines;
+    // Inline function 'kotlin.collections.plus' call
+    // Inline function 'kotlin.js.asDynamic' call
+    // Inline function 'kotlin.arrayOf' call
+    // Inline function 'kotlin.js.unsafeCast' call
+    // Inline function 'kotlin.js.asDynamic' call
+    var tmp$ret$11 = [replace(replace(BUDGET_RESULT_WEEKDAY_T, '%SPENT%', '' + spent), '%BALANCE%', '' + (morningBalance - spent))];
+    lines = tmp0_0.concat(tmp$ret$11);
+    return joinToString(lines, '<br/>');
   }
   function BankContext(cbrDate, currencies, didLaunch, isLoading, request, response, responseError, recentField) {
     cbrDate = cbrDate === VOID ? '' : cbrDate;
@@ -2103,6 +2136,7 @@
   //endregion
   //region block: init
   BUDGET_RESULT_DATE_T = '<b>%DATE%<\/b>';
+  BUDGET_RESULT_WEEKDAY_T = '\u0411\u0443\u0434\u043D\u0438: %SPENT% / %BALANCE% %PERCENT%';
   QUIZ_FAILURE_MESSAGE = '\u0414\u0430\u0432\u0430\u0439 \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0435\u043C \u0435\u0449\u0451 \u0440\u0430\u0437!';
   QUIZ_FAILURE_TITLE = '\u0427\u0443\u0442\u044C-\u0447\u0443\u0442\u044C \u043C\u0438\u043C\u043E';
   QUIZ_NEXT_TITLE1 = '\u041F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C';
