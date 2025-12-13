@@ -53,9 +53,8 @@ function BudgetComponent() {
 
 function budgetShouldResetDefaultDate(c) {
     if (c.recentField == "didLaunch") {
-        c.defaultDate = "TODO-dt";
+        c.defaultDate = budgetDefaultDate();
         c.recentField = "defaultDate";
-        /**/console.log("ИГР budgetSRDD");
         return c;
     }
 
@@ -73,6 +72,12 @@ function budgetDisplayResult(value) {
 }
 
 //<!-- Прочие функции -->
+
+function budgetDefaultDate() {
+    let now = luxon.DateTime.now();
+    let yesterday = now.minus({ days: 1 });
+    return `${yesterday.day}.${yesterday.month}`;
+}
 
 //<!-- Установка -->
 
