@@ -24,8 +24,9 @@ BudgetContext:
         inputMorningBalance: String
         inputSpent: String
         reportedDate: String
-        reportedDateWeekday: Int
+        reportedWeekday: Int
         result: String
+        todayWeekday: Int
 
 Currency:
     prefix-kotlin: @JsExport

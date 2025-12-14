@@ -66,8 +66,9 @@ data class BudgetContext(
     var inputMorningBalance: String = "",
     var inputSpent: String = "",
     var reportedDate: String = "",
-    var reportedDateWeekday: Int = 0,
+    var reportedWeekday: Int = 0,
     var result: String = "",
+    var todayWeekday: Int = 0,
     override var recentField: String = "",
 ): CLDContext {
     override fun <T> field(name: String): T {
@@ -81,10 +82,12 @@ data class BudgetContext(
             return inputSpent as T
         } else if (name == "reportedDate") {
             return reportedDate as T
-        } else if (name == "reportedDateWeekday") {
-            return reportedDateWeekday as T
+        } else if (name == "reportedWeekday") {
+            return reportedWeekday as T
         } else if (name == "result") {
             return result as T
+        } else if (name == "todayWeekday") {
+            return todayWeekday as T
         }
         return "unknown-field-name" as T
     }
@@ -107,10 +110,12 @@ data class BudgetContext(
             inputSpent = value as String
         } else if (name == "reportedDate") {
             reportedDate = value as String
-        } else if (name == "reportedDateWeekday") {
-            reportedDateWeekday = value as Int
+        } else if (name == "reportedWeekday") {
+            reportedWeekday = value as Int
         } else if (name == "result") {
             result = value as String
+        } else if (name == "todayWeekday") {
+            todayWeekday = value as Int
         }
     }
 }

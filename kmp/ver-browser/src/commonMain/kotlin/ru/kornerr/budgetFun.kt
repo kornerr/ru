@@ -7,6 +7,14 @@ import kotlin.math.abs
 val BUDGET_INITIAL_BUDGET = 30000f
 val BUDGET_RESULT_DATE_T = "<b>%DATE%</b>"
 val BUDGET_RESULT_WEEKDAY_T = "Будни: %SPENT% / %BALANCE% %PERCENT%"
+val BUDGET_RESULT_WEEKEND_T = "Выходные: %SPENT% / %BALANCE% %PERCENT%"
+val BUDGET_WEEKDAY_MON = 1
+val BUDGET_WEEKDAY_TUE = 2
+val BUDGET_WEEKDAY_WED = 3
+val BUDGET_WEEKDAY_THU = 4
+val BUDGET_WEEKDAY_FRI = 5
+val BUDGET_WEEKDAY_SAT = 6
+val BUDGET_WEEKDAY_SUN = 7
 
 //<!-- Шуды -->
 
@@ -23,7 +31,10 @@ fun budgetShouldResetResult(c: BudgetContext): BudgetContext {
     ) {
         val mbalance = budgetNumber(c.inputMorningBalance)
         val spent = budgetNumber(c.inputSpent)
-        c.result = budgetResult(c.reportedDate, mbalance, spent)
+        var lines = []
+        lines += budgetResultDate(c.reportedDate)
+        lines += budgetResultSpent(mbalance, c.reportedWeekday, spent, c.todayWeekday)
+        c.result = lines.joinToString("<br />")
         c.recentField = "result"
         return c
     }
@@ -75,17 +86,25 @@ fun budgetStringNumber(
     return str
 }
 
-fun budgetResult(
-    reportedDate: String,
-    morningBalance: Float,
-    spent: Float
-): String {
-    var lines = arrayOf<String>()
+// Отчётная дата
+fun budgetResultDate(reportedDate: String): String {
+    return BUDGET_RESULT_DATE_T.replace("%DATE%", reportedDate)
+}
 
-    // Отчётная дата
-    lines +=
-        BUDGET_RESULT_DATE_T
-            .replace("%DATE%", reportedDate)
+// Потрачено / баланс процент
+fun budgetResultDate(
+
+  todo
+
+): String {
+    // Выбор шаблона weekday или weekend
+    var weekT = BUDGET_RESULT_WEEKDAY_T
+    if (
+        reportedWeekday == BUDGET_WEEKDAY_SAT ||
+        reportedWeekday == BUDGET_WEEKDAY_SUN
+    ) {
+        weekT = BUDGET_RESULT_WEEKEND_T
+    }
 
     // Потрачено / баланс процент
     val balance = morningBalance - spent
@@ -93,9 +112,13 @@ fun budgetResult(
     val percent = abs(balance * 100f / BUDGET_INITIAL_BUDGET)
     val percentStr = budgetStringNumber(percent, 0)
     lines += 
-        BUDGET_RESULT_WEEKDAY_T
+        weekT
             .replace("%SPENT%", "$spent")
             .replace("%BALANCE%", balanceStr)
             .replace("%PERCENT%", "$percentStr%")
     return lines.joinToString("<br/>")
-}
+/*
+    morningBalance: Float,
+    spent: Float,
+    todayWeekday: Int
+    */
