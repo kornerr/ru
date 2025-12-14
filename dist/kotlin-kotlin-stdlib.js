@@ -57,6 +57,7 @@ if (typeof ArrayBuffer.isView === 'undefined') {
   initMetadataForClass(UnsupportedOperationException, 'UnsupportedOperationException', UnsupportedOperationException_init_$Create$, RuntimeException);
   initMetadataForClass(NoSuchElementException, 'NoSuchElementException', NoSuchElementException_init_$Create$, RuntimeException);
   initMetadataForClass(IndexOutOfBoundsException, 'IndexOutOfBoundsException', IndexOutOfBoundsException_init_$Create$, RuntimeException);
+  initMetadataForClass(NullPointerException, 'NullPointerException', NullPointerException_init_$Create$, RuntimeException);
   initMetadataForClass(ClassCastException, 'ClassCastException', ClassCastException_init_$Create$, RuntimeException);
   initMetadataForClass(StringBuilder, 'StringBuilder', StringBuilder_init_$Create$, VOID, [CharSequence]);
   initMetadataForCompanion(Companion_1);
@@ -772,6 +773,18 @@ if (typeof ArrayBuffer.isView === 'undefined') {
   }
   function defineFieldOnInstance(this_, name, value) {
     Object.defineProperty(this_, name, {configurable: true, writable: true, value: value});
+  }
+  function ensureNotNull(v) {
+    var tmp;
+    if (v == null) {
+      THROW_NPE();
+    } else {
+      tmp = v;
+    }
+    return tmp;
+  }
+  function THROW_NPE() {
+    throw NullPointerException_init_$Create$();
   }
   function THROW_CCE() {
     throw ClassCastException_init_$Create$();
@@ -1573,6 +1586,19 @@ if (typeof ArrayBuffer.isView === 'undefined') {
   }
   function IndexOutOfBoundsException() {
     captureStack(this, IndexOutOfBoundsException);
+  }
+  function NullPointerException_init_$Init$($this) {
+    RuntimeException_init_$Init$($this);
+    NullPointerException.call($this);
+    return $this;
+  }
+  function NullPointerException_init_$Create$() {
+    var tmp = NullPointerException_init_$Init$(objectCreate(protoOf(NullPointerException)));
+    captureStack(tmp, NullPointerException_init_$Create$);
+    return tmp;
+  }
+  function NullPointerException() {
+    captureStack(this, NullPointerException);
   }
   function ClassCastException_init_$Init$($this) {
     RuntimeException_init_$Init$($this);
@@ -2437,8 +2463,10 @@ if (typeof ArrayBuffer.isView === 'undefined') {
   _.$_$.r = contains_0;
   _.$_$.s = replace;
   _.$_$.t = split;
-  _.$_$.u = toDoubleOrNull;
-  _.$_$.v = THROW_CCE;
+  _.$_$.u = substring;
+  _.$_$.v = toDoubleOrNull;
+  _.$_$.w = THROW_CCE;
+  _.$_$.x = ensureNotNull;
   //endregion
   return _;
 }));

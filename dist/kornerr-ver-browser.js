@@ -21,10 +21,12 @@
   var split = kotlin_kotlin.$_$.t;
   var contains = kotlin_kotlin.$_$.r;
   var replace = kotlin_kotlin.$_$.s;
-  var toDoubleOrNull = kotlin_kotlin.$_$.u;
+  var toDoubleOrNull = kotlin_kotlin.$_$.v;
+  var ensureNotNull = kotlin_kotlin.$_$.x;
+  var substring = kotlin_kotlin.$_$.u;
   var joinToString = kotlin_kotlin.$_$.f;
   var VOID = kotlin_kotlin.$_$.a;
-  var THROW_CCE = kotlin_kotlin.$_$.v;
+  var THROW_CCE = kotlin_kotlin.$_$.w;
   var isArray = kotlin_kotlin.$_$.o;
   var toString = kotlin_kotlin.$_$.q;
   var getStringHashCode = kotlin_kotlin.$_$.k;
@@ -288,6 +290,7 @@
       BANK_CURRENCY_URL = 'https://kornerr.ru/cbr/cur.xml';
     }
   }
+  var BUDGET_INITIAL_BUDGET;
   var BUDGET_RESULT_DATE_T;
   var BUDGET_RESULT_WEEKDAY_T;
   function budgetShouldResetResult(c) {
@@ -309,6 +312,20 @@
     var almost = toDoubleOrNull(dotted);
     return almost == null ? 0.0 : almost;
   }
+  function budgetStringNumber(value, digitsCount) {
+    var str = '' + value;
+    var parts = split(str, ['.']);
+    if (parts.h() === 2 && ensureNotNull(parts.i(1)).length > 0 && digitsCount === 0) {
+      var integer = ensureNotNull(parts.i(0));
+      return integer;
+    }
+    if (parts.h() === 2 && ensureNotNull(parts.i(1)).length > digitsCount) {
+      var integer_0 = ensureNotNull(parts.i(0));
+      var fraction = substring(ensureNotNull(parts.i(1)), 0, digitsCount);
+      return integer_0 + '.' + fraction;
+    }
+    return str;
+  }
   function budgetResult(defaultDate, morningBalance, spent) {
     // Inline function 'kotlin.arrayOf' call
     // Inline function 'kotlin.js.unsafeCast' call
@@ -322,14 +339,20 @@
     // Inline function 'kotlin.js.asDynamic' call
     var tmp$ret$6 = [replace(BUDGET_RESULT_DATE_T, '%DATE%', defaultDate)];
     lines = tmp0.concat(tmp$ret$6);
+    var balance = morningBalance - spent;
+    var balanceStr = budgetStringNumber(balance, 2);
+    // Inline function 'kotlin.math.abs' call
+    var x = balance * 100.0 / BUDGET_INITIAL_BUDGET;
+    var percent = Math.abs(x);
+    var percentStr = budgetStringNumber(percent, 0);
     var tmp0_0 = lines;
     // Inline function 'kotlin.collections.plus' call
     // Inline function 'kotlin.js.asDynamic' call
     // Inline function 'kotlin.arrayOf' call
     // Inline function 'kotlin.js.unsafeCast' call
     // Inline function 'kotlin.js.asDynamic' call
-    var tmp$ret$11 = [replace(replace(BUDGET_RESULT_WEEKDAY_T, '%SPENT%', '' + spent), '%BALANCE%', '' + (morningBalance - spent))];
-    lines = tmp0_0.concat(tmp$ret$11);
+    var tmp$ret$12 = [replace(replace(replace(BUDGET_RESULT_WEEKDAY_T, '%SPENT%', '' + spent), '%BALANCE%', balanceStr), '%PERCENT%', percentStr + '%')];
+    lines = tmp0_0.concat(tmp$ret$12);
     return joinToString(lines, '<br/>');
   }
   function BankContext(cbrDate, currencies, didLaunch, isLoading, request, response, responseError, recentField) {
@@ -2135,6 +2158,7 @@
   });
   //endregion
   //region block: init
+  BUDGET_INITIAL_BUDGET = 30000.0;
   BUDGET_RESULT_DATE_T = '<b>%DATE%<\/b>';
   BUDGET_RESULT_WEEKDAY_T = '\u0411\u0443\u0434\u043D\u0438: %SPENT% / %BALANCE% %PERCENT%';
   QUIZ_FAILURE_MESSAGE = '\u0414\u0430\u0432\u0430\u0439 \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0435\u043C \u0435\u0449\u0451 \u0440\u0430\u0437!';
