@@ -18,13 +18,12 @@ val BUDGET_RESULT_WEEKDAY_T = "Будни: %SPENT% / %BALANCE% %PERCENT%"
 @JsExport
 fun budgetShouldResetResult(c: BudgetContext): BudgetContext {
     if (
-        c.recentField == "defaultDate" ||
         c.recentField == "inputMorningBalance" ||
         c.recentField == "inputSpent"
     ) {
         val mbalance = budgetNumber(c.inputMorningBalance)
         val spent = budgetNumber(c.inputSpent)
-        c.result = budgetResult(c.defaultDate, mbalance, spent)
+        c.result = budgetResult(c.reportedDate, mbalance, spent)
         c.recentField = "result"
         return c
     }
@@ -35,9 +34,13 @@ fun budgetShouldResetResult(c: BudgetContext): BudgetContext {
 
 //<!-- Прочие функции -->
 
+// Привести строку к Float
 fun budgetNumber(s: String): Float {
+    // Заменяем запятую на точку
     val dotted = s.replace(",", ".")
-    val almost = dotted.toFloatOrNull()
+    // Убираем пробелы
+    val nospaces = dotted.replace(" ", "")
+    val almost = nospaces.toFloatOrNull()
     return almost ?: 0f
 }
 
@@ -73,18 +76,18 @@ fun budgetStringNumber(
 }
 
 fun budgetResult(
-    defaultDate: String,
+    reportedDate: String,
     morningBalance: Float,
     spent: Float
 ): String {
     var lines = arrayOf<String>()
 
-    // 1-я строка: дата
+    // Отчётная дата
     lines +=
         BUDGET_RESULT_DATE_T
-            .replace("%DATE%", defaultDate)
+            .replace("%DATE%", reportedDate)
 
-    // 2-я строка: потрачено / баланс процент
+    // Потрачено / баланс процент
     val balance = morningBalance - spent
     val balanceStr = budgetStringNumber(balance, 2)
     val percent = abs(balance * 100f / BUDGET_INITIAL_BUDGET)

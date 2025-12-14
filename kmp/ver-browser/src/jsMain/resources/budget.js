@@ -6,7 +6,6 @@ function budgetCtrl() {
 
 //<!-- Константы -->
 
-BUDGET_DATE_ID = "budgetDate";
 BUDGET_RESULT_ID = "budgetResult";
 
 //<!-- Компонент -->
@@ -14,10 +13,16 @@ BUDGET_RESULT_ID = "budgetResult";
 function BudgetComponent() {
     this._construct = function() {
         this.ctrl = new KT.CLDController(new KT.BudgetContext());
-        // Debug
+        // Отладка
         this.ctrl.registerCallback((c) => {
             console.log(`ИГР BudgetC._construct ctrl k/v: '${c.recentField}'/'${c.field(c.recentField)}'`);
         });
+
+
+        // Значения по умолчанию.
+        this.ctrl.set("reportedDate", budgetReportedDate());
+        this.ctrl.set("reportedDateWeekday", budgetReportedDateWeekday());
+
         this.setupEffects();
         this.setupEvents();
         this.setupShoulds();
@@ -25,7 +30,6 @@ function BudgetComponent() {
 
     this.setupEffects = function() {
         let oneliners = [ 
-            "defaultDate", (c) => { setUIInputValue(BUDGET_DATE_ID, c.defaultDate); },
             "result", (c) => { budgetDisplayResult(c.result); },
         ];
         KT.registerOneliners(this.ctrl, oneliners);
@@ -39,7 +43,6 @@ function BudgetComponent() {
 
     this.setupShoulds = function() {
         [
-            budgetShouldResetDefaultDate,
             KT.budgetShouldResetResult,
         ].forEach((f) => {
             this.ctrl.registerFunction(f);
@@ -47,19 +50,6 @@ function BudgetComponent() {
     };
     
     this._construct();
-}
-
-//<!-- Шуды на стороне JS (исключительно для зависимостей на стороне JS) -->
-
-function budgetShouldResetDefaultDate(c) {
-    if (c.recentField == "didLaunch") {
-        c.defaultDate = budgetDefaultDate();
-        c.recentField = "defaultDate";
-        return c;
-    }
-
-    c.recentField = "none";
-    return c;
 }
 
 //<!-- Эффекты -->
@@ -73,10 +63,19 @@ function budgetDisplayResult(value) {
 
 //<!-- Прочие функции -->
 
-function budgetDefaultDate() {
+// Дата отчётного дня
+function budgetReportedDate() {
     let now = luxon.DateTime.now();
     let yesterday = now.minus({ days: 1 });
     return `${yesterday.day}.${yesterday.month}`;
+}
+
+// Дент недели отчётного дня
+// 1 = Пн, ..., 7 == Вс
+function budgetReportedDateWeekday() {
+    let now = luxon.DateTime.now();
+    let yesterday = now.minus({ days: 1 });
+    return yesterday.weekday;
 }
 
 //<!-- Установка -->
