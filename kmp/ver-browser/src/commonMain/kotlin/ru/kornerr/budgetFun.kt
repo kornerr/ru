@@ -21,11 +21,12 @@ val BUDGET_WEEKDAY_SUN = 7
 /* Сформировать результат
  *
  * Условия:
- * 1. Задали дату или траты или баланс
+ * 1. Запустии компоненту или задали траты / баланс
  */
 @JsExport
 fun budgetShouldResetResult(c: BudgetContext): BudgetContext {
     if (
+        c.recentField == "didLaunch" ||
         c.recentField == "inputMorningBalance" ||
         c.recentField == "inputSpent"
     ) {

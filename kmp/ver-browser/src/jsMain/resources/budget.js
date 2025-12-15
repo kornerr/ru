@@ -21,7 +21,7 @@ function BudgetComponent() {
 
         // Значения по умолчанию.
         this.ctrl.set("reportedDate", budgetReportedDate());
-        this.ctrl.set("reportedDateWeekday", budgetReportedDateWeekday());
+        this.ctrl.set("reportedWeekday", budgetReportedWeekday());
         this.ctrl.set("todayWeekday", budgetTodayWeekday());
 
         this.setupEffects();
@@ -73,7 +73,7 @@ function budgetReportedDate() {
 
 // День недели отчётного дня
 // 1 = Пн, ..., 7 == Вс
-function budgetReportedDateWeekday() {
+function budgetReportedWeekday() {
     let now = luxon.DateTime.now();
     let yesterday = now.minus({ days: 1 });
     return yesterday.weekday;
