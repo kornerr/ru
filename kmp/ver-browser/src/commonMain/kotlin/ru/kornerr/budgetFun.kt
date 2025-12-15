@@ -6,6 +6,7 @@ import kotlin.math.abs
 
 val BUDGET_INITIAL_BUDGET = 30000f
 val BUDGET_RESULT_DATE_T = "<b>%DATE%</b>"
+val BUDGET_RESULT_OVERRUN_T = "Перерасход: %VALUE%"
 val BUDGET_RESULT_WEEKDAY_T = "Будни: %SPENT% / %BALANCE% %PERCENT%"
 val BUDGET_RESULT_WEEKEND_T = "Выходные: %SPENT% / %BALANCE% %PERCENT%"
 val BUDGET_WEEKDAY_MON = 1
@@ -35,6 +36,7 @@ fun budgetShouldResetResult(c: BudgetContext): BudgetContext {
         var lines = arrayOf<String>()
         lines += budgetResultDate(c.reportedDate)
         lines += budgetResultSpent(mbalance, c.reportedWeekday, spent)
+        lines += budgetResultOverrun(mbalance, c.reportedWeekday, spent)
         c.result = lines.joinToString("<br />")
         c.recentField = "result"
         return c
@@ -92,6 +94,28 @@ fun budgetResultDate(reportedDate: String): String {
     return BUDGET_RESULT_DATE_T.replace("%DATE%", reportedDate)
 }
 
+// Перерасход
+fun budgetResultOverrun(
+    morningBalance: Float,
+    reportedWeekday: Int,
+    spent: Float
+): String {
+    val todayBalance = morningBalance - spent
+    var expectedBalance = 0
+
+    // Понедельник
+    //
+    // Выходные
+    if (
+        reportedWeekday == BUDGET_WEEKDAY_SAT ||
+        reportedWeekday == BUDGET_WEEKDAY_SUN
+    ) {
+    }
+    // Будни
+    else {
+    }
+}
+
 // Потрачено / баланс процент
 fun budgetResultSpent(
     morningBalance: Float,
@@ -100,7 +124,6 @@ fun budgetResultSpent(
 ): String {
     // Выбор шаблона weekday или weekend
     var weekT = BUDGET_RESULT_WEEKDAY_T
-    /**/println("ИГР budgetRS reportedWD: '$reportedWeekday'")
     if (
         reportedWeekday == BUDGET_WEEKDAY_SAT ||
         reportedWeekday == BUDGET_WEEKDAY_SUN
