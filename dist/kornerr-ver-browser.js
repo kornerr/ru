@@ -20,11 +20,11 @@
   var initMetadataForClass = kotlin_kotlin.$_$.m;
   var split = kotlin_kotlin.$_$.t;
   var contains = kotlin_kotlin.$_$.r;
+  var joinToString = kotlin_kotlin.$_$.f;
   var replace = kotlin_kotlin.$_$.s;
   var toDoubleOrNull = kotlin_kotlin.$_$.v;
   var ensureNotNull = kotlin_kotlin.$_$.x;
   var substring = kotlin_kotlin.$_$.u;
-  var joinToString = kotlin_kotlin.$_$.f;
   var VOID = kotlin_kotlin.$_$.a;
   var THROW_CCE = kotlin_kotlin.$_$.w;
   var isArray = kotlin_kotlin.$_$.o;
@@ -305,7 +305,27 @@
     if (c.x3_1 === 'inputMorningBalance' || c.x3_1 === 'inputSpent') {
       var mbalance = budgetNumber(c.inputMorningBalance);
       var spent = budgetNumber(c.inputSpent);
-      c.result = budgetResult(mbalance, c.reportedDate, spent, c.todayWeekday);
+      // Inline function 'kotlin.arrayOf' call
+      // Inline function 'kotlin.js.unsafeCast' call
+      // Inline function 'kotlin.js.asDynamic' call
+      var lines = [];
+      var tmp0 = lines;
+      // Inline function 'kotlin.collections.plus' call
+      // Inline function 'kotlin.js.asDynamic' call
+      // Inline function 'kotlin.arrayOf' call
+      // Inline function 'kotlin.js.unsafeCast' call
+      // Inline function 'kotlin.js.asDynamic' call
+      var tmp$ret$6 = [budgetResultDate(c.reportedDate)];
+      lines = tmp0.concat(tmp$ret$6);
+      var tmp0_0 = lines;
+      // Inline function 'kotlin.collections.plus' call
+      // Inline function 'kotlin.js.asDynamic' call
+      // Inline function 'kotlin.arrayOf' call
+      // Inline function 'kotlin.js.unsafeCast' call
+      // Inline function 'kotlin.js.asDynamic' call
+      var tmp$ret$11 = [budgetResultSpent(mbalance, c.reportedWeekday, spent)];
+      lines = tmp0_0.concat(tmp$ret$11);
+      c.result = joinToString(lines, '<br />');
       c.x3_1 = 'result';
       return c;
     }
@@ -335,38 +355,19 @@
     }
     return str;
   }
-  function budgetResult(morningBalance, reportedDate, spent, todayWeekday) {
-    // Inline function 'kotlin.arrayOf' call
-    // Inline function 'kotlin.js.unsafeCast' call
-    // Inline function 'kotlin.js.asDynamic' call
-    var lines = [];
-    var tmp0 = lines;
-    // Inline function 'kotlin.collections.plus' call
-    // Inline function 'kotlin.js.asDynamic' call
-    // Inline function 'kotlin.arrayOf' call
-    // Inline function 'kotlin.js.unsafeCast' call
-    // Inline function 'kotlin.js.asDynamic' call
-    var tmp$ret$6 = [replace(BUDGET_RESULT_DATE_T, '%DATE%', reportedDate)];
-    lines = tmp0.concat(tmp$ret$6);
+  function budgetResultDate(reportedDate) {
+    return replace(BUDGET_RESULT_DATE_T, '%DATE%', reportedDate);
+  }
+  function budgetResultSpent(morningBalance, reportedWeekday, spent) {
     var weekT = BUDGET_RESULT_WEEKDAY_T;
-    if (todayWeekday === BUDGET_WEEKDAY_SUN || todayWeekday === BUDGET_WEEKDAY_MON) {
+    if (reportedWeekday === BUDGET_WEEKDAY_SAT || reportedWeekday === BUDGET_WEEKDAY_SUN) {
       weekT = BUDGET_RESULT_WEEKEND_T;
     }
     var balance = morningBalance - spent;
     var balanceStr = budgetStringNumber(balance, 2);
-    // Inline function 'kotlin.math.abs' call
-    var x = balance * 100.0 / BUDGET_INITIAL_BUDGET;
-    var percent = Math.abs(x);
+    var percent = balance * 100.0 / BUDGET_INITIAL_BUDGET;
     var percentStr = budgetStringNumber(percent, 0);
-    var tmp0_0 = lines;
-    // Inline function 'kotlin.collections.plus' call
-    // Inline function 'kotlin.js.asDynamic' call
-    // Inline function 'kotlin.arrayOf' call
-    // Inline function 'kotlin.js.unsafeCast' call
-    // Inline function 'kotlin.js.asDynamic' call
-    var tmp$ret$12 = [replace(replace(replace(weekT, '%SPENT%', '' + spent), '%BALANCE%', balanceStr), '%PERCENT%', percentStr + '%')];
-    lines = tmp0_0.concat(tmp$ret$12);
-    return joinToString(lines, '<br/>');
+    return replace(replace(replace(weekT, '%SPENT%', '' + spent), '%BALANCE%', balanceStr), '%PERCENT%', percentStr + '%');
   }
   function BankContext(cbrDate, currencies, didLaunch, isLoading, request, response, responseError, recentField) {
     cbrDate = cbrDate === VOID ? '' : cbrDate;
@@ -580,13 +581,13 @@
       return false;
     return true;
   };
-  function BudgetContext(didLaunch, inputDate, inputMorningBalance, inputSpent, reportedDate, reportedDateWeekday, result, todayWeekday, recentField) {
+  function BudgetContext(didLaunch, inputDate, inputMorningBalance, inputSpent, reportedDate, reportedWeekday, result, todayWeekday, recentField) {
     didLaunch = didLaunch === VOID ? false : didLaunch;
     inputDate = inputDate === VOID ? '' : inputDate;
     inputMorningBalance = inputMorningBalance === VOID ? '' : inputMorningBalance;
     inputSpent = inputSpent === VOID ? '' : inputSpent;
     reportedDate = reportedDate === VOID ? '' : reportedDate;
-    reportedDateWeekday = reportedDateWeekday === VOID ? 0 : reportedDateWeekday;
+    reportedWeekday = reportedWeekday === VOID ? 0 : reportedWeekday;
     result = result === VOID ? '' : result;
     todayWeekday = todayWeekday === VOID ? 0 : todayWeekday;
     recentField = recentField === VOID ? '' : recentField;
@@ -595,7 +596,7 @@
     this.inputMorningBalance = inputMorningBalance;
     this.inputSpent = inputSpent;
     this.reportedDate = reportedDate;
-    this.reportedDateWeekday = reportedDateWeekday;
+    this.reportedWeekday = reportedWeekday;
     this.result = result;
     this.todayWeekday = todayWeekday;
     this.x3_1 = recentField;
@@ -631,10 +632,10 @@
     return this.reportedDate;
   };
   protoOf(BudgetContext).b5 = function (_set____db54di) {
-    this.reportedDateWeekday = _set____db54di;
+    this.reportedWeekday = _set____db54di;
   };
   protoOf(BudgetContext).c5 = function () {
-    return this.reportedDateWeekday;
+    return this.reportedWeekday;
   };
   protoOf(BudgetContext).d5 = function (_set____db54di) {
     this.result = _set____db54di;
@@ -671,8 +672,8 @@
       case 'reportedDate':
         var tmp_3 = this.reportedDate;
         return !(tmp_3 == null) ? tmp_3 : THROW_CCE();
-      case 'reportedDateWeekday':
-        var tmp_4 = this.reportedDateWeekday;
+      case 'reportedWeekday':
+        var tmp_4 = this.reportedWeekday;
         return !(tmp_4 == null) ? tmp_4 : THROW_CCE();
       case 'result':
         var tmp_5 = this.result;
@@ -708,9 +709,9 @@
         var tmp_3 = this;
         tmp_3.reportedDate = (!(value == null) ? typeof value === 'string' : false) ? value : THROW_CCE();
         break;
-      case 'reportedDateWeekday':
+      case 'reportedWeekday':
         var tmp_4 = this;
-        tmp_4.reportedDateWeekday = (!(value == null) ? typeof value === 'number' : false) ? value : THROW_CCE();
+        tmp_4.reportedWeekday = (!(value == null) ? typeof value === 'number' : false) ? value : THROW_CCE();
         break;
       case 'result':
         var tmp_5 = this;
@@ -738,7 +739,7 @@
     return this.reportedDate;
   };
   protoOf(BudgetContext).p4 = function () {
-    return this.reportedDateWeekday;
+    return this.reportedWeekday;
   };
   protoOf(BudgetContext).q4 = function () {
     return this.result;
@@ -749,23 +750,23 @@
   protoOf(BudgetContext).h5 = function () {
     return this.x3_1;
   };
-  protoOf(BudgetContext).i5 = function (didLaunch, inputDate, inputMorningBalance, inputSpent, reportedDate, reportedDateWeekday, result, todayWeekday, recentField) {
-    return new BudgetContext(didLaunch, inputDate, inputMorningBalance, inputSpent, reportedDate, reportedDateWeekday, result, todayWeekday, recentField);
+  protoOf(BudgetContext).i5 = function (didLaunch, inputDate, inputMorningBalance, inputSpent, reportedDate, reportedWeekday, result, todayWeekday, recentField) {
+    return new BudgetContext(didLaunch, inputDate, inputMorningBalance, inputSpent, reportedDate, reportedWeekday, result, todayWeekday, recentField);
   };
-  protoOf(BudgetContext).copy = function (didLaunch, inputDate, inputMorningBalance, inputSpent, reportedDate, reportedDateWeekday, result, todayWeekday, recentField, $super) {
+  protoOf(BudgetContext).copy = function (didLaunch, inputDate, inputMorningBalance, inputSpent, reportedDate, reportedWeekday, result, todayWeekday, recentField, $super) {
     didLaunch = didLaunch === VOID ? this.didLaunch : didLaunch;
     inputDate = inputDate === VOID ? this.inputDate : inputDate;
     inputMorningBalance = inputMorningBalance === VOID ? this.inputMorningBalance : inputMorningBalance;
     inputSpent = inputSpent === VOID ? this.inputSpent : inputSpent;
     reportedDate = reportedDate === VOID ? this.reportedDate : reportedDate;
-    reportedDateWeekday = reportedDateWeekday === VOID ? this.reportedDateWeekday : reportedDateWeekday;
+    reportedWeekday = reportedWeekday === VOID ? this.reportedWeekday : reportedWeekday;
     result = result === VOID ? this.result : result;
     todayWeekday = todayWeekday === VOID ? this.todayWeekday : todayWeekday;
     recentField = recentField === VOID ? this.x3_1 : recentField;
-    return $super === VOID ? this.i5(didLaunch, inputDate, inputMorningBalance, inputSpent, reportedDate, reportedDateWeekday, result, todayWeekday, recentField) : $super.i5.call(this, didLaunch, inputDate, inputMorningBalance, inputSpent, reportedDate, reportedDateWeekday, result, todayWeekday, recentField);
+    return $super === VOID ? this.i5(didLaunch, inputDate, inputMorningBalance, inputSpent, reportedDate, reportedWeekday, result, todayWeekday, recentField) : $super.i5.call(this, didLaunch, inputDate, inputMorningBalance, inputSpent, reportedDate, reportedWeekday, result, todayWeekday, recentField);
   };
   protoOf(BudgetContext).toString = function () {
-    return 'BudgetContext(didLaunch=' + this.didLaunch + ', inputDate=' + this.inputDate + ', inputMorningBalance=' + this.inputMorningBalance + ', inputSpent=' + this.inputSpent + ', reportedDate=' + this.reportedDate + ', reportedDateWeekday=' + this.reportedDateWeekday + ', result=' + this.result + ', todayWeekday=' + this.todayWeekday + ', recentField=' + this.x3_1 + ')';
+    return 'BudgetContext(didLaunch=' + this.didLaunch + ', inputDate=' + this.inputDate + ', inputMorningBalance=' + this.inputMorningBalance + ', inputSpent=' + this.inputSpent + ', reportedDate=' + this.reportedDate + ', reportedWeekday=' + this.reportedWeekday + ', result=' + this.result + ', todayWeekday=' + this.todayWeekday + ', recentField=' + this.x3_1 + ')';
   };
   protoOf(BudgetContext).hashCode = function () {
     var result = getBooleanHashCode(this.didLaunch);
@@ -773,7 +774,7 @@
     result = imul(result, 31) + getStringHashCode(this.inputMorningBalance) | 0;
     result = imul(result, 31) + getStringHashCode(this.inputSpent) | 0;
     result = imul(result, 31) + getStringHashCode(this.reportedDate) | 0;
-    result = imul(result, 31) + this.reportedDateWeekday | 0;
+    result = imul(result, 31) + this.reportedWeekday | 0;
     result = imul(result, 31) + getStringHashCode(this.result) | 0;
     result = imul(result, 31) + this.todayWeekday | 0;
     result = imul(result, 31) + getStringHashCode(this.x3_1) | 0;
@@ -795,7 +796,7 @@
       return false;
     if (!(this.reportedDate === tmp0_other_with_cast.reportedDate))
       return false;
-    if (!(this.reportedDateWeekday === tmp0_other_with_cast.reportedDateWeekday))
+    if (!(this.reportedWeekday === tmp0_other_with_cast.reportedWeekday))
       return false;
     if (!(this.result === tmp0_other_with_cast.result))
       return false;

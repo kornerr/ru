@@ -31,9 +31,9 @@ fun budgetShouldResetResult(c: BudgetContext): BudgetContext {
     ) {
         val mbalance = budgetNumber(c.inputMorningBalance)
         val spent = budgetNumber(c.inputSpent)
-        var lines = []
+        var lines = arrayOf<String>()
         lines += budgetResultDate(c.reportedDate)
-        lines += budgetResultSpent(mbalance, c.reportedWeekday, spent, c.todayWeekday)
+        lines += budgetResultSpent(mbalance, c.reportedWeekday, spent)
         c.result = lines.joinToString("<br />")
         c.recentField = "result"
         return c
@@ -92,10 +92,10 @@ fun budgetResultDate(reportedDate: String): String {
 }
 
 // Потрачено / баланс процент
-fun budgetResultDate(
-
-  todo
-
+fun budgetResultSpent(
+    morningBalance: Float,
+    reportedWeekday: Int,
+    spent: Float
 ): String {
     // Выбор шаблона weekday или weekend
     var weekT = BUDGET_RESULT_WEEKDAY_T
@@ -109,16 +109,10 @@ fun budgetResultDate(
     // Потрачено / баланс процент
     val balance = morningBalance - spent
     val balanceStr = budgetStringNumber(balance, 2)
-    val percent = abs(balance * 100f / BUDGET_INITIAL_BUDGET)
+    val percent = balance * 100f / BUDGET_INITIAL_BUDGET
     val percentStr = budgetStringNumber(percent, 0)
-    lines += 
-        weekT
+    return weekT
             .replace("%SPENT%", "$spent")
             .replace("%BALANCE%", balanceStr)
             .replace("%PERCENT%", "$percentStr%")
-    return lines.joinToString("<br/>")
-/*
-    morningBalance: Float,
-    spent: Float,
-    todayWeekday: Int
-    */
+}
