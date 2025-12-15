@@ -99,6 +99,7 @@ fun budgetResultSpent(
 ): String {
     // Выбор шаблона weekday или weekend
     var weekT = BUDGET_RESULT_WEEKDAY_T
+    /**/println("ИГР budgetRS reportedWD: '$reportedWeekday'")
     if (
         reportedWeekday == BUDGET_WEEKDAY_SAT ||
         reportedWeekday == BUDGET_WEEKDAY_SUN
