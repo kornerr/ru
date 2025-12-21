@@ -31,8 +31,8 @@ fun budgetShouldResetResult(c: BudgetContext): BudgetContext {
         c.recentField == "inputMorningBalance" ||
         c.recentField == "inputSpent"
     ) {
-        val mbalance = budgetNumber(c.inputMorningBalance)
-        val spent = budgetNumber(c.inputSpent)
+        val mbalance = budgetNumber(budgetStringOnlyNumerical(c.inputMorningBalance))
+        val spent = budgetNumber(budgetStringOnlyNumerical(c.inputSpent))
         var lines = arrayOf<String>()
         lines += budgetResultDate(c.reportedDate)
         lines += budgetResultSpent(mbalance, c.reportedWeekday, spent)
@@ -89,6 +89,22 @@ fun budgetStringNumber(
     }
 
     return str
+}
+
+// Исключаем всё, что не про число
+fun budgetStringOnlyNumerical(str: String): String {
+    var nums = ""
+    for (char in str) {
+        if (
+            char.isDigit() ||
+            char == ',' ||
+            char == '.'
+        ) {
+            nums += char
+        }
+    }
+
+    return nums
 }
 
 // Отчётная дата
