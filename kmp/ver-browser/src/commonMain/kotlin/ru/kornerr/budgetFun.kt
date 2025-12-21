@@ -53,7 +53,9 @@ fun budgetNumber(s: String): Float {
     // Заменяем запятую на точку
     val dotted = s.replace(",", ".")
     // Убираем пробелы
+    /**/println("ИГР budgetN-01 dotted: '$dotted'")
     val nospaces = dotted.replace(" ", "")
+    /**/println("ИГР budgetN-02 nospaces: '$nospaces'")
     val almost = nospaces.toFloatOrNull()
     return almost ?: 0f
 }
@@ -102,7 +104,9 @@ fun budgetResultOverrun(
 ): String {
     val todayBalance = morningBalance - spent
     var expectedBalance = 0
+    return "N/A"
 
+    /*
     // Понедельник
     //
     // Выходные
@@ -114,6 +118,7 @@ fun budgetResultOverrun(
     // Будни
     else {
     }
+    */
 }
 
 // Потрачено / баланс процент

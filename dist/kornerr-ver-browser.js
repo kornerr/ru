@@ -22,10 +22,10 @@
   var contains = kotlin_kotlin.$_$.s;
   var joinToString = kotlin_kotlin.$_$.f;
   var replace = kotlin_kotlin.$_$.t;
+  var println = kotlin_kotlin.$_$.g;
   var toDoubleOrNull = kotlin_kotlin.$_$.w;
   var ensureNotNull = kotlin_kotlin.$_$.y;
   var substring = kotlin_kotlin.$_$.v;
-  var println = kotlin_kotlin.$_$.g;
   var VOID = kotlin_kotlin.$_$.a;
   var THROW_CCE = kotlin_kotlin.$_$.x;
   var isArray = kotlin_kotlin.$_$.p;
@@ -293,6 +293,7 @@
   }
   var BUDGET_INITIAL_BUDGET;
   var BUDGET_RESULT_DATE_T;
+  var BUDGET_RESULT_OVERRUN_T;
   var BUDGET_RESULT_WEEKDAY_T;
   var BUDGET_RESULT_WEEKEND_T;
   var BUDGET_WEEKDAY_MON;
@@ -326,6 +327,14 @@
       // Inline function 'kotlin.js.asDynamic' call
       var tmp$ret$11 = [budgetResultSpent(mbalance, c.reportedWeekday, spent)];
       lines = tmp0_0.concat(tmp$ret$11);
+      var tmp0_1 = lines;
+      // Inline function 'kotlin.collections.plus' call
+      // Inline function 'kotlin.js.asDynamic' call
+      // Inline function 'kotlin.arrayOf' call
+      // Inline function 'kotlin.js.unsafeCast' call
+      // Inline function 'kotlin.js.asDynamic' call
+      var tmp$ret$16 = [budgetResultOverrun(mbalance, c.reportedWeekday, spent)];
+      lines = tmp0_1.concat(tmp$ret$16);
       c.result = joinToString(lines, '<br />');
       c.e4_1 = 'result';
       return c;
@@ -335,7 +344,9 @@
   }
   function budgetNumber(s) {
     var dotted = replace(s, ',', '.');
+    println("\u0418\u0413\u0420 budgetN-01 dotted: '" + dotted + "'");
     var nospaces = replace(dotted, ' ', '');
+    println("\u0418\u0413\u0420 budgetN-02 nospaces: '" + nospaces + "'");
     // Inline function 'kotlin.text.toFloatOrNull' call
     // Inline function 'kotlin.js.unsafeCast' call
     // Inline function 'kotlin.js.asDynamic' call
@@ -359,9 +370,13 @@
   function budgetResultDate(reportedDate) {
     return replace(BUDGET_RESULT_DATE_T, '%DATE%', reportedDate);
   }
+  function budgetResultOverrun(morningBalance, reportedWeekday, spent) {
+    var todayBalance = morningBalance - spent;
+    var expectedBalance = 0;
+    return 'N/A';
+  }
   function budgetResultSpent(morningBalance, reportedWeekday, spent) {
     var weekT = BUDGET_RESULT_WEEKDAY_T;
-    println("\u0418\u0413\u0420 budgetRS reportedWD: '" + reportedWeekday + "'");
     if (reportedWeekday === BUDGET_WEEKDAY_SAT || reportedWeekday === BUDGET_WEEKDAY_SUN) {
       weekT = BUDGET_RESULT_WEEKEND_T;
     }
@@ -2220,6 +2235,7 @@
   //region block: init
   BUDGET_INITIAL_BUDGET = 30000.0;
   BUDGET_RESULT_DATE_T = '<b>%DATE%<\/b>';
+  BUDGET_RESULT_OVERRUN_T = '\u041F\u0435\u0440\u0435\u0440\u0430\u0441\u0445\u043E\u0434: %VALUE%';
   BUDGET_RESULT_WEEKDAY_T = '\u0411\u0443\u0434\u043D\u0438: %SPENT% / %BALANCE% %PERCENT%';
   BUDGET_RESULT_WEEKEND_T = '\u0412\u044B\u0445\u043E\u0434\u043D\u044B\u0435: %SPENT% / %BALANCE% %PERCENT%';
   BUDGET_WEEKDAY_MON = 1;
