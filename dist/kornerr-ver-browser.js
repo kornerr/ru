@@ -347,11 +347,10 @@
   }
   function budgetNumber(s) {
     var dotted = replace(s, ',', '.');
-    var nospaces = replace(dotted, ' ', '');
     // Inline function 'kotlin.text.toFloatOrNull' call
     // Inline function 'kotlin.js.unsafeCast' call
     // Inline function 'kotlin.js.asDynamic' call
-    var almost = toDoubleOrNull(nospaces);
+    var almost = toDoubleOrNull(dotted);
     return almost == null ? 0.0 : almost;
   }
   function budgetStringNumber(value, digitsCount) {
@@ -375,7 +374,7 @@
     while (inductionVariable < last) {
       var char = charCodeAt(str, inductionVariable);
       inductionVariable = inductionVariable + 1 | 0;
-      if (isDigit(char) || char === _Char___init__impl__6a9atx(44) || char === _Char___init__impl__6a9atx(46)) {
+      if (isDigit(char) || char === _Char___init__impl__6a9atx(44) || char === _Char___init__impl__6a9atx(46) || char === _Char___init__impl__6a9atx(45)) {
         nums = nums + toString(char);
       }
     }

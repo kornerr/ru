@@ -52,9 +52,8 @@ fun budgetShouldResetResult(c: BudgetContext): BudgetContext {
 fun budgetNumber(s: String): Float {
     // Заменяем запятую на точку
     val dotted = s.replace(",", ".")
-    // Убираем пробелы
-    val nospaces = dotted.replace(" ", "")
-    val almost = nospaces.toFloatOrNull()
+    // Переводим в число
+    val almost = dotted.toFloatOrNull()
     return almost ?: 0f
 }
 
@@ -96,7 +95,8 @@ fun budgetStringOnlyNumerical(str: String): String {
         if (
             char.isDigit() ||
             char == ',' ||
-            char == '.'
+            char == '.' ||
+            char == '-'
         ) {
             nums += char
         }
