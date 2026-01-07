@@ -4,7 +4,7 @@ import kotlin.math.abs
 
 //<!-- Константы -->
 
-val BUDGET_INITIAL_BUDGET = 30000f
+val BUDGET_INITIAL_SUM = 30000f
 val BUDGET_RESULT_DATE_T = "<b>%DATE%</b>"
 val BUDGET_RESULT_OVERRUN_T = "Перерасход: %VALUE%"
 val BUDGET_RESULT_WEEKDAY_T = "Будни: %SPENT% / %BALANCE% %PERCENT%"
@@ -53,9 +53,7 @@ fun budgetNumber(s: String): Float {
     // Заменяем запятую на точку
     val dotted = s.replace(",", ".")
     // Убираем пробелы
-    /**/println("ИГР budgetN-01 dotted: '$dotted'")
     val nospaces = dotted.replace(" ", "")
-    /**/println("ИГР budgetN-02 nospaces: '$nospaces'")
     val almost = nospaces.toFloatOrNull()
     return almost ?: 0f
 }
@@ -155,7 +153,7 @@ fun budgetResultSpent(
     // Потрачено / баланс процент
     val balance = morningBalance - spent
     val balanceStr = budgetStringNumber(balance, 2)
-    val percent = balance * 100f / BUDGET_INITIAL_BUDGET
+    val percent = balance * 100f / BUDGET_INITIAL_SUM
     val percentStr = budgetStringNumber(percent, 0)
     return weekT
             .replace("%SPENT%", "$spent")

@@ -68,7 +68,9 @@ function budgetDisplayResult(value) {
 function budgetReportedDate() {
     let now = luxon.DateTime.now();
     let yesterday = now.minus({ days: 1 });
-    return `${yesterday.day}.${yesterday.month}`;
+    let day = String(yesterday.day).padStart(2, '0');
+    let mon = String(yesterday.month).padStart(2, '0');
+    return `${day}.${mon}`;
 }
 
 // День недели отчётного дня
