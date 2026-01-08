@@ -26,7 +26,7 @@
                 <input class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputSpent", this.value);' type="text" placeholder="Траты">
               </td>
               <td>
-                <button class="uk-button uk-button-default"><span uk-icon="pull"></span></button>
+                <button class="uk-button uk-button-default" onclick='budgetCtrl().set("pasteSpent", true);'><span uk-icon="pull"></span></button>
               </td>
             </tr>
             <tr>
@@ -34,14 +34,14 @@
                 <input class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputMorningBalance", this.value);' type="text" placeholder="Баланс утр.">
               </td>
               <td>
-                <button class="uk-button uk-button-default"><span uk-icon="pull"></span></button>
+                <button class="uk-button uk-button-default" onclick='budgetCtrl().set("pasteMorningBalance", true);'><span uk-icon="pull"></span></button>
               </td>
             </tr>
           </tbody>
         </table>
         <div class="uk-padding-small uk-padding-remove-top">
           <pre id="budgetResult" ></pre>
-          <button class="uk-button uk-button-default"><span uk-icon="copy"></span></button>
+          <button class="uk-button uk-button-default" onclick='budgetCtrl().set("copyResult", true);'><span uk-icon="copy"></span></button>
         </div>
       </div>
     <script src="other.js"></script>
