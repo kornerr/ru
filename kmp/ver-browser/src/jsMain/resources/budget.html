@@ -10,6 +10,7 @@
     <script src="luxon-3.7.2.min.js"></script>
     <script src="kornerr-ver-browser.js"></script>
     <script src="uikit-3.23.11.min.js"></script>
+    <script src="uikit-icons-3.23.11.min.js"></script>
     <script>
         let KT = window["kornerr:ver-browser"].ru.kornerr;
         window.components = [];
@@ -17,20 +18,28 @@
     <title>kornerr: budget</title>
   </head>
   <body>
-      <table class="uk-table">
-        <tbody>
-          <tr>
-            <td>
-              <input class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputSpent", this.value);' type="text" placeholder="Траты">
-            </td>
-            <td>
-              <input class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputMorningBalance", this.value);' type="text" placeholder="Баланс утр.">
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="uk-container">
-        <p id="budgetResult"></p>
+      <div class="uk-width-medium">
+        <table class="uk-table">
+          <tbody>
+            <tr>
+              <td>
+                <input class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputSpent", this.value);' type="text" placeholder="Траты">
+              </td>
+              <td>
+                <button class="uk-button uk-button-default"><span uk-icon="pull"></span></button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputMorningBalance", this.value);' type="text" placeholder="Баланс утр.">
+              </td>
+              <td>
+                <button class="uk-button uk-button-default"><span uk-icon="pull"></span></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p id="budgetResult" class="uk-padding-small"></p>
       </div>
     <script src="other.js"></script>
     <script src="budget.js"></script>
