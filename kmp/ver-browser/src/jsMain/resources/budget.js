@@ -6,6 +6,8 @@ function budgetCtrl() {
 
 //<!-- Константы -->
 
+BUDGET_INPUT_MORNING_BALANCE_ID = "budgetMorningBalance";
+BUDGET_INPUT_SPENT_ID = "budgetSpent";
 BUDGET_RESULT_ID = "budgetResult";
 
 //<!-- Компонент -->
@@ -31,6 +33,8 @@ function BudgetComponent() {
 
     this.setupEffects = function() {
         let oneliners = [ 
+            "pasteMorningBalance", (c) => { budgetPasteMorningBalance(); },
+            "pasteSpent", (c) => { budgetPasteSpent(); },
             "result", (c) => { budgetDisplayResult(c.result); },
         ];
         KT.registerOneliners(this.ctrl, oneliners);
@@ -60,6 +64,14 @@ function budgetDisplayResult(value) {
     if (el != null) {
         el.innerHTML = value;
     }
+}
+
+function budgetPasteMorningBalance() {
+    navigator.clipboard.readText().then((txt) => { setUIInputValue(BUDGET_INPUT_MORNING_BALANCE_ID, txt)});
+}
+
+function budgetPasteSpent() {
+    navigator.clipboard.readText().then((txt) => { setUIInputValue(BUDGET_INPUT_SPENT_ID, txt)});
 }
 
 //<!-- Прочие функции -->

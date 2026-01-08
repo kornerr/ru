@@ -23,7 +23,7 @@
           <tbody>
             <tr>
               <td>
-                <input class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputSpent", this.value);' type="text" placeholder="Траты">
+                <input id="budgetSpent" class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputSpent", this.value);' type="text" placeholder="Траты">
               </td>
               <td>
                 <button class="uk-button uk-button-default" onclick='budgetCtrl().set("pasteSpent", true);'><span uk-icon="pull"></span></button>
@@ -31,7 +31,7 @@
             </tr>
             <tr>
               <td>
-                <input class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputMorningBalance", this.value);' type="text" placeholder="Баланс утр.">
+                <input id="budgetMorningBalance" class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputMorningBalance", this.value);' type="text" placeholder="Баланс утр.">
               </td>
               <td>
                 <button class="uk-button uk-button-default" onclick='budgetCtrl().set("pasteMorningBalance", true);'><span uk-icon="pull"></span></button>
