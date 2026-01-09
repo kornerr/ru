@@ -295,6 +295,7 @@
     }
   }
   var BUDGET_INITIAL_SUM;
+  var BUDGET_RESTDAY_SUM;
   var BUDGET_RESULT_DATE_T;
   var BUDGET_RESULT_OVERRUN_T;
   var BUDGET_RESULT_WEEKDAY_T;
@@ -306,6 +307,7 @@
   var BUDGET_WEEKDAY_FRI;
   var BUDGET_WEEKDAY_SAT;
   var BUDGET_WEEKDAY_SUN;
+  var BUDGET_WORKDAY_SUM;
   function budgetShouldResetResult(c) {
     if (c.y3_1 === 'didLaunch' || c.y3_1 === 'inputMorningBalance' || c.y3_1 === 'inputSpent') {
       var mbalance = budgetNumber(budgetStringOnlyNumerical(c.inputMorningBalance));
@@ -385,8 +387,13 @@
   }
   function budgetResultOverrun(morningBalance, reportedWeekday, spent) {
     var todayBalance = morningBalance - spent;
-    var expectedBalance = 0;
-    return 'N/A';
+    var targetBalance = budgetTargetMorningBalance(reportedWeekday);
+    if (todayBalance < targetBalance) {
+      var diff = targetBalance - todayBalance;
+      var sdiff = budgetStringNumber(diff, 2);
+      return replace(BUDGET_RESULT_OVERRUN_T, '%VALUE%', sdiff);
+    }
+    return '';
   }
   function budgetResultSpent(morningBalance, reportedWeekday, spent) {
     var weekT = BUDGET_RESULT_WEEKDAY_T;
@@ -398,6 +405,12 @@
     var percent = balance * 100.0 / BUDGET_INITIAL_SUM;
     var percentStr = budgetStringNumber(percent, 0);
     return replace(replace(replace(weekT, '%SPENT%', '' + spent), '%BALANCE%', balanceStr), '%PERCENT%', percentStr + '%');
+  }
+  function budgetTargetMorningBalance(reportedWeekday) {
+    if (reportedWeekday >= BUDGET_WEEKDAY_MON && reportedWeekday < BUDGET_WEEKDAY_SAT) {
+      return BUDGET_INITIAL_SUM - reportedWeekday * BUDGET_WORKDAY_SUM;
+    }
+    return BUDGET_INITIAL_SUM - (reportedWeekday - 5 | 0) * BUDGET_RESTDAY_SUM;
   }
   function BankContext(cbrDate, currencies, didLaunch, isLoading, request, response, responseError, recentField) {
     cbrDate = cbrDate === VOID ? '' : cbrDate;
@@ -2313,6 +2326,7 @@
   //endregion
   //region block: init
   BUDGET_INITIAL_SUM = 30000.0;
+  BUDGET_RESTDAY_SUM = 15000.0;
   BUDGET_RESULT_DATE_T = '<b>%DATE%<\/b>';
   BUDGET_RESULT_OVERRUN_T = '\u041F\u0435\u0440\u0435\u0440\u0430\u0441\u0445\u043E\u0434: %VALUE%';
   BUDGET_RESULT_WEEKDAY_T = '\u0411\u0443\u0434\u043D\u0438: %SPENT% / %BALANCE% %PERCENT%';
@@ -2324,6 +2338,7 @@
   BUDGET_WEEKDAY_FRI = 5;
   BUDGET_WEEKDAY_SAT = 6;
   BUDGET_WEEKDAY_SUN = 7;
+  BUDGET_WORKDAY_SUM = 6000.0;
   QUIZ_FAILURE_MESSAGE = '\u0414\u0430\u0432\u0430\u0439 \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0435\u043C \u0435\u0449\u0451 \u0440\u0430\u0437!';
   QUIZ_FAILURE_TITLE = '\u0427\u0443\u0442\u044C-\u0447\u0443\u0442\u044C \u043C\u0438\u043C\u043E';
   QUIZ_NEXT_TITLE1 = '\u041F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C';

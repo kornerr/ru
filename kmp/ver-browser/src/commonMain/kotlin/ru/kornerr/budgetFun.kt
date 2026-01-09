@@ -52,8 +52,7 @@ fun budgetShouldResetResult(c: BudgetContext): BudgetContext {
 
 // Выходной ли в отчётный день?
 fun budgetIsWeekend(reportedWeekday: Int): Boolean {
-    return
-        reportedWeekday == BUDGET_WEEKDAY_SAT ||
+    return reportedWeekday == BUDGET_WEEKDAY_SAT ||
         reportedWeekday == BUDGET_WEEKDAY_SUN
 }
 
@@ -127,8 +126,13 @@ fun budgetResultOverrun(
 ): String {
     val todayBalance = morningBalance - spent
     val targetBalance = budgetTargetMorningBalance(reportedWeekday)
+    if (todayBalance < targetBalance) {
+        val diff = targetBalance - todayBalance
+        val sdiff = budgetStringNumber(diff, 2)
+        return BUDGET_RESULT_OVERRUN_T.replace("%VALUE%", sdiff)
+    }
 
-    return "N/A"
+    return ""
 }
 
 // Потрачено / баланс процент
@@ -158,7 +162,7 @@ fun budgetResultSpent(
 }
 
 // Ожидаемый (без превышения) размер утреннего баланса
-fun budgetTargetMorningBalance(reportedWeekday: Int): Int {
+fun budgetTargetMorningBalance(reportedWeekday: Int): Float {
     // Будни
     if (
         reportedWeekday >= BUDGET_WEEKDAY_MON &&
