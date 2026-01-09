@@ -7,6 +7,7 @@ import kotlin.math.abs
 val BUDGET_INITIAL_SUM = 30000f
 val BUDGET_RESTDAY_SUM = 15000f
 val BUDGET_RESULT_DATE_T = "<b>%DATE%</b>"
+val BUDGET_RESULT_LEFT_T = "Осталось: %VALUE%"
 val BUDGET_RESULT_OVERRUN_T = "Перерасход: %VALUE%"
 val BUDGET_RESULT_WEEKDAY_T = "Будни: %SPENT% / %BALANCE% %PERCENT%"
 val BUDGET_RESULT_WEEKEND_T = "Выходные: %SPENT% / %BALANCE% %PERCENT%"
@@ -39,6 +40,7 @@ fun budgetShouldResetResult(c: BudgetContext): BudgetContext {
         lines += budgetResultDate(c.reportedDate)
         lines += budgetResultSpent(mbalance, c.reportedWeekday, spent)
         lines += budgetResultOverrun(mbalance, c.reportedWeekday, spent)
+        lines += budgetResultLeft(mbalance, c.reportedWeekday, spent)
         c.result = lines.joinToString("<br />")
         c.recentField = "result"
         return c
@@ -49,6 +51,27 @@ fun budgetShouldResetResult(c: BudgetContext): BudgetContext {
 }
 
 //<!-- Прочие функции -->
+
+// Остаток виден не во все дни. Не виден в:
+// 1. пятницу
+// 2. воскресенье
+// т.к. в при отчёте за эти дни в эти самые дни уже закончился
+// бюджет половины, начался новый бюджет
+fun budgetIsLeftVisible(reportedWeekday: Int): Boolean {
+    /* 1 */ if (
+        reportedWeekday >= BUDGET_WEEKDAY_MON &&
+        reportedWeekday < BUDGET_WEEKDAY_FRI
+    ) {
+        return true
+    }
+
+    /* 2 */ if (reportedWeekday == BUDGET_WEEKDAY_SAT) {
+        return true
+    }
+
+    return false
+}
+
 
 // Выходной ли в отчётный день?
 fun budgetIsWeekend(reportedWeekday: Int): Boolean {
@@ -116,6 +139,36 @@ fun budgetStringOnlyNumerical(str: String): String {
 // Отчётная дата
 fun budgetResultDate(reportedDate: String): String {
     return BUDGET_RESULT_DATE_T.replace("%DATE%", reportedDate)
+}
+
+// Отсталось Р/д
+fun budgetResultLeft(
+    morningBalance: Float,
+    reportedWeekday: Int,
+    spent: Float
+): String {
+    val todayBalance = morningBalance - spent
+
+    if (!budgetIsLeftVisible(reportedWeekday)) {
+        return ""
+    }
+
+    // Если ушли в минус, то ничего не осталось
+    if (todayBalance < 0) {
+        return BUDGET_RESULT_LEFT_T.replace("%VALUE%", "0")
+    }
+
+    // Будни (без пт)
+    if (!budgetIsWeekend(reportedWeekday)) {
+        val daysLeft = 5 - reportedWeekday
+        val left = todayBalance / daysLeft
+        val sleft = budgetStringNumber(left, 0)
+        return BUDGET_RESULT_LEFT_T.replace("%VALUE%", sleft)
+    }
+
+    // Выходные (без вс)
+    // Нужны данные за две половины, а их пока нет
+    return BUDGET_RESULT_LEFT_T.replace("%VALUE%", "N/A")
 }
 
 // Перерасход

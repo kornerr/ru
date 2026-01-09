@@ -297,6 +297,7 @@
   var BUDGET_INITIAL_SUM;
   var BUDGET_RESTDAY_SUM;
   var BUDGET_RESULT_DATE_T;
+  var BUDGET_RESULT_LEFT_T;
   var BUDGET_RESULT_OVERRUN_T;
   var BUDGET_RESULT_WEEKDAY_T;
   var BUDGET_RESULT_WEEKEND_T;
@@ -340,12 +341,32 @@
       // Inline function 'kotlin.js.asDynamic' call
       var tmp$ret$16 = [budgetResultOverrun(mbalance, c.reportedWeekday, spent)];
       lines = tmp0_1.concat(tmp$ret$16);
+      var tmp0_2 = lines;
+      // Inline function 'kotlin.collections.plus' call
+      // Inline function 'kotlin.js.asDynamic' call
+      // Inline function 'kotlin.arrayOf' call
+      // Inline function 'kotlin.js.unsafeCast' call
+      // Inline function 'kotlin.js.asDynamic' call
+      var tmp$ret$21 = [budgetResultLeft(mbalance, c.reportedWeekday, spent)];
+      lines = tmp0_2.concat(tmp$ret$21);
       c.result = joinToString(lines, '<br />');
       c.y3_1 = 'result';
       return c;
     }
     c.y3_1 = 'none';
     return c;
+  }
+  function budgetIsLeftVisible(reportedWeekday) {
+    if (reportedWeekday >= BUDGET_WEEKDAY_MON && reportedWeekday < BUDGET_WEEKDAY_FRI) {
+      return true;
+    }
+    if (reportedWeekday === BUDGET_WEEKDAY_SAT) {
+      return true;
+    }
+    return false;
+  }
+  function budgetIsWeekend(reportedWeekday) {
+    return reportedWeekday === BUDGET_WEEKDAY_SAT || reportedWeekday === BUDGET_WEEKDAY_SUN;
   }
   function budgetNumber(s) {
     var dotted = replace(s, ',', '.');
@@ -384,6 +405,22 @@
   }
   function budgetResultDate(reportedDate) {
     return replace(BUDGET_RESULT_DATE_T, '%DATE%', reportedDate);
+  }
+  function budgetResultLeft(morningBalance, reportedWeekday, spent) {
+    var todayBalance = morningBalance - spent;
+    if (!budgetIsLeftVisible(reportedWeekday)) {
+      return '';
+    }
+    if (todayBalance < 0) {
+      return replace(BUDGET_RESULT_LEFT_T, '%VALUE%', '0');
+    }
+    if (!budgetIsWeekend(reportedWeekday)) {
+      var daysLeft = 5 - reportedWeekday | 0;
+      var left = todayBalance / daysLeft;
+      var sleft = budgetStringNumber(left, 0);
+      return replace(BUDGET_RESULT_LEFT_T, '%VALUE%', sleft);
+    }
+    return replace(BUDGET_RESULT_LEFT_T, '%VALUE%', 'N/A');
   }
   function budgetResultOverrun(morningBalance, reportedWeekday, spent) {
     var todayBalance = morningBalance - spent;
@@ -2328,6 +2365,7 @@
   BUDGET_INITIAL_SUM = 30000.0;
   BUDGET_RESTDAY_SUM = 15000.0;
   BUDGET_RESULT_DATE_T = '<b>%DATE%<\/b>';
+  BUDGET_RESULT_LEFT_T = '\u041E\u0441\u0442\u0430\u043B\u043E\u0441\u044C: %VALUE%';
   BUDGET_RESULT_OVERRUN_T = '\u041F\u0435\u0440\u0435\u0440\u0430\u0441\u0445\u043E\u0434: %VALUE%';
   BUDGET_RESULT_WEEKDAY_T = '\u0411\u0443\u0434\u043D\u0438: %SPENT% / %BALANCE% %PERCENT%';
   BUDGET_RESULT_WEEKEND_T = '\u0412\u044B\u0445\u043E\u0434\u043D\u044B\u0435: %SPENT% / %BALANCE% %PERCENT%';
