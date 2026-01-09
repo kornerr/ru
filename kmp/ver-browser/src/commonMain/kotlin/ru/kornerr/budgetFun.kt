@@ -168,7 +168,7 @@ fun budgetResultLeft(
 
     // Выходные (без вс)
     // Нужны данные за две половины, а их пока нет
-    return BUDGET_RESULT_LEFT_T.replace("%VALUE%", "N/A")
+    return ""
 }
 
 // Перерасход
