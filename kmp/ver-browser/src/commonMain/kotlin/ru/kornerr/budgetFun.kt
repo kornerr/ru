@@ -5,6 +5,7 @@ import kotlin.math.abs
 //<!-- Константы -->
 
 val BUDGET_INITIAL_SUM = 30000f
+val BUDGET_RESTDAY_SUM = 15000f
 val BUDGET_RESULT_DATE_T = "<b>%DATE%</b>"
 val BUDGET_RESULT_OVERRUN_T = "Перерасход: %VALUE%"
 val BUDGET_RESULT_WEEKDAY_T = "Будни: %SPENT% / %BALANCE% %PERCENT%"
@@ -16,13 +17,14 @@ val BUDGET_WEEKDAY_THU = 4
 val BUDGET_WEEKDAY_FRI = 5
 val BUDGET_WEEKDAY_SAT = 6
 val BUDGET_WEEKDAY_SUN = 7
+val BUDGET_WORKDAY_SUM = 6000f
 
 //<!-- Шуды -->
 
 /* Сформировать результат
  *
  * Условия:
- * 1. Запустии компоненту или задали траты / баланс
+ * 1. Запустили компоненту или задали траты / баланс
  */
 @JsExport
 fun budgetShouldResetResult(c: BudgetContext): BudgetContext {
@@ -47,6 +49,13 @@ fun budgetShouldResetResult(c: BudgetContext): BudgetContext {
 }
 
 //<!-- Прочие функции -->
+
+// Выходной ли в отчётный день?
+fun budgetIsWeekend(reportedWeekday: Int): Boolean {
+    return
+        reportedWeekday == BUDGET_WEEKDAY_SAT ||
+        reportedWeekday == BUDGET_WEEKDAY_SUN
+}
 
 // Привести строку к Float
 fun budgetNumber(s: String): Float {
@@ -117,22 +126,9 @@ fun budgetResultOverrun(
     spent: Float
 ): String {
     val todayBalance = morningBalance - spent
-    var expectedBalance = 0
-    return "N/A"
+    val targetBalance = budgetTargetMorningBalance(reportedWeekday)
 
-    /*
-    // Понедельник
-    //
-    // Выходные
-    if (
-        reportedWeekday == BUDGET_WEEKDAY_SAT ||
-        reportedWeekday == BUDGET_WEEKDAY_SUN
-    ) {
-    }
-    // Будни
-    else {
-    }
-    */
+    return "N/A"
 }
 
 // Потрачено / баланс процент
@@ -159,4 +155,17 @@ fun budgetResultSpent(
             .replace("%SPENT%", "$spent")
             .replace("%BALANCE%", balanceStr)
             .replace("%PERCENT%", "$percentStr%")
+}
+
+// Ожидаемый (без превышения) размер утреннего баланса
+fun budgetTargetMorningBalance(reportedWeekday: Int): Int {
+    // Будни
+    if (
+        reportedWeekday >= BUDGET_WEEKDAY_MON &&
+        reportedWeekday < BUDGET_WEEKDAY_SAT
+    ) {
+        return BUDGET_INITIAL_SUM - reportedWeekday * BUDGET_WORKDAY_SUM
+    }
+    // Выходные
+    return BUDGET_INITIAL_SUM - (reportedWeekday - 5) * BUDGET_RESTDAY_SUM
 }
