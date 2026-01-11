@@ -420,7 +420,7 @@
       var sleft = budgetStringNumber(left, 0);
       return replace(BUDGET_RESULT_LEFT_T, '%VALUE%', sleft);
     }
-    return replace(BUDGET_RESULT_LEFT_T, '%VALUE%', 'N/A');
+    return '';
   }
   function budgetResultOverrun(morningBalance, reportedWeekday, spent) {
     var todayBalance = morningBalance - spent;
