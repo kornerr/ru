@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/uikit-3.23.11.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="kotlin-kotlin-stdlib.js"></script>
+    <script src="kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js"></script>
+    <script src="luxon-3.7.2.min.js"></script>
+    <script src="kornerr-ver-browser.js"></script>
+    <script src="uikit-3.23.11.min.js"></script>
+    <script src="uikit-icons-3.23.11.min.js"></script>
+    <script>
+        let KT = window["kornerr:ver-browser"].ru.kornerr;
+        window.components = [];
+    </script>
+    <title>kornerr: budget</title>
+  </head>
+  <body>
+      <div class="uk-width-medium">
+        <table class="uk-table">
+          <tbody>
+            <tr>
+              <td>
+                <input id="budgetSpent" class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputSpent", this.value);' type="text" placeholder="Траты">
+              </td>
+              <td>
+                <button class="uk-button uk-button-default" onclick='budgetCtrl().set("pasteSpent", true);'><span uk-icon="pull"></span></button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input id="budgetMorningBalance" class="uk-input uk-form-width-small" oninput='budgetCtrl().set("inputMorningBalance", this.value);' type="text" placeholder="Баланс утр.">
+              </td>
+              <td>
+                <button class="uk-button uk-button-default" onclick='budgetCtrl().set("pasteMorningBalance", true);'><span uk-icon="pull"></span></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="uk-padding-small uk-padding-remove-top">
+          <p id="budgetResult" ></p>
+          <button class="uk-button uk-button-default" onclick='budgetCtrl().set("copyResult", true);'><span uk-icon="copy"></span></button>
+        </div>
+      </div>
+    <script src="other.js"></script>
+    <script src="budget.js"></script>
+  </body>
+</html>

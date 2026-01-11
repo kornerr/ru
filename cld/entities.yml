@@ -15,6 +15,22 @@ BankContext:
         response: NetResponse
         responseError: NetResponse
 
+BudgetContext:
+    prefix-kotlin: @JsExport
+    type: context
+    fields:
+        copyResult: Bool
+        didLaunch: Bool
+        inputDate: String
+        inputMorningBalance: String
+        inputSpent: String
+        pasteMorningBalance: Bool
+        pasteSpent: Bool
+        reportedDate: String
+        reportedWeekday: Int
+        result: String
+        todayWeekday: Int
+
 Currency:
     prefix-kotlin: @JsExport
     type: struct
